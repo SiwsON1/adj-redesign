@@ -1746,7 +1746,7 @@ h1, h2, h3, h4, h5, h6 {
    FOOTER (full)
    ============================================ */
 .footer__main {
-  background: var(--navy);
+  background: #1a1a1a;
   padding: var(--sp-16) 0 var(--sp-12);
   position: relative;
 }
@@ -1877,7 +1877,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer__bottom {
-  background: var(--navy-dark);
+  background: #111;
   padding: var(--sp-4) 0;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
