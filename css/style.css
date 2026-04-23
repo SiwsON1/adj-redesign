@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 .hero {
   background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 50%);
-  padding-top: 72px; /* space for fixed header (60px + 12px) */
+  padding-top: 92px; /* space for fixed header (80px + 12px) */
   border-bottom: 1px solid var(--gray-100);
   position: relative;
 }
@@ -1577,7 +1577,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   z-index: 200;
-  height: 60px;
+  height: 80px;
   background: #fafafa;
   border-bottom: 1px solid var(--gray-200);
 }
@@ -1585,12 +1585,13 @@ h1, h2, h3, h4, h5, h6 {
 .header__inner {
   display: flex;
   align-items: center;
-  height: 60px;
+  height: 80px;
   gap: var(--sp-6);
+  padding-right: 0;
 }
 
 .header__logo img {
-  height: 44px;
+  height: 58px;
   width: auto;
 }
 
@@ -1714,20 +1715,21 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 5px;
   background: var(--brand);
   border: none;
   cursor: pointer;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  height: 60px;
+  padding: 0 18px;
+  border-radius: 0;
+  height: 80px;
   margin-right: calc(-1 * var(--sp-4));
+  flex-shrink: 0;
 }
 .header__hamburger span {
-  width: 26px;
-  height: 2.5px;
+  width: 28px;
+  height: 3px;
   background: var(--white);
-  border-radius: 2px;
+  border-radius: 1px;
   transition: all var(--dur) var(--ease);
 }
 .header__hamburger-label {
