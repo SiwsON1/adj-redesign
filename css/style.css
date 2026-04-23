@@ -1888,6 +1888,208 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   E-LEARNING
+   ============================================ */
+.elearning-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-6);
+}
+
+.elearning-card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8);
+  transition: all var(--dur) var(--ease);
+  position: relative;
+}
+.elearning-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(254, 169, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.elearning-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(254, 169, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--sp-4);
+  color: var(--brand);
+}
+.elearning-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.elearning-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: var(--sp-2);
+}
+
+.elearning-card__text {
+  font-size: 14px;
+  color: var(--gray-500);
+  line-height: 1.65;
+}
+
+/* ============================================
+   INSTRUKTORZY
+   ============================================ */
+.instructors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+}
+
+.instructor-card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  text-align: center;
+  transition: all var(--dur) var(--ease);
+}
+.instructor-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(254, 169, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.instructor-card__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brand);
+  margin: 0 auto var(--sp-4);
+  box-shadow: 0 2px 8px rgba(33, 49, 74, 0.2);
+}
+
+.instructor-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--sp-1);
+}
+
+.instructor-card__spec {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--sp-3);
+}
+
+.instructor-card__quote {
+  font-size: 13.5px;
+  color: var(--gray-500);
+  line-height: 1.6;
+  font-style: italic;
+  border-top: 1px solid var(--gray-100);
+  padding-top: var(--sp-3);
+  margin: 0;
+}
+
+.instructors-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: var(--sp-8);
+  padding: var(--sp-4) var(--sp-6);
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 12px rgba(33, 49, 74, 0.2);
+}
+.instructors-badge svg {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   JAZDY DOSZKALAJĄCE
+   ============================================ */
+.doszkalanie-layout {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.doszkalanie__title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: var(--sp-4);
+  letter-spacing: -0.02em;
+}
+
+.doszkalanie__text {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: var(--sp-6);
+}
+
+.doszkalanie__quote {
+  margin: 0 0 var(--sp-6);
+  padding: var(--sp-4) var(--sp-6);
+  border-left: 3px solid var(--brand);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.doszkalanie__quote p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: var(--sp-1);
+}
+.doszkalanie__quote cite {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  font-style: normal;
+}
+
+.doszkalanie__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: var(--sp-6);
+}
+
+.doszkalanie__price-val {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--brand);
+  line-height: 1;
+}
+
+.doszkalanie__price-unit {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
@@ -1912,6 +2114,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   .plac-image img {
     height: 280px;
+  }
+  .instructors-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1983,6 +2188,20 @@ h1, h2, h3, h4, h5, h6 {
 
   .maneuvers-list {
     grid-template-columns: 1fr;
+  }
+
+  .elearning-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .instructors-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cta-final {
