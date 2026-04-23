@@ -42,8 +42,9 @@
   --danger: #ef4444;
 
   /* Typography */
-  --font-display: "Outfit", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Work Sans", Arial, sans-serif;
+  --font-body: "Work Sans", Arial, sans-serif;
+  --font-nav: "Roboto", Arial, sans-serif;
 
   /* Spacing tokens */
   --sp-1: 4px;
@@ -151,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 .hero {
   background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 50%);
-  padding-top: 80px; /* space for absolute header */
+  padding-top: 72px; /* space for fixed header (60px + 12px) */
   border-bottom: 1px solid var(--gray-100);
   position: relative;
 }
@@ -1571,23 +1572,25 @@ h1, h2, h3, h4, h5, h6 {
    SITE HEADER
    ============================================ */
 .site-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 200;
-  padding: var(--sp-4) 0;
-  background: var(--navy);
+  height: 60px;
+  background: #fafafa;
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .header__inner {
   display: flex;
   align-items: center;
+  height: 60px;
   gap: var(--sp-6);
 }
 
 .header__logo img {
-  height: 48px;
+  height: 44px;
   width: auto;
 }
 
@@ -1602,15 +1605,26 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0;
 }
 
+.nav-chevron {
+  vertical-align: middle;
+  margin-right: 2px;
+  position: relative;
+  top: -1px;
+}
+
 .nav-menu__link {
-  display: block;
-  padding: 10px 16px;
-  font-family: var(--font-display);
-  font-size: 13.5px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 16px;
+  font-family: var(--font-nav);
+  font-size: 15px;
+  font-weight: 400;
+  color: #000;
   text-decoration: none;
+  text-transform: uppercase;
   white-space: nowrap;
+  letter-spacing: 0.02em;
   transition: color var(--dur) var(--ease);
 }
 .nav-menu__link:hover {
@@ -1627,7 +1641,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   display: none;
   background: var(--white);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-lg);
   padding: var(--sp-4);
   min-width: 240px;
@@ -1651,9 +1665,10 @@ h1, h2, h3, h4, h5, h6 {
 .nav-dropdown__link {
   display: block;
   padding: 7px 12px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--gray-600);
+  font-family: var(--font-nav);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-700);
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition: all var(--dur) var(--ease);
@@ -1667,49 +1682,62 @@ h1, h2, h3, h4, h5, h6 {
 .header__actions {
   display: flex;
   align-items: center;
-  gap: var(--sp-4);
+  gap: 12px;
+}
+
+.header__search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  padding: 4px;
+  transition: color var(--dur) var(--ease);
+}
+.header__search:hover {
+  color: var(--brand);
 }
 
 .header__flag {
   display: flex;
-  opacity: 0.7;
+  opacity: 0.85;
   transition: opacity var(--dur) var(--ease);
 }
 .header__flag:hover {
   opacity: 1;
 }
 
-.header__phone {
+.header__hamburger {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--white);
-  transition: all var(--dur) var(--ease);
-}
-.header__phone:hover {
+  gap: 4px;
   background: var(--brand);
-  color: var(--white);
-}
-
-.header__hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  height: 60px;
+  margin-right: calc(-1 * var(--sp-4));
 }
 .header__hamburger span {
-  width: 24px;
-  height: 2px;
+  width: 26px;
+  height: 2.5px;
   background: var(--white);
   border-radius: 2px;
   transition: all var(--dur) var(--ease);
+}
+.header__hamburger-label {
+  font-family: var(--font-nav);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1px;
 }
 
 /* ============================================
