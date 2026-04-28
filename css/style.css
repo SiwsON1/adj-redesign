@@ -253,7 +253,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   color: var(--gray-900);
   line-height: 1;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-bottom: var(--sp-1);
 }
 
@@ -269,18 +271,28 @@ h1, h2, h3, h4, h5, h6 {
 
 /* CTA */
 .hero__cta-btn {
-  margin-bottom: var(--sp-3);
-}
-
-.hero__raty-link {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--brand);
   margin-bottom: var(--sp-8);
 }
-.hero__raty-link:hover {
-  color: var(--brand-dark);
+
+.hero__raty-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  background: var(--navy);
+  padding: 4px 14px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.hero__raty-pill:hover {
+  background: var(--navy-light);
+  color: var(--white);
+  transform: translateY(-1px);
 }
 
 /* Feature checklist (anchor links) */
