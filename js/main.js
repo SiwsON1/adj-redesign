@@ -218,17 +218,11 @@ function initDatesCarousel() {
     });
   }
 
-  const dateDisplay = document.getElementById("selectedDate");
-
   cards.forEach((card) => {
     card.addEventListener("click", (e) => {
       e.preventDefault();
       cards.forEach((c) => c.classList.remove("is-active"));
       card.classList.add("is-active");
-      if (dateDisplay) {
-        const dateText = card.querySelector(".date-card__date");
-        if (dateText) dateDisplay.textContent = dateText.textContent;
-      }
     });
   });
 }
