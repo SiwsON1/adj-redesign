@@ -110,10 +110,42 @@
           <span class="hero__price-note">Cena końcowa, bez dodatkowych opłat · <a href="/polityka-cenowa/">polityka cenowa</a></span>
         </div>
 
-        <a href="/formularz-zapisow/" class="btn btn--gold hero__cta-btn">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.59l-1.95-1.16a.75.75 0 10-.77 1.29l2.75 1.63a.75.75 0 00.77 0l2.75-1.63a.75.75 0 00-.77-1.29l-1.28.76V6.75z" clip-rule="evenodd"/></svg>
-          Zapisz się na kurs
-        </a>
+        <div class="hero__cta-row">
+          <a href="/formularz-zapisow/" class="btn btn--gold hero__cta-btn">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.59l-1.95-1.16a.75.75 0 10-.77 1.29l2.75 1.63a.75.75 0 00.77 0l2.75-1.63a.75.75 0 00-.77-1.29l-1.28.76V6.75z" clip-rule="evenodd"/></svg>
+            Zapisz się na kurs
+          </a>
+          <div class="hero__termin-picker">
+            <div class="hero__termin-select-wrap">
+              <select class="hero__termin-select" id="terminSelect">
+                <option value="">Wybierz termin E-kurs</option>
+                <option value="2026-05-06">pon. 6 maja</option>
+                <option value="2026-05-07">wt. 7 maja</option>
+                <option value="2026-05-08">śr. 8 maja</option>
+                <option value="2026-05-12">pon. 12 maja</option>
+                <option value="2026-05-13">wt. 13 maja</option>
+                <option value="2026-05-14">śr. 14 maja</option>
+                <option value="2026-05-19">pon. 19 maja</option>
+                <option value="2026-05-20">wt. 20 maja</option>
+                <option value="2026-05-21">śr. 21 maja</option>
+                <option value="2026-05-26">pon. 26 maja</option>
+                <option value="2026-05-27">wt. 27 maja</option>
+                <option value="2026-05-28">śr. 28 maja</option>
+                <option value="2026-06-02">pon. 2 czerwca</option>
+                <option value="2026-06-03">wt. 3 czerwca</option>
+                <option value="2026-06-04">śr. 4 czerwca</option>
+                <option value="2026-06-09">pon. 9 czerwca</option>
+                <option value="2026-06-10">wt. 10 czerwca</option>
+                <option value="2026-06-15">pon. 15 czerwca</option>
+              </select>
+              <svg class="hero__termin-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </div>
+          </div>
+        </div>
+        <p class="hero__termin-hint">
+          <span class="hero__termin-dot"></span>
+          Najbliższy termin: <strong>6 maja</strong> — rozpocznij kurs jeszcze w tym tygodniu
+        </p>
 
         <!-- Key features as anchor links -->
         <ul class="hero__features">
@@ -187,93 +219,6 @@
     </div>
   </div>
 </section>
-
-<!-- ==================== TERMINY STRIP ==================== -->
-<div class="terminy-strip" id="terminy">
-  <div class="terminy-strip__inner">
-    <div class="terminy-strip__label">
-      <span class="terminy-strip__pulse"></span>
-      Najbliższe terminy E-kurs
-    </div>
-    <div class="terminy-strip__track">
-      <div class="terminy-strip__scroll">
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">6</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">7</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">8</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">12</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">13</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">14</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">19</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">20</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">21</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">26</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">27</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">28</span>
-          <span class="tstrip-chip__month">maj</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">2</span>
-          <span class="tstrip-chip__month">cze</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">3</span>
-          <span class="tstrip-chip__month">cze</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">4</span>
-          <span class="tstrip-chip__month">cze</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">9</span>
-          <span class="tstrip-chip__month">cze</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">10</span>
-          <span class="tstrip-chip__month">cze</span>
-        </a>
-        <a href="/formularz-zapisow/" class="tstrip-chip">
-          <span class="tstrip-chip__day">15</span>
-          <span class="tstrip-chip__month">cze</span>
-        </a>
-      </div>
-    </div>
-    <a href="/formularz-zapisow/" class="terminy-strip__cta">Zapisz się &rarr;</a>
-  </div>
-</div>
 
 <!-- ==================== ANCHOR NAV ==================== -->
 <nav class="anchor-nav" aria-label="Nawigacja po sekcjach">
