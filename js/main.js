@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCounters();
   initReveal();
   initStatsBars();
+  initDatesCarousel();
 });
 
 /* ---------- Scroll Spy (Intersection Observer) ---------- */
@@ -194,4 +195,34 @@ function initReveal() {
   );
 
   reveals.forEach((r) => observer.observe(r));
+}
+
+/* ---------- Dates Carousel ---------- */
+function initDatesCarousel() {
+  const track = document.querySelector(".dates-carousel__track");
+  if (!track) return;
+
+  const prevBtn = document.querySelector(".dates-carousel__arrow--prev");
+  const nextBtn = document.querySelector(".dates-carousel__arrow--next");
+  const cards = track.querySelectorAll(".date-card");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -200, behavior: "smooth" });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      track.scrollBy({ left: 200, behavior: "smooth" });
+    });
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      e.preventDefault();
+      cards.forEach((c) => c.classList.remove("is-active"));
+      card.classList.add("is-active");
+    });
+  });
 }
