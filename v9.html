@@ -201,8 +201,13 @@
     .v9-badge__text { display: flex; flex-direction: column; line-height: 1.2; }
     .v9-badge__text strong { font-family: "Work Sans", sans-serif; font-size: 14px; font-weight: 800; color: #0E1A2F; letter-spacing: -0.01em; }
     .v9-badge__text small { font-size: 10.5px; color: #777; font-weight: 600; }
-    @media (max-width: 720px) {
-      .v9-badges-strip { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .v9-badges-strip { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; margin: 12px 0 8px !important; }
+      .v9-badge { padding: 6px 8px !important; gap: 6px !important; }
+      .v9-badge__icon { width: 24px !important; height: 24px !important; }
+      .v9-badge__icon svg { width: 14px !important; height: 14px !important; }
+      .v9-badge__text strong { font-size: 12px !important; }
+      .v9-badge__text small { font-size: 9px !important; }
     }
 
     /* Mobile (< 901px): hero kompakt jak ADJ orig - premium + Zapisz sie widoczny w 1szym viewporcie */
