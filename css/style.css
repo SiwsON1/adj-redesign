@@ -248,7 +248,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero__content > .hero__price-block { margin-bottom: 22px; }
 .hero__content > .hero__theory { margin-top: 0; margin-bottom: 18px; }
 .hero__content > .dates-carousel { margin-bottom: 12px; }
-.hero__content > .signup-bar { margin-top: auto; margin-bottom: 0; }
+.hero__content > .signup-bar { margin-top: 0; margin-bottom: 0; }
 .hero__content > .hero__phone-cta { margin-top: 14px; }
 
 .hero__phone-cta {
