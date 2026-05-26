@@ -139,16 +139,17 @@
       .hero__content > .hero__theory { margin-bottom: 18px !important; }
       .hero__content > .dates-carousel { margin-bottom: 18px !important; }
       .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
-      /* Wyrównaj etykiety form (theory + dates) do jednego formatu eyebrow */
+      /* Wyrównaj etykiety form (theory + dates + signup-label) do jednego formatu eyebrow */
       .hero__theory-label,
-      .dates-carousel__title {
+      .dates-carousel__title,
+      .hero__signup-label {
         font-family: "Work Sans", sans-serif !important;
         font-size: 11px !important;
         font-weight: 700 !important;
         color: #777 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.12em !important;
-        margin-bottom: 10px !important;
+        margin: 0 0 10px !important;
       }
       .hero__features { gap: 14px !important; }
     }
@@ -333,6 +334,7 @@
           </div>
         </div>
 
+        <p class="hero__signup-label">Wybierz termin</p>
         <form class="signup-bar" action="/formularz-zapisow/" method="get">
           <button type="submit" class="signup-bar__submit">
             <svg class="signup-bar__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
