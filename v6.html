@@ -84,26 +84,44 @@
       .v6-badge--tr, .v6-badge--br { right: 10px; }
     }
 
-    /* V6 hero - form group rowne gaps, lewa (image z badges) nieruszana */
+    /* V6 hero - form group (theory + dates + signup-bar) z rownymi odstepami, image z badges nieruszany */
     @media (min-width: 901px) {
-      .hero__grid { align-items: start !important; }
-      /* GRUPA 1 (cena) -> GRUPA 2 (form): wiekszy oddech miedzy grupami */
-      .hero__content > .hero__price-block { margin-bottom: 40px !important; }
-      /* GRUPA 2 (form): theory + dates + signup-bar - rowne ciasne gaps */
-      .hero__content > .hero__theory { margin-bottom: 18px !important; }
-      .hero__content > .dates-carousel { margin-bottom: 18px !important; }
+      .hero__grid { align-items: stretch !important; }
+      .hero__content { min-height: 100% !important; }
+      .hero__image { border-radius: 16px !important; }
+      .hero__content > .hero__badges { margin-bottom: 24px !important; }
+      .hero__content > .hero__title { margin-bottom: 36px !important; }
+      /* GRUPA 1 (cena) -> GRUPA 2 (form): duzy oddech miedzy grupami */
+      .hero__content > .hero__price-block { margin-bottom: 72px !important; }
+      /* Wewnatrz price-block: cena -> raty -> nota rowne 14px */
+      .hero__price-row { margin: 0 0 14px !important; }
+      .hero__raty-pill { margin: 0 0 14px !important; }
+      .hero__price-note { margin: 0 !important; }
+      /* GRUPA 2 (form): theory + dates + signup - rowne 32px gap, odbierz ekstra margin-top dates */
+      .hero__content > .hero__theory { margin-bottom: 32px !important; }
+      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 32px !important; }
       .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
-      /* Wyrownaj etykiety form (theory + dates) do jednego formatu eyebrow */
+      /* Wyrownaj etykiety form (theory + dates + signup-label) do jednego formatu eyebrow */
       .hero__theory-label,
-      .dates-carousel__title {
+      .dates-carousel__title,
+      .hero__signup-label {
         font-family: "Work Sans", sans-serif !important;
         font-size: 11px !important;
         font-weight: 700 !important;
         color: #777 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.12em !important;
-        margin-bottom: 10px !important;
+        margin: 0 0 10px !important;
       }
+      /* Features bez anchorow - dodaj flex layout do <li> */
+      .hero__features li {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        color: var(--gray-700) !important;
+      }
+      .hero__features li strong { color: var(--gray-900) !important; }
       .hero__features { gap: 14px !important; }
     }
 
@@ -213,10 +231,10 @@
             </div>
           </div>
         </li>
-        <li class="nav-menu__item"><a href="/faq/" class="nav-menu__link">FAQ</a></li>
-        <li class="nav-menu__item"><a href="/kontakt/" class="nav-menu__link">Kontakt</a></li>
-        <li class="nav-menu__item"><a href="/blog/" class="nav-menu__link">Blog</a></li>
-        <li class="nav-menu__item"><a href="/opinie/" class="nav-menu__link">Opinie</a></li>
+        <li class="nav-menu__item"><a href="/faq/" class="nav-menu__link">FAQ</li>
+        <li class="nav-menu__item"><a href="/kontakt/" class="nav-menu__link">Kontakt</li>
+        <li class="nav-menu__item"><a href="/blog/" class="nav-menu__link">Blog</li>
+        <li class="nav-menu__item"><a href="/opinie/" class="nav-menu__link">Opinie</li>
       </ul>
     </nav>
 
@@ -320,6 +338,7 @@
           </div>
         </div>
 
+        <p class="hero__signup-label">Wybierz termin</p>
         <form class="signup-bar" action="/formularz-zapisow/" method="get">
           <button type="submit" class="signup-bar__submit">
             <svg class="signup-bar__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
@@ -406,36 +425,36 @@
         </div>
 
         <ul class="hero__features">
-          <li><a href="#przebieg">
+          <li>
             <span class="hero__feat-icon" aria-hidden="true">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </span>
             <span><strong>30 godzin teorii</strong> - kurs prawa jazdy kat. B Wrocław: wykłady, e-learning lub tryb eksternistyczny.</span>
-          </a></li>
-          <li><a href="#przebieg">
+          </li>
+          <li>
             <span class="hero__feat-icon" aria-hidden="true">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </span>
             <span><strong>30 godzin jazd praktycznych</strong> - nauka jazdy kat. B Wrocław 7 dni w tygodniu, elastyczne godziny.</span>
-          </a></li>
-          <li><a href="#zdawalnosc">
+          </li>
+          <li>
             <span class="hero__feat-icon" aria-hidden="true">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </span>
             <span><strong>Wysoka zdawalność egzaminów kat. B</strong> - 6-krotne I miejsce w rankingu zdawalności WORD.</span>
-          </a></li>
-          <li><a href="#wymagania">
+          </li>
+          <li>
             <span class="hero__feat-icon" aria-hidden="true">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </span>
             <span><strong>Wymagania</strong> - ukończone 17 lat, badania lekarskie i numer PKK. Kurs można rozpocząć już w wieku 16 lat i 9 miesięcy. W przypadku osób poniżej 18 lat wymagana jest zgoda rodzica lub opiekuna prawnego.</span>
-          </a></li>
-          <li><a href="#przebieg">
+          </li>
+          <li>
             <span class="hero__feat-icon" aria-hidden="true">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
             </span>
             <span><strong>Nowoczesne pomoce dydaktyczne</strong> - platforma e-learningowa, kanał YouTube, szkolenia VR.</span>
-          </a></li>
+          </li>
         </ul>
 
       </div>
@@ -1261,20 +1280,20 @@
         <div class="footer__col">
           <h4 class="footer__heading">Kursy</h4>
           <ul class="footer__links">
-            <li><a href="/kursy/prawo-jazdy-kat-b/">Prawo jazdy kat. B</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-b-automat/">Prawo jazdy kat. B-automat</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-b-e/">Prawo jazdy kat. B + E</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-c/">Prawo jazdy kat. C</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-c-e/">Prawo jazdy kat. C + E</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-d/">Prawo jazdy kat. D po B</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-d-po-c/">Prawo jazdy kat. D po C</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-a/">Prawo jazdy kat. A</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-a1/">Prawo jazdy kat. A1</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-a2/">Prawo jazdy kat. A2</a></li>
-            <li><a href="/kursy/prawo-jazdy-kat-am-motorower/">Prawo jazdy kat. AM</a></li>
-            <li><a href="/szkolenia-dla-kierowcow/szkolenia-okresowe/">Szkolenie okresowe</a></li>
-            <li><a href="/kursy-pakietowe/">Kursy pakietowe</a></li>
-            <li><a href="/szkolenia-dla-instruktorow/">Szkolenia dla instruktorów</a></li>
+            <li><a href="/kursy/prawo-jazdy-kat-b/">Prawo jazdy kat. B</li>
+            <li><a href="/kursy/prawo-jazdy-kat-b-automat/">Prawo jazdy kat. B-automat</li>
+            <li><a href="/kursy/prawo-jazdy-kat-b-e/">Prawo jazdy kat. B + E</li>
+            <li><a href="/kursy/prawo-jazdy-kat-c/">Prawo jazdy kat. C</li>
+            <li><a href="/kursy/prawo-jazdy-kat-c-e/">Prawo jazdy kat. C + E</li>
+            <li><a href="/kursy/prawo-jazdy-kat-d/">Prawo jazdy kat. D po B</li>
+            <li><a href="/kursy/prawo-jazdy-kat-d-po-c/">Prawo jazdy kat. D po C</li>
+            <li><a href="/kursy/prawo-jazdy-kat-a/">Prawo jazdy kat. A</li>
+            <li><a href="/kursy/prawo-jazdy-kat-a1/">Prawo jazdy kat. A1</li>
+            <li><a href="/kursy/prawo-jazdy-kat-a2/">Prawo jazdy kat. A2</li>
+            <li><a href="/kursy/prawo-jazdy-kat-am-motorower/">Prawo jazdy kat. AM</li>
+            <li><a href="/szkolenia-dla-kierowcow/szkolenia-okresowe/">Szkolenie okresowe</li>
+            <li><a href="/kursy-pakietowe/">Kursy pakietowe</li>
+            <li><a href="/szkolenia-dla-instruktorow/">Szkolenia dla instruktorów</li>
           </ul>
         </div>
 
@@ -1282,19 +1301,19 @@
         <div class="footer__col">
           <h4 class="footer__heading">Informacje</h4>
           <ul class="footer__links">
-            <li><a href="/akademia-dobrej-jazdy-liderem-w-zdawalnosci-egzaminow-word-wroclaw/">Lider zdawalności WORD</a></li>
-            <li><a href="/terminy-szkolen/">Terminy szkoleń</a></li>
-            <li><a href="/spotkania-organizacyjne/">Spotkania organizacyjne</a></li>
-            <li><a href="/profil-kandydata-na-kierowce-pkk/">PKK - przewodnik 2026</a></li>
-            <li><a href="/profil-kierowcy-zawodowego-pkz/">PKZ</a></li>
-            <li><a href="/e-learning/">E-learning</a></li>
-            <li><a href="/plac-manewrowy/">Plac manewrowy</a></li>
-            <li><a href="/badania-lekarskie-i-psychologiczne/">Badania lekarskie</a></li>
-            <li><a href="/jazdy-doszkalajace-wroclaw-wszystkie-kat-abcd-e/">Jazdy doszkalające</a></li>
-            <li><a href="/instruktorzy/">Instruktorzy</a></li>
-            <li><a href="/driving-licences-in-english/">Driving licences in English</a></li>
-            <li><a href="/regulamin/">Regulamin</a></li>
-            <li><a href="/mapa-strony/">Mapa strony</a></li>
+            <li><a href="/akademia-dobrej-jazdy-liderem-w-zdawalnosci-egzaminow-word-wroclaw/">Lider zdawalności WORD</li>
+            <li><a href="/terminy-szkolen/">Terminy szkoleń</li>
+            <li><a href="/spotkania-organizacyjne/">Spotkania organizacyjne</li>
+            <li><a href="/profil-kandydata-na-kierowce-pkk/">PKK - przewodnik 2026</li>
+            <li><a href="/profil-kierowcy-zawodowego-pkz/">PKZ</li>
+            <li><a href="/e-learning/">E-learning</li>
+            <li><a href="/plac-manewrowy/">Plac manewrowy</li>
+            <li><a href="/badania-lekarskie-i-psychologiczne/">Badania lekarskie</li>
+            <li><a href="/jazdy-doszkalajace-wroclaw-wszystkie-kat-abcd-e/">Jazdy doszkalające</li>
+            <li><a href="/instruktorzy/">Instruktorzy</li>
+            <li><a href="/driving-licences-in-english/">Driving licences in English</li>
+            <li><a href="/regulamin/">Regulamin</li>
+            <li><a href="/mapa-strony/">Mapa strony</li>
           </ul>
         </div>
 
