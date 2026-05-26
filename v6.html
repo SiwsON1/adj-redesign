@@ -125,29 +125,73 @@
       .hero__features { gap: 14px !important; }
     }
 
-    /* Mobile/tablet (< 901px): te same rowne gaps w form group + features */
+    /* Mobile (< 901px): hero kompakt jak ADJ orig - premium + Zapisz sie widoczny w 1szym viewporcie */
     @media (max-width: 900px) {
-      .hero__content > .hero__theory { margin-bottom: 24px !important; }
-      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 24px !important; }
-      .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
-      .hero__theory-label,
-      .dates-carousel__title,
-      .hero__signup-label {
+      /* Order: image full-width -> content -> features */
+      .hero__right { display: contents !important; }
+      .hero__image { order: 1 !important; width: 100% !important; max-width: 100% !important; max-height: 200px !important; margin: 0 !important; overflow: hidden !important; border-radius: 16px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 10px 28px rgba(33,49,74,0.10) !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; max-height: 200px !important; object-fit: cover !important; }
+      .hero__content { order: 2 !important; gap: 0 !important; padding-top: 18px !important; }
+      .hero__features { order: 3 !important; padding-top: 18px !important; margin-top: 18px !important; border-top: 1px solid var(--gray-100) !important; }
+
+      /* Ukryj zbedne aby Zapisz sie widoczny od razu */
+      .hero__badges { display: none !important; }
+      .hero__content > .hero__eyebrow { display: none !important; }
+      .hero__price-note { display: none !important; }
+      .hero__signup-label { display: none !important; }
+      .header__anchors { display: none !important; }
+
+      /* H1 - czytelny premium */
+      .hero__title { margin: 0 0 14px !important; font-size: 24px !important; line-height: 1.22 !important; letter-spacing: -0.015em !important; font-weight: 700 !important; }
+
+      /* Cena value ukryta z hero (jest w sticky bottom) - zostaje tylko Raty pill */
+      .hero__price-row { display: none !important; }
+      .hero__price-block { margin-bottom: 16px !important; }
+      .hero__raty-pill {
+        padding: 12px 14px !important;
+        border-radius: 12px !important;
+        background: rgba(254, 169, 0, 0.08) !important;
+        border: 1.5px dashed rgba(254, 169, 0, 0.5) !important;
+      }
+      .hero__raty-pill__text strong { font-size: 14px !important; }
+      .hero__raty-pill__text small { font-size: 11.5px !important; }
+
+      /* Form labels - eyebrow */
+      .hero__theory-label, .dates-carousel__title {
         font-family: "Work Sans", sans-serif !important;
-        font-size: 11px !important;
+        font-size: 10.5px !important;
         font-weight: 700 !important;
         color: #777 !important;
         text-transform: uppercase !important;
-        letter-spacing: 0.12em !important;
-        margin: 0 0 10px !important;
+        letter-spacing: 0.1em !important;
+        margin: 0 0 8px !important;
       }
+      .hero__content > .hero__theory { margin-bottom: 14px !important; }
+      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 14px !important; }
+      .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
+
+      /* Theory toggle: pelna szerokosc, 3 rowne kolumny */
+      .hero__theory-toggle { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; padding: 4px !important; gap: 2px !important; width: 100% !important; }
+      .theory-btn { width: 100% !important; padding: 10px 8px !important; font-size: 13px !important; }
+
+      /* Signup-bar: button NA GORZE big, selecty pod cienkie */
+      .signup-bar { flex-direction: column !important; gap: 6px !important; padding: 10px !important; border-radius: 14px !important; }
+      .signup-bar__submit { order: -1 !important; width: 100% !important; justify-content: center !important; padding: 14px !important; font-size: 16px !important; border-radius: 10px !important; }
+      .signup-bar__field { width: 100% !important; padding: 7px 12px !important; }
+      .signup-bar__label { font-size: 10px !important; letter-spacing: 0.08em !important; }
+      .signup-bar__select { font-size: 14px !important; }
+
       .hero__features li {
         display: flex !important;
         align-items: flex-start !important;
         gap: 10px !important;
         padding: 0 !important;
+        font-size: 13.5px !important;
+        line-height: 1.45 !important;
       }
     }
+
+    
 
 .variant-nav { position: fixed; bottom: 70px; left: 0; right: 0; z-index: 199; background: #0E1A2F; color: #fff; padding: 8px 24px; display: flex; gap: 18px; align-items: center; justify-content: center; font-family: "Work Sans", sans-serif; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .variant-nav span { opacity: .6; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; }
