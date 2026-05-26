@@ -2550,11 +2550,15 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
+  width: 116px;
+  height: 58px;
 }
 .header__logo img {
-  height: 58px;
-  width: 116px;
+  width: 116px !important;
+  height: 58px !important;
+  max-width: 116px !important;
   object-fit: contain;
+  display: block;
 }
 
 .header__nav {
