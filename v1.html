@@ -170,8 +170,19 @@
       .hero__features { gap: 14px !important; }
     }
 
-    /* Mobile/tablet (< 901px): te same równe gaps w form group + features */
+    /* Mobile (< 901px): hero section jak oryginalny ADJ - image PIERWSZE, content potem */
     @media (max-width: 900px) {
+      .hero__right { display: contents !important; }
+      .hero__image { order: 1 !important; max-height: 220px !important; overflow: hidden !important; border-radius: 14px !important; margin-bottom: 0 !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; max-height: 220px !important; object-fit: cover !important; }
+      .hero__content { order: 2 !important; }
+      .hero__features { order: 3 !important; padding-top: 16px !important; }
+      /* Mobile: ukryj badges trio + eyebrow zeby Zapisz sie byl od razu widoczny */
+      .hero__badges { display: none !important; }
+      .hero__content > .hero__eyebrow { display: none !important; }
+      .hero__title { margin-top: 4px !important; margin-bottom: 18px !important; }
+      .hero__price-block { margin-bottom: 22px !important; }
+      /* Form group rowne gaps */
       .hero__content > .hero__theory { margin-bottom: 24px !important; }
       .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 24px !important; }
       .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
