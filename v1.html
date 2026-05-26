@@ -170,37 +170,51 @@
       .hero__features { gap: 14px !important; }
     }
 
-    /* Mobile (< 901px): hero section jak oryginalny ADJ - image PIERWSZE, content potem */
+    /* Mobile (< 901px): hero kompakt jak ADJ orig - Zapisz sie widoczny w 1szym viewporcie */
     @media (max-width: 900px) {
+      /* Order: image full-width -> content -> features */
       .hero__right { display: contents !important; }
-      .hero__image { order: 1 !important; width: 100% !important; max-width: 100% !important; max-height: 240px !important; margin: 0 !important; overflow: hidden !important; border-radius: 14px !important; }
-      .hero__image img { width: 100% !important; height: 100% !important; max-height: 240px !important; object-fit: cover !important; }
-      .hero__content { order: 2 !important; }
-      .hero__features { order: 3 !important; padding-top: 16px !important; }
-      /* Signup-bar mobile: button NA GORZE, selecty pod (jak ADJ orig) */
-      .signup-bar { flex-direction: column !important; gap: 8px !important; padding: 12px !important; border-radius: 14px !important; }
-      .signup-bar__submit { order: -1 !important; width: 100% !important; justify-content: center !important; padding: 16px !important; font-size: 16px !important; }
-      .signup-bar__field { width: 100% !important; }
-      /* Mobile: ukryj badges trio + eyebrow zeby Zapisz sie byl od razu widoczny */
+      .hero__image { order: 1 !important; width: 100% !important; max-width: 100% !important; max-height: 200px !important; margin: 0 !important; overflow: hidden !important; border-radius: 14px !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; max-height: 200px !important; object-fit: cover !important; }
+      .hero__content { order: 2 !important; gap: 0 !important; }
+      .hero__features { order: 3 !important; padding-top: 14px !important; }
+
+      /* Ukryj zbedne na mobile aby Zapisz sie w 1szym viewporcie */
       .hero__badges { display: none !important; }
       .hero__content > .hero__eyebrow { display: none !important; }
-      .hero__title { margin-top: 4px !important; margin-bottom: 18px !important; }
-      .hero__price-block { margin-bottom: 22px !important; }
-      /* Form group rowne gaps */
-      .hero__content > .hero__theory { margin-bottom: 24px !important; }
-      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 24px !important; }
-      .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
-      .hero__theory-label,
-      .dates-carousel__title,
-      .hero__signup-label {
+      .hero__price-note { display: none !important; }
+      .hero__signup-label { display: none !important; }
+
+      /* H1 + cena - kompakt */
+      .hero__title { margin-top: 12px !important; margin-bottom: 12px !important; font-size: 22px !important; line-height: 1.25 !important; }
+      .hero__price-row { margin: 0 0 8px !important; gap: 12px !important; }
+      .hero__price-value { font-size: 26px !important; }
+      .hero__price-icon img { width: 36px !important; height: auto !important; }
+      .hero__price-block { margin-bottom: 14px !important; }
+      .hero__raty-pill { padding: 8px 12px !important; }
+      .hero__raty-pill__text strong { font-size: 13px !important; }
+      .hero__raty-pill__text small { font-size: 11px !important; }
+
+      /* Form group ciasne */
+      .hero__theory-label, .dates-carousel__title {
         font-family: "Work Sans", sans-serif !important;
-        font-size: 11px !important;
+        font-size: 10.5px !important;
         font-weight: 700 !important;
         color: #777 !important;
         text-transform: uppercase !important;
-        letter-spacing: 0.12em !important;
-        margin: 0 0 10px !important;
+        letter-spacing: 0.1em !important;
+        margin: 0 0 6px !important;
       }
+      .hero__content > .hero__theory { margin-bottom: 12px !important; }
+      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 12px !important; }
+      .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
+
+      /* Signup-bar mobile: button NA GORZE big, selecty pod cienkie */
+      .signup-bar { flex-direction: column !important; gap: 6px !important; padding: 10px !important; border-radius: 14px !important; }
+      .signup-bar__submit { order: -1 !important; width: 100% !important; justify-content: center !important; padding: 14px !important; font-size: 16px !important; }
+      .signup-bar__field { width: 100% !important; padding: 6px 10px !important; }
+      .signup-bar__label { font-size: 10px !important; }
+
       .hero__features li {
         display: flex !important;
         align-items: flex-start !important;
