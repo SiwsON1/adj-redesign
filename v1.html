@@ -173,10 +173,14 @@
     /* Mobile (< 901px): hero section jak oryginalny ADJ - image PIERWSZE, content potem */
     @media (max-width: 900px) {
       .hero__right { display: contents !important; }
-      .hero__image { order: 1 !important; max-height: 220px !important; overflow: hidden !important; border-radius: 14px !important; margin-bottom: 0 !important; }
-      .hero__image img { width: 100% !important; height: 100% !important; max-height: 220px !important; object-fit: cover !important; }
+      .hero__image { order: 1 !important; max-width: 240px !important; max-height: 240px !important; margin: 0 auto !important; overflow: hidden !important; border-radius: 14px !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; max-height: 240px !important; object-fit: cover !important; }
       .hero__content { order: 2 !important; }
       .hero__features { order: 3 !important; padding-top: 16px !important; }
+      /* Signup-bar mobile: button NA GORZE, selecty pod (jak ADJ orig) */
+      .signup-bar { flex-direction: column !important; gap: 8px !important; padding: 12px !important; border-radius: 14px !important; }
+      .signup-bar__submit { order: -1 !important; width: 100% !important; justify-content: center !important; padding: 16px !important; font-size: 16px !important; }
+      .signup-bar__field { width: 100% !important; }
       /* Mobile: ukryj badges trio + eyebrow zeby Zapisz sie byl od razu widoczny */
       .hero__badges { display: none !important; }
       .hero__content > .hero__eyebrow { display: none !important; }
