@@ -201,6 +201,7 @@ h1, h2, h3, h4, h5, h6 {
   order: 2;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 }
 /* Stagger reveal on load - hero panel children appear in sequence */
 .hero__content > .hero__eyebrow,
@@ -245,10 +246,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--gray-500);
   margin: 0;
 }
-.hero__content > .hero__price-block { margin-bottom: 22px; }
-.hero__content > .hero__theory { margin-top: 0; margin-bottom: 18px; }
-.hero__content > .dates-carousel { margin-bottom: 12px; }
-.hero__content > .signup-bar { margin-top: 0; margin-bottom: 0; }
+.hero__content > .hero__price-block { margin-bottom: 36px; }
+.hero__content > .hero__theory { margin-top: 0; margin-bottom: 28px; }
+.hero__content > .dates-carousel { margin-bottom: 28px; }
+.hero__content > .signup-bar { margin-top: auto; margin-bottom: 0; }
 .hero__content > .hero__phone-cta { margin-top: 14px; }
 
 .hero__phone-cta {
