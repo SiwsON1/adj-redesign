@@ -2546,9 +2546,15 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 0;
 }
 
+.header__logo {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
 .header__logo img {
   height: 58px;
-  width: auto;
+  width: 116px;
+  object-fit: contain;
 }
 
 .header__nav {
