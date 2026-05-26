@@ -128,11 +128,16 @@
       }
     }
 
-    /* V1 hero - inline override (CDN cache bypass) */
+    /* V1 hero - form group (theory + dates + signup-bar) z równymi odstępami */
     @media (min-width: 901px) {
-      .hero__grid { align-items: stretch !important; }
-      .hero__content { min-height: 100% !important; height: 100% !important; justify-content: space-between !important; }
-      .hero__content > .signup-bar { margin-top: 0 !important; }
+      .hero__grid { align-items: start !important; }
+      .hero__image { max-height: 360px !important; overflow: hidden !important; border-radius: 16px !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+      .hero__content > .hero__price-block { margin-bottom: 28px !important; }
+      .hero__content > .hero__theory { margin-bottom: 16px !important; }
+      .hero__content > .dates-carousel { margin-bottom: 16px !important; }
+      .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
+      .hero__features { gap: 14px !important; }
     }
 
     /* Sticky bottom CTA - shortcut to /formularz-zapisow/ */
