@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADJ - porównanie wersji hero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Work Sans", Arial, sans-serif;
+      background: #0E1A2F;
+      color: #fff;
+      min-height: 100vh;
+      padding: 80px 24px;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+    h1 em { font-style: normal; color: #FEA900; }
+    .sub { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.55; max-width: 60ch; margin-bottom: 56px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      display: block;
+      padding: 32px 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s, background 0.28s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #FEA900 0%, #176CD5 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(254,169,0,0.4); background: rgba(255,255,255,0.07); }
+    .card:hover::before { transform: scaleX(1); }
+    .tag { display: inline-block; padding: 4px 10px; background: #FEA900; color: #0E1A2F; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 4px; margin-bottom: 16px; }
+    .card h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 10px; }
+    .card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.55; margin-bottom: 20px; }
+    .card .feat { font-size: 13px; color: rgba(255,255,255,0.55); display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
+    .card .feat span::before { content: "→ "; color: #FEA900; font-weight: 700; }
+    .card .go { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #FEA900; }
+    .card:hover .go { gap: 12px; }
+    .meta { margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: rgba(255,255,255,0.4); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Wersje hero <em>do porównania</em></h1>
+    <p class="sub">Każda wersja inaczej rozwiązuje cenę, raty, terminy i zapis. V10 jest wariantem finalnym według obecnych wymagań.</p>
+
+    <div class="grid">
+      <a href="/v1.html" class="card">
+        <span class="tag">V1</span>
+        <h2>Widget w hero</h2>
+        <p>Karuzela dat + toggle teorii + signup-bar wbudowane w hero po prawej. Wszystko widoczne nad fold.</p>
+        <div class="feat">
+          <span>Klient zapisuje się bez scroll</span>
+          <span>Hero gęsto wypełniony (8 stref po prawej)</span>
+          <span>Może rozpraszać przed decyzją cenową</span>
+        </div>
+        <span class="go">Otwórz →</span>
+      </a>
+
+      <a href="/v2.html" class="card">
+        <span class="tag">V2</span>
+        <h2>Gazelka clean + booking section</h2>
+        <p>Hero minimalny: storytelling lede + 1 CTA "Zapisz się". Dedykowana sekcja "Wybierz termin" tuż pod hero z dużymi kartami terminów (data + tryb + miejsca) i pełnym formularzem.</p>
+        <div class="feat">
+          <span>Hero focuses na wartości i decyzję cenową</span>
+          <span>Większe karty terminów z miejscami</span>
+          <span>3-step flow: tryb -> termin -> dane</span>
+        </div>
+        <span class="go">Otwórz →</span>
+      </a>
+
+      <a href="/v11.html" class="card">
+        <span class="tag">V11</span>
+        <h2>V2 z badge i paskiem ADJ</h2>
+        <p>Wariant oparty o V2, ale z konkretnymi badge na zdjęciu i głównym paskiem zapisu takim jak na ADJ: data, ośrodek i teoria w jednym CTA.</p>
+        <div class="feat">
+          <span>Badge na zdjęciu: zdawalność i opinie</span>
+          <span>Więcej informacji w hero bez nowego fontu</span>
+          <span>Przycisk zapisu wypełnia się żółtym jak na ADJ</span>
+        </div>
+        <span class="go">Otwórz →</span>
+      </a>
+
+      <a href="/v3.html" class="card">
+        <span class="tag">V3</span>
+        <h2>Panel zapisu w hero</h2>
+        <p>Jedna prawa kolumna: cena, raty, tryb teorii, terminy i formularz w jednym module. Bez dodatkowych fontów i bez zmiany H1.</p>
+        <div class="feat">
+          <span>Porządkuje prawą kolumnę</span>
+          <span>Raty jako część zapisu</span>
+          <span>Statystyki pod zdjęciem</span>
+        </div>
+        <span class="go">Otwórz →</span>
+      </a>
+
+      <a href="/v4.html" class="card">
+        <span class="tag">V4</span>
+        <h2>Promowane cechy</h2>
+        <p>Test pokazania dofinansowania, rat i szybkiego startu jako elementu decyzji, bez naklejek na zdjęciu.</p>
+        <div class="feat">
+          <span>Czyste zdjęcie lokalne</span>
+          <span>Cechy kursu pod zdjęciem lub zapisem</span>
+          <span>Lepsze niż badge na fotografii</span>
+        </div>
+        <span class="go">Otwórz →</span>
+      </a>
+
+      <a href="/v10.html" class="card">
+        <span class="tag">V10</span>
+        <h2>Finalny układ według wymagań</h2>
+        <p>Balans kolumn: po lewej zdjęcie i konkrety kursu, po prawej cena, raty, dofinansowanie, terminy i zapis.</p>
+        <div class="feat">
+          <span>Bez pustej prawej kolumny</span>
+          <span>Promowane rzeczy w procesie decyzji</span>
+          <span>Bez nowych fontów i bez zmiany H1</span>
+        </div>
+        <span class="go">Otwórz →</span>
+      </a>
+    </div>
+
+    <p class="meta">Wersje używają Work Sans/Roboto z obecnej strony, bez nowych fontów. Lokalizacje korzystają z konkretnych zdjęć ADJ: Brochów, Psie Pole, Grunwald.</p>
+  </div>
+</body>
+</html>
