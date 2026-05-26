@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ---------- Scroll Spy (Intersection Observer) ---------- */
 function initScrollSpy() {
-  const nav = document.querySelector(".anchor-nav");
+  const nav = document.querySelector(".header__anchors, .anchor-nav");
   if (!nav) return;
 
-  const links = nav.querySelectorAll(".anchor-nav__link");
+  const links = nav.querySelectorAll(".header-anchor, .anchor-nav__link");
   const sections = [];
 
   links.forEach((link) => {
@@ -226,3 +226,43 @@ function initDatesCarousel() {
     });
   });
 }
+
+// Theory toggle - sliding pill indicator
+(function initTheoryToggle() {
+  const toggles = document.querySelectorAll(".hero__theory-toggle");
+  if (!toggles.length) return;
+
+  toggles.forEach((toggle) => {
+    const buttons = toggle.querySelectorAll(".theory-btn");
+    if (!buttons.length) return;
+
+    const updatePill = (target) => {
+      const tRect = target.getBoundingClientRect();
+      const wRect = toggle.getBoundingClientRect();
+      const x = tRect.left - wRect.left - 4;
+      toggle.style.setProperty("--theory-pill-x", `${x}px`);
+      toggle.style.setProperty("--theory-pill-w", `${tRect.width}px`);
+    };
+
+    const setActive = (btn) => {
+      buttons.forEach((b) => {
+        b.classList.remove("is-active");
+        b.setAttribute("aria-selected", "false");
+      });
+      btn.classList.add("is-active");
+      btn.setAttribute("aria-selected", "true");
+      updatePill(btn);
+    };
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => setActive(btn));
+    });
+
+    const initial = toggle.querySelector(".theory-btn.is-active") || buttons[0];
+    requestAnimationFrame(() => updatePill(initial));
+    window.addEventListener("resize", () => {
+      const active = toggle.querySelector(".theory-btn.is-active");
+      if (active) updatePill(active);
+    });
+  });
+})();
