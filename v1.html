@@ -138,10 +138,23 @@
       .hero__content > .hero__title { margin-bottom: 36px !important; }
       /* GRUPA 1 (cena) → grupa 2 (form): duży oddech między grupami */
       .hero__content > .hero__price-block { margin-bottom: 72px !important; }
-      /* GRUPA 2 (form): theory + dates + signup - równe gap */
+      /* Wewnątrz price-block: cena→raty→nota równe odstępy 14px */
+      .hero__price-row { margin: 0 0 14px !important; }
+      .hero__raty-pill { margin: 0 0 14px !important; }
+      .hero__price-note { margin: 0 !important; }
+      /* GRUPA 2 (form): theory + dates + signup - równe gap 32px (odbierz ekstra margin-top dates) */
       .hero__content > .hero__theory { margin-bottom: 32px !important; }
-      .hero__content > .dates-carousel { margin-bottom: 32px !important; }
+      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 32px !important; }
       .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
+      /* Features bez anchorów - dodaj flex layout do <li> */
+      .hero__features li {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        color: var(--gray-700) !important;
+      }
+      .hero__features li strong { color: var(--gray-900) !important; }
       /* Wyrównaj etykiety form (theory + dates + signup-label) do jednego formatu eyebrow */
       .hero__theory-label,
       .dates-carousel__title,
