@@ -13,108 +13,238 @@
 
   <link rel="stylesheet" href="css/style-variants.css">
   <style>
-    /* =========== V11 - V2 badge plus ADJ signup bar =========== */
+    /* Hero-meta stats strip - inline editorial row with social proof + langs */
+    .hero-meta__stats-strip { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--gray-200, #E5E5E5); flex-wrap: wrap; }
+    .hero-meta__stats { display: flex; gap: 0; align-items: baseline; flex-wrap: wrap; }
+    .stat-inline { display: flex; flex-direction: column; gap: 3px; padding: 4px 28px; position: relative; }
+    .stat-inline:first-child { padding-left: 0; }
+    .stat-inline:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 6px; bottom: 6px; width: 1px; background: linear-gradient(to bottom, transparent 0%, #DDD 30%, #DDD 70%, transparent 100%); }
+    .stat-inline__val { font-family: "Work Sans"; font-size: 22px; font-weight: 800; color: #0E1A2F; letter-spacing: -0.024em; line-height: 1; }
+    .stat-inline__label { font-family: "Work Sans"; font-size: 11.5px; color: #777; letter-spacing: 0.02em; }
+    .hero-meta__langs-inline { display: flex; gap: 8px; flex-shrink: 0; }
+    .hero-meta__langs-inline .lang-pill { padding: 6px 12px; font-size: 12px; }
+    @media (max-width: 720px) {
+      .hero-meta__stats-strip { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-meta__stats { gap: 24px; }
+      .stat-inline { padding: 0; }
+      .stat-inline:not(:last-child)::after { display: none; }
+    }
+
     .variant-nav { position: fixed; bottom: 70px; left: 0; right: 0; z-index: 199; background: #0E1A2F; color: #fff; padding: 8px 24px; display: flex; gap: 18px; align-items: center; justify-content: center; font-family: "Work Sans", sans-serif; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .variant-nav span { opacity: .6; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; }
     .variant-nav a { color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,.18); transition: background .2s; }
     .variant-nav a:hover { background: rgba(255,255,255,.08); color: #fff; }
     .variant-nav a.is-active { background: #FEA900; border-color: #FEA900; }
 
-    .hero { padding-top: 34px; padding-bottom: 48px; background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%); }
-    .hero__grid { grid-template-columns: 1.05fr 1fr !important; align-items: start !important; gap: 52px !important; }
-    .hero__eyebrow { font-size: 12px !important; letter-spacing: 0.16em !important; color: #FEA900 !important; font-weight: 700 !important; margin-bottom: 20px !important; }
-    .hero__title { margin-bottom: 18px !important; }
-    .hero__lede-clean { font-size: 14.5px; line-height: 1.55; color: #555; max-width: 58ch; margin-bottom: 18px; }
-    .hero__price-clean { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid #E5E5E5; flex-wrap: wrap; }
-    .hero__price-clean .v { font-family: "Work Sans"; font-size: clamp(2.4rem, 4.4vw, 3rem); font-weight: 800; color: #0E1A2F; letter-spacing: -0.03em; line-height: 1; }
-    .hero__price-clean .n { font-size: 13px; color: #777; }
-    .hero__price-clean .n a { color: #176CD5; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
-    .hero__facts-inline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 18px; margin: 0 0 18px; padding: 0; list-style: none; }
-    .hero__facts-inline li { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; line-height: 1.42; color: #555; }
-    .hero__facts-inline svg { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 1px; color: #FEA900; }
-    .hero__facts-inline strong { color: #0E1A2F; font-weight: 800; }
-    .hero__ctas { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-    .hero__primary-cta { display: inline-flex; align-items: center; gap: 12px; padding: 18px 32px; background: #FEA900; color: #fff; font-family: "Work Sans"; font-weight: 800; font-size: 16px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 20px rgba(254,169,0,0.3); transition: all 0.24s cubic-bezier(0.22, 1, 0.36, 1); }
-    .hero__primary-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(254,169,0,0.4); background: #e59800; color: #fff; }
-    .hero__primary-cta:active { transform: translateY(0) scale(0.98); }
-    .hero__primary-cta svg { width: 20px; height: 20px; }
-    .hero__next-course { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: #555; text-decoration: none; padding-left: 14px; border-left: 1px solid #E5E5E5; }
-    .hero__next-course strong { color: #0E1A2F; }
-    .hero__next-course:hover { color: #176CD5; }
-    .hero__content > .signup-bar { margin-top: 0; margin-bottom: 0; max-width: 720px; }
-    .signup-bar { display: flex; align-items: stretch; background: #fff; border-radius: 12px; box-shadow: 0 1px 3px rgba(33, 49, 74, 0.06), 0 8px 24px rgba(33, 49, 74, 0.1); overflow: hidden; margin: 24px 0 32px; min-height: 64px; position: relative; isolation: isolate; }
-    .signup-bar::before { content: ""; position: absolute; inset: 0; background: #FEA900; transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1); z-index: 0; pointer-events: none; }
-    .signup-bar:hover::before { transform: scaleX(1); }
-    .signup-bar > * { position: relative; z-index: 1; }
-    .signup-bar__submit { display: inline-flex; align-items: center; gap: 10px; background: #FEA900; color: #fff; font-family: "Roboto", sans-serif; font-weight: 800; font-size: 17px; letter-spacing: 0; border: none; padding: 0 26px; cursor: pointer; white-space: nowrap; transition: background 0.3s cubic-bezier(0.23, 1, 0.32, 1), transform 0.18s cubic-bezier(0.23, 1, 0.32, 1); flex-shrink: 0; }
-    .signup-bar:hover .signup-bar__submit { background: transparent; }
-    .signup-bar__submit:active { transform: scale(0.985); }
-    .signup-bar__submit:focus-visible { outline: 3px solid #0E1A2F; outline-offset: -3px; }
-    .signup-bar__chevron { flex-shrink: 0; }
-    .signup-bar__field { display: flex; flex-direction: column; justify-content: center; padding: 8px 20px; border-left: 1px solid #E5E5E5; flex: 1; min-width: 0; position: relative; cursor: pointer; transition: border-color 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
-    .signup-bar__label { font-size: 11px; color: #777; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2; margin-bottom: 2px; transition: color 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
-    .signup-bar__select { appearance: none; -webkit-appearance: none; border: 0; background-color: transparent; font-family: "Roboto", sans-serif; font-size: 16px; font-weight: 700; color: #0E1A2F; padding: 2px 22px 2px 0; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5l5 5 5-5' stroke='%23176CD5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"); background-position: right 0 center; background-repeat: no-repeat; cursor: pointer; width: 100%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; transition: color 0.3s cubic-bezier(0.23, 1, 0.32, 1), background-image 0.3s; }
-    .signup-bar__select:focus { outline: none; }
-    .signup-bar:hover .signup-bar__field { border-left-color: rgba(255, 255, 255, 0.22); }
-    .signup-bar:hover .signup-bar__label { color: rgba(255, 255, 255, 0.78); }
-    .signup-bar:hover .signup-bar__select { color: #fff; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5l5 5 5-5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"); }
-    .signup-bar:hover .signup-bar__select option { color: #0E1A2F; background: #fff; }
-    .hero__image { aspect-ratio: 5/4 !important; position: relative; }
-    .v2-photo-badges { position: absolute; inset: 18px; display: grid; align-content: space-between; pointer-events: none; z-index: 3; }
-    .v2-photo-badge { width: max-content; max-width: min(270px, 100%); padding: 11px 13px; border-radius: 12px; background: rgba(255, 255, 255, 0.96); border: 1px solid rgba(255, 255, 255, 0.7); box-shadow: 0 10px 24px rgba(33, 49, 74, 0.18); font-family: "Work Sans", sans-serif; }
-    .v2-photo-badge:nth-child(2) { justify-self: end; }
-    .v2-photo-badge strong { display: block; font-size: 20px; line-height: 1; color: #0E1A2F; font-weight: 800; letter-spacing: 0; }
-    .v2-photo-badge span { display: block; margin-top: 4px; font-size: 11px; line-height: 1.25; color: #555; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
-    .loc-card__photo { margin: -32px -32px 22px; aspect-ratio: 16 / 10; overflow: hidden; background: #f3f3f3; }
-    .loc-card__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .booking-section { padding: 80px 0; background: #F9F9F9; }
-    .booking-section__header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
-    .booking-section__eyebrow { font-family: "Work Sans"; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #FEA900; margin-bottom: 12px; display: block; }
-    .booking-section__title { font-family: "Work Sans"; font-size: clamp(1.8rem, 3.4vw, 2.4rem); font-weight: 800; color: #0E1A2F; letter-spacing: -0.022em; line-height: 1.15; margin-bottom: 12px; }
-    .booking-section__desc { font-size: 15px; color: #777; line-height: 1.55; }
-    .booking-section__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
-    .booking-step { margin-bottom: 36px; }
-    .booking-step__label { font-family: "Work Sans"; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #999; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-    .booking-step__num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: #FEA900; color: #fff; font-size: 11px; font-weight: 800; }
-    .booking-step__title { font-family: "Work Sans"; font-size: 18px; font-weight: 700; color: #0E1A2F; margin-bottom: 16px; }
-    .theory-toggle--big { display: flex !important; flex-wrap: wrap; gap: 8px; background: transparent !important; border: 0 !important; padding: 0 !important; box-shadow: none !important; }
-    .theory-toggle--big .theory-btn { padding: 14px 24px !important; font-size: 15px !important; background: #fff !important; border: 1px solid #E5E5E5 !important; border-radius: 12px !important; color: #555 !important; }
-    .theory-toggle--big .theory-btn.is-active { background: #176CD5 !important; color: #fff !important; border-color: #176CD5 !important; }
-    .date-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
-    .date-tile { display: flex; flex-direction: column; gap: 4px; padding: 18px 16px; background: #fff; border: 1px solid #E5E5E5; border-radius: 14px; text-decoration: none; cursor: pointer; transition: border-color 0.22s cubic-bezier(0.23, 1, 0.32, 1), background 0.22s cubic-bezier(0.23, 1, 0.32, 1), transform 0.18s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.24s cubic-bezier(0.23, 1, 0.32, 1); opacity: 0; transform: translateY(8px); animation: tileRise 460ms cubic-bezier(0.23, 1, 0.32, 1) forwards; }
-    @keyframes tileRise { to { opacity: 1; transform: translateY(0); } }
-    .date-tile:nth-child(1) { animation-delay: 60ms; }
-    .date-tile:nth-child(2) { animation-delay: 110ms; }
-    .date-tile:nth-child(3) { animation-delay: 160ms; }
-    .date-tile:nth-child(4) { animation-delay: 210ms; }
-    .date-tile:nth-child(5) { animation-delay: 260ms; }
-    .date-tile:nth-child(6) { animation-delay: 310ms; }
-    .date-tile:nth-child(7) { animation-delay: 360ms; }
-    .date-tile:nth-child(8) { animation-delay: 410ms; }
-    @media (hover: hover) and (pointer: fine) {
-      .date-tile:hover { border-color: #FEA900; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(33,49,74,0.06); }
+    .v1-decision {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      background: var(--white);
+      box-shadow: 0 1px 3px rgba(33,49,74,0.04), 0 10px 26px rgba(33,49,74,0.06);
     }
-    .date-tile:active { transform: scale(0.97); }
-    .date-tile.is-active { border-color: #176CD5; background: #F0F7FF; box-shadow: 0 0 0 1px #176CD5; }
-    .date-tile__date { font-family: "Work Sans"; font-size: 19px; font-weight: 800; color: #0E1A2F; letter-spacing: -0.015em; }
-    .date-tile__type { font-size: 12px; color: #555; font-weight: 600; }
-    .date-tile__seats { font-size: 11px; color: #FEA900; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
-    .booking-summary { background: #fff; border: 1px solid #E5E5E5; border-radius: 18px; padding: 28px; box-shadow: 0 4px 24px rgba(33,49,74,0.04); position: sticky; top: 80px; }
-    .booking-summary__rows { display: flex; flex-direction: column; gap: 0; border-top: 1px solid #F0F0F0; border-bottom: 1px solid #F0F0F0; margin: 14px 0 20px; }
-    .booking-summary__row { display: flex; align-items: baseline; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #F0F0F0; }
-    .booking-summary__row:last-child { border-bottom: 0; }
-    .booking-summary__row--total { padding-top: 14px; margin-top: 2px; border-top: 1px solid #E5E5E5; }
-    .booking-summary__k { font-family: "Work Sans"; font-size: 12.5px; color: #777; letter-spacing: 0.01em; }
-    .booking-summary__v { font-family: "Work Sans"; font-size: 14.5px; color: #0E1A2F; font-weight: 700; }
-    .booking-summary__total { font-family: "Work Sans"; font-size: 24px; color: #FEA900; font-weight: 800; letter-spacing: -0.02em; }
-    .booking-summary__cta { display: inline-flex; width: 100%; align-items: center; justify-content: center; gap: 10px; padding: 16px 24px; background: #FEA900; color: #fff; font-family: "Work Sans"; font-weight: 800; font-size: 15.5px; border-radius: 12px; text-decoration: none; box-shadow: 0 6px 16px rgba(254,169,0,0.3); transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1); }
-    .booking-summary__cta:hover { background: #e59800; transform: translateY(-1px); box-shadow: 0 10px 22px rgba(254,169,0,0.4); color: #fff; }
-    .booking-summary__cta:active { transform: scale(0.985); }
-    .booking-summary__alt { font-size: 13px; color: #777; margin-top: 14px; text-align: center; }
-    .booking-summary__alt a { color: #176CD5; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+    .v1-decision__head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .v1-decision__kicker {
+      display: block;
+      margin-bottom: 4px;
+      font-family: var(--font-display);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+    .v1-decision__title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .v1-decision__price {
+      font-family: var(--font-display);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .v1-decision__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 18px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .v1-decision__grid li {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      min-width: 0;
+    }
+    .v1-decision__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(254,169,0,0.1);
+      color: var(--brand);
+    }
+    .v1-decision__text strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 13px;
+      line-height: 1.2;
+      color: var(--ink);
+      font-weight: 800;
+    }
+    .v1-decision__text small {
+      display: block;
+      margin-top: 3px;
+      font-size: 11.5px;
+      line-height: 1.35;
+      color: var(--gray-500);
+    }
+    @media (max-width: 720px) {
+      .v1-decision__head,
+      .v1-decision__grid {
+        grid-template-columns: 1fr;
+      }
+      .v1-decision__price {
+        white-space: normal;
+      }
+    }
 
-    /* Sticky bottom CTA */
+    /* V1 hero - form group (theory + dates + signup-bar) z równymi odstępami */
+    @media (min-width: 901px) {
+      .hero__grid { align-items: stretch !important; }
+      .hero__content { min-height: 100% !important; }
+      .hero__image { max-height: 360px !important; overflow: hidden !important; border-radius: 16px !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+      .hero__content > .hero__badges { margin-bottom: 24px !important; }
+      .hero__content > .hero__title { margin-bottom: 36px !important; }
+      /* GRUPA 1 (cena) → grupa 2 (form): duży oddech między grupami */
+      .hero__content > .hero__price-block { margin-bottom: 72px !important; }
+      /* Wewnątrz price-block: cena→raty→nota równe odstępy 14px */
+      .hero__price-row { margin: 0 0 14px !important; }
+      .hero__raty-pill { margin: 0 0 14px !important; }
+      .hero__price-note { margin: 0 !important; }
+      /* GRUPA 2 (form): theory + dates + signup - równe gap 32px (odbierz ekstra margin-top dates) */
+      .hero__content > .hero__theory { margin-bottom: 32px !important; }
+      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 32px !important; }
+      .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
+      /* Features bez anchorów - dodaj flex layout do <li> */
+      .hero__features li {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        color: var(--gray-700) !important;
+      }
+      .hero__features li strong { color: var(--gray-900) !important; }
+      /* Wyrównaj etykiety form (theory + dates + signup-label) do jednego formatu eyebrow */
+      .hero__theory-label,
+      .dates-carousel__title,
+      .hero__signup-label {
+        font-family: "Work Sans", sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #777 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.12em !important;
+        margin: 0 0 10px !important;
+      }
+      .hero__features { gap: 14px !important; }
+    }
+
+    /* Mobile/tablet (< 901px): te same równe gaps w form group + features */
+    @media (max-width: 900px) {
+      .hero__content > .hero__theory { margin-bottom: 24px !important; }
+      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 24px !important; }
+      .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
+      .hero__theory-label,
+      .dates-carousel__title,
+      .hero__signup-label {
+        font-family: "Work Sans", sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #777 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.12em !important;
+        margin: 0 0 10px !important;
+      }
+      .hero__features li {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        padding: 0 !important;
+      }
+    }
+
+    /* V11: 2 image badges na dole zdjecia (bl + br) - kopia V1 z badge na zdjeciu */
+    .hero__image { position: relative; }
+    .v11-badge {
+      position: absolute;
+      bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px 8px 8px;
+      background: rgba(255, 255, 255, 0.97);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(33, 49, 74, 0.1), 0 8px 24px rgba(33, 49, 74, 0.16);
+      font-family: "Work Sans", sans-serif;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 2;
+      animation: v11BadgeIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+    }
+    @keyframes v11BadgeIn {
+      from { opacity: 0; transform: translateY(4px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .v11-badge__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: var(--brand);
+      border-radius: 8px;
+      color: var(--white);
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(254, 169, 0, 0.35);
+    }
+    .v11-badge__text { display: flex; flex-direction: column; line-height: 1.15; gap: 1px; }
+    .v11-badge__text strong { font-family: "Work Sans", sans-serif; font-size: 14px; font-weight: 800; color: #0E1A2F; letter-spacing: -0.01em; }
+    .v11-badge__text small { font-size: 9.5px; color: #777; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .v11-badge--bl { left: 16px; animation-delay: 0.2s; }
+    .v11-badge--br { right: 16px; animation-delay: 0.3s; }
+    @media (max-width: 768px) {
+      .v11-badge { padding: 6px 10px 6px 6px; gap: 8px; border-radius: 10px; }
+      .v11-badge__icon { width: 24px; height: 24px; }
+      .v11-badge__icon svg { width: 14px; height: 14px; }
+      .v11-badge__text strong { font-size: 12px; }
+      .v11-badge__text small { font-size: 8.5px; }
+      .v11-badge--bl { left: 10px; bottom: 10px; }
+      .v11-badge--br { right: 10px; bottom: 10px; }
+    }
+
+    /* Sticky bottom CTA - shortcut to /formularz-zapisow/ */
     body { padding-bottom: 140px; }
     .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: #fff; border-top: 1px solid #E5E5E5; box-shadow: 0 -8px 28px rgba(33,49,74,0.08); animation: stickyIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1s both; }
     @keyframes stickyIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -131,19 +261,7 @@
     .sticky-cta__btn:active { transform: scale(0.98); }
     .sticky-cta__close { background: transparent; border: 0; color: #999; cursor: pointer; padding: 6px 10px; font-size: 22px; line-height: 1; }
     .sticky-cta__close:hover { color: #0E1A2F; }
-
-    @media (max-width: 900px) {
-      .booking-section__grid { grid-template-columns: 1fr; gap: 32px; }
-      .booking-summary { position: relative; top: 0; }
-      .hero__grid { grid-template-columns: 1fr !important; }
-      .hero__facts-inline { grid-template-columns: 1fr; }
-    }
     @media (max-width: 720px) {
-      .signup-bar { flex-wrap: wrap; min-height: 0; }
-      .signup-bar__submit { flex: 1 1 100%; justify-content: center; padding: 16px 24px; order: 99; }
-      .signup-bar__field { flex: 1 1 50%; border-left: 1px solid #E5E5E5; border-bottom: 1px solid #E5E5E5; padding: 10px 16px; }
-      .signup-bar__field:first-of-type { border-left: 0; }
-      .signup-bar__field:nth-of-type(odd) { border-left: 0; }
       .sticky-cta__inner { flex-wrap: wrap; gap: 10px; padding: 10px 14px; }
       .sticky-cta__price { margin-left: 0; }
       .sticky-cta__btn { flex: 1 1 100%; justify-content: center; padding: 12px 20px; }
@@ -194,10 +312,10 @@
             </div>
           </div>
         </li>
-        <li class="nav-menu__item"><a href="/faq/" class="nav-menu__link">FAQ</a></li>
-        <li class="nav-menu__item"><a href="/kontakt/" class="nav-menu__link">Kontakt</a></li>
-        <li class="nav-menu__item"><a href="/blog/" class="nav-menu__link">Blog</a></li>
-        <li class="nav-menu__item"><a href="/opinie/" class="nav-menu__link">Opinie</a></li>
+        <li class="nav-menu__item"><a href="/faq/" class="nav-menu__link">FAQ</li>
+        <li class="nav-menu__item"><a href="/kontakt/" class="nav-menu__link">Kontakt</li>
+        <li class="nav-menu__item"><a href="/blog/" class="nav-menu__link">Blog</li>
+        <li class="nav-menu__item"><a href="/opinie/" class="nav-menu__link">Opinie</li>
       </ul>
     </nav>
 
@@ -217,6 +335,20 @@
       </button>
     </div>
   </div>
+
+  <!-- Page anchors row (integrated into sticky header) -->
+  <div class="header__anchors">
+    <div class="container">
+      <div class="header__anchors-inner">
+        <a href="#cennik" class="header-anchor">Cennik</a>
+        <a href="#wymagania" class="header-anchor">Wymagania</a>
+        <a href="#przebieg" class="header-anchor">Przebieg kursu</a>
+        <a href="#zdawalnosc" class="header-anchor">Zdawalność</a>
+        <a href="#lokalizacje" class="header-anchor">Lokalizacje</a>
+        <a href="#faq" class="header-anchor">FAQ</a>
+      </div>
+    </div>
+  </div>
 </header>
 
 <!-- ==================== HERO ==================== -->
@@ -232,40 +364,67 @@
     </nav>
 
     <div class="hero__grid">
-      <!-- LEFT: Content (clean Gazelka pattern) -->
+      <!-- LEFT: Content -->
       <div class="hero__content">
-        <p class="hero__eyebrow">Akademia Dobrej Jazdy · Wrocław · Nr 1 WORD 6 lat z rzędu</p>
+        <div class="hero__badges">
+          <span class="badge badge--gold">Bestseller</span>
+          <span class="badge badge--orange">Promocja</span>
+          <span class="badge badge--cyan">SUPER OSK</span>
+        </div>
+        <p class="hero__eyebrow">Akademia Dobrej Jazdy · Wrocław · Kat. B</p>
 
         <h1 class="hero__title">Kurs na prawo jazdy kat.&nbsp;B Wrocław - od&nbsp;17&nbsp;lat</h1>
 
-        <p class="hero__lede-clean">
-          Kurs prawa jazdy kat. B w ADJ obejmuje 30 godzin teorii i 30 godzin jazd praktycznych. Uczysz się we Wrocławiu, w elastycznych godzinach, z możliwością wyboru e-learningu lub zajęć stacjonarnych.
-        </p>
-
-        <div class="hero__price-clean">
-          <span class="v">4 500 zł</span>
-          <span class="n">Cena końcowa, bez dodatkowych opłat · <a href="/kursy-na-raty/">sprawdź raty →</a></span>
+        <div class="hero__price-block">
+          <p class="hero__price-row">
+            <span class="hero__price-icon" aria-hidden="true">
+              <img src="assets/kategoria-B.png" alt="" width="44" height="44">
+            </span>
+            <span class="hero__price-stack">
+              <span class="hero__price-eyebrow">Cena</span>
+              <span class="hero__price-value">4 500 <small>zł</small></span>
+            </span>
+          </p>
+          <a href="/kursy-na-raty/" class="hero__raty-pill" aria-label="Sprawdź raty 0%">
+            <span class="hero__raty-pill__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg>
+            </span>
+            <span class="hero__raty-pill__text">
+              <strong>Raty 0%</strong>
+              <small>sprawdź warunki</small>
+            </span>
+            <svg class="hero__raty-pill__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+          </a>
+          <p class="hero__price-note"><a href="/polityka-cenowa/">Cena końcowa, bez dodatkowych opłat</a></p>
         </div>
 
-        <ul class="hero__facts-inline">
-          <li>
-            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span><strong>30 godzin teorii</strong>, wykłady, e-learning lub tryb eksternistyczny.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span><strong>30 godzin jazd</strong>, 7 dni w tygodniu i elastyczne godziny.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span><strong>50,8% zdawalności WORD</strong> i 6-krotne 1. miejsce w rankingu.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span><strong>3 lokalizacje</strong>, Brochów, Psie Pole i Grunwald.</span>
-          </li>
-        </ul>
+        <div class="hero__theory">
+          <p class="hero__theory-label">Wybierz tryb zajęć teoretycznych</p>
+          <div class="hero__theory-toggle" role="tablist">
+            <button type="button" class="theory-btn is-active" role="tab" aria-selected="true">E-learning</button>
+            <button type="button" class="theory-btn" role="tab" aria-selected="false">Stacjonarne</button>
+            <button type="button" class="theory-btn" role="tab" aria-selected="false">Bez teorii</button>
+          </div>
+        </div>
 
+        <div class="dates-carousel">
+          <p class="dates-carousel__title">Najbliższe kursy</p>
+          <div class="dates-carousel__row">
+            <button class="dates-carousel__arrow dates-carousel__arrow--prev" aria-label="Poprzednie">&lsaquo;</button>
+            <div class="dates-carousel__track">
+              <a href="/formularz-zapisow/" class="date-card is-active"><span class="date-card__date">26.05.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">28.05.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">02.06.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">04.06.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">09.06.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">10.06.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">15.06.26</span><span class="date-card__type">E-kurs</span></a>
+            </div>
+            <button class="dates-carousel__arrow dates-carousel__arrow--next" aria-label="Następne">&rsaquo;</button>
+          </div>
+        </div>
+
+        <p class="hero__signup-label">Wybierz termin</p>
         <form class="signup-bar" action="/formularz-zapisow/" method="get">
           <button type="submit" class="signup-bar__submit">
             <svg class="signup-bar__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
@@ -300,165 +459,128 @@
             </select>
           </label>
         </form>
+
       </div>
 
-      <!-- LEFT (visual side at desktop): just image -->
+      <!-- LEFT (visual side at desktop): image + features + stats + lang pills -->
       <div class="hero__right">
         <div class="hero__image">
           <img src="assets/hero-kat-b.webp" alt="Kurs prawo jazdy kat. B we Wrocławiu - Akademia Dobrej Jazdy" width="1200" height="800">
-          <div class="v2-photo-badges" aria-hidden="true">
-            <div class="v2-photo-badge">
-              <strong>50,8%</strong>
-              <span>zdawalność WORD</span>
-            </div>
-            <div class="v2-photo-badge">
-              <strong>4,8 / 5</strong>
-              <span>Google, 836 opinii</span>
-            </div>
+          <span class="hero__image-tag">Bestseller</span>
+
+          <div class="v11-badge v11-badge--bl">
+            <span class="v11-badge__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </span>
+            <span class="v11-badge__text"><strong>50,8%</strong><small>Zdawalność WORD</small></span>
+          </div>
+
+          <div class="v11-badge v11-badge--br">
+            <span class="v11-badge__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span class="v11-badge__text"><strong>4,8 / 5</strong><small>Google · 836 opinii</small></span>
           </div>
         </div>
+
+        <ul class="hero__features">
+          <li>
+            <span class="hero__feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </span>
+            <span><strong>30 godzin teorii</strong> - kurs prawa jazdy kat. B Wrocław: wykłady, e-learning lub tryb eksternistyczny.</span>
+          </li>
+          <li>
+            <span class="hero__feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </span>
+            <span><strong>30 godzin jazd praktycznych</strong> - nauka jazdy kat. B Wrocław 7 dni w tygodniu, elastyczne godziny.</span>
+          </li>
+          <li>
+            <span class="hero__feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </span>
+            <span><strong>Wysoka zdawalność egzaminów kat. B</strong> - 6-krotne I miejsce w rankingu zdawalności WORD.</span>
+          </li>
+          <li>
+            <span class="hero__feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </span>
+            <span><strong>Wymagania</strong> - 17 lat (zapis od 16 lat 9 mies.), badania lekarskie, numer PKK.</span>
+          </li>
+          <li>
+            <span class="hero__feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            </span>
+            <span><strong>Nowoczesne pomoce dydaktyczne</strong> - platforma e-learningowa, kanał YouTube, szkolenia VR.</span>
+          </li>
+        </ul>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== BOOKING SECTION (V2) ==================== -->
-<section class="booking-section" id="booking" aria-label="Wybierz termin kursu">
-  <div class="container">
-    <div class="booking-section__header">
-      <span class="booking-section__eyebrow">Zapisz się online</span>
-      <h2 class="booking-section__title">Wybierz najbliższy kurs</h2>
-      <p class="booking-section__desc">3 kroki, 30 sekund. Wybierz tryb teorii, datę i wpisz dane - zaczynamy.</p>
-    </div>
-
-    <div class="booking-section__grid">
-      <div>
-        <div class="booking-step">
-          <p class="booking-step__label"><span class="booking-step__num">1</span> Tryb zajęć teoretycznych</p>
-          <div class="hero__theory-toggle theory-toggle--big" role="tablist">
-            <button type="button" class="theory-btn is-active" role="tab" aria-selected="true">E-learning</button>
-            <button type="button" class="theory-btn" role="tab" aria-selected="false">Stacjonarnie</button>
-            <button type="button" class="theory-btn" role="tab" aria-selected="false">Bez teorii</button>
-          </div>
-        </div>
-
-        <div class="booking-step">
-          <p class="booking-step__label"><span class="booking-step__num">2</span> Wybierz termin</p>
-          <div class="date-grid">
-            <a href="/formularz-zapisow/?data=26.05.26" class="date-tile is-active">
-              <span class="date-tile__date">26.05.26</span>
-              <span class="date-tile__type">E-kurs</span>
-            </a>
-            <a href="/formularz-zapisow/?data=28.05.26" class="date-tile">
-              <span class="date-tile__date">28.05.26</span>
-              <span class="date-tile__type">E-kurs</span>
-            </a>
-            <a href="/formularz-zapisow/?data=02.06.26" class="date-tile">
-              <span class="date-tile__date">02.06.26</span>
-              <span class="date-tile__type">E-kurs</span>
-            </a>
-            <a href="/formularz-zapisow/?data=04.06.26" class="date-tile">
-              <span class="date-tile__date">04.06.26</span>
-              <span class="date-tile__type">E-kurs</span>
-            </a>
-            <a href="/formularz-zapisow/?data=09.06.26" class="date-tile">
-              <span class="date-tile__date">09.06.26</span>
-              <span class="date-tile__type">E-kurs</span>
-            </a>
-            <a href="/formularz-zapisow/?data=10.06.26" class="date-tile">
-              <span class="date-tile__date">10.06.26</span>
-              <span class="date-tile__type">E-kurs</span>
-            </a>
-            <a href="/formularz-zapisow/?data=15.06.26" class="date-tile">
-              <span class="date-tile__date">15.06.26</span>
-              <span class="date-tile__type">E-kurs</span>
-            </a>
-            <a href="/formularz-zapisow/?data=26.05.26" class="date-tile">
-              <span class="date-tile__date">26.05.26</span>
-              <span class="date-tile__type">E-kurs</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <aside>
-        <div class="booking-summary">
-          <p class="booking-step__label"><span class="booking-step__num">3</span> Podsumowanie</p>
-          <div class="booking-summary__rows">
-            <div class="booking-summary__row">
-              <span class="booking-summary__k">Wybrany termin</span>
-              <strong class="booking-summary__v">26.05.26</strong>
-            </div>
-            <div class="booking-summary__row">
-              <span class="booking-summary__k">Tryb teorii</span>
-              <strong class="booking-summary__v">E-learning</strong>
-            </div>
-            <div class="booking-summary__row">
-              <span class="booking-summary__k">Kategoria</span>
-              <strong class="booking-summary__v">Kat. B</strong>
-            </div>
-            <div class="booking-summary__row booking-summary__row--total">
-              <span class="booking-summary__k">Cena</span>
-              <strong class="booking-summary__total">4 500 zł</strong>
-            </div>
-          </div>
-          <a href="/formularz-zapisow/?data=26.05.26&teoria=e-learning" class="booking-summary__cta">
-            <span>Zapisz się na 26.05.26</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
-          </a>
-          <p class="booking-summary__alt">
-            albo <a href="/kursy-na-raty/">sprawdź raty →</a>
-          </p>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== HERO META (lang + quick-links text row) ==================== -->
+<!-- ==================== HERO META (stats strip + lang + anchors) ==================== -->
 <section class="hero-meta" aria-label="Informacje dla kursanta">
   <div class="container">
-    <div class="hero-meta__row">
-      <a href="/driving-licences-in-english/" class="lang-pill" lang="en">
-        <span class="lang-pill__flag" aria-hidden="true">
-          <svg width="22" height="16" viewBox="0 0 60 36"><rect width="60" height="36" fill="#012169"/><path d="M0 0l60 36M60 0L0 36" stroke="#fff" stroke-width="6"/><path d="M30 0v36M0 18h60" stroke="#fff" stroke-width="10"/><path d="M30 0v36M0 18h60" stroke="#C8102E" stroke-width="6"/></svg>
-        </span>
-        <span>Driving licences in English</span>
-      </a>
-      <a href="/kursy-prawa-jazdy-po-ukrainsku/" class="lang-pill" lang="uk">
-        <span class="lang-pill__flag" aria-hidden="true">
-          <svg width="22" height="16" viewBox="0 0 60 36"><rect width="60" height="18" fill="#0057B7"/><rect y="18" width="60" height="18" fill="#FFD700"/></svg>
-        </span>
-        <span>Водійські права українською мовою</span>
-      </a>
+    <!-- Stats inline strip + lang pills -->
+    <div class="hero-meta__stats-strip">
+      <div class="hero-meta__stats">
+        <div class="stat-inline">
+          <strong class="stat-inline__val">50,8%</strong>
+          <span class="stat-inline__label">zdawalność WORD</span>
+        </div>
+        <div class="stat-inline">
+          <strong class="stat-inline__val">37</strong>
+          <span class="stat-inline__label">instruktorów</span>
+        </div>
+        <div class="stat-inline">
+          <strong class="stat-inline__val">4,8 / 5</strong>
+          <span class="stat-inline__label">Google · 836 opinii</span>
+        </div>
+        <div class="stat-inline">
+          <strong class="stat-inline__val">3</strong>
+          <span class="stat-inline__label">lokalizacje we Wrocławiu</span>
+        </div>
+      </div>
+      <div class="hero-meta__langs-inline">
+        <a href="/driving-licences-in-english/" class="lang-pill" lang="en">
+          <span class="lang-pill__flag" aria-hidden="true">
+            <svg width="20" height="14" viewBox="0 0 60 36"><rect width="60" height="36" fill="#012169"/><path d="M0 0l60 36M60 0L0 36" stroke="#fff" stroke-width="6"/><path d="M30 0v36M0 18h60" stroke="#fff" stroke-width="10"/><path d="M30 0v36M0 18h60" stroke="#C8102E" stroke-width="6"/></svg>
+          </span>
+          <span>English</span>
+        </a>
+        <a href="/kursy-prawa-jazdy-po-ukrainsku/" class="lang-pill" lang="uk">
+          <span class="lang-pill__flag" aria-hidden="true">
+            <svg width="20" height="14" viewBox="0 0 60 36"><rect width="60" height="18" fill="#0057B7"/><rect y="18" width="60" height="18" fill="#FFD700"/></svg>
+          </span>
+          <span>Українська</span>
+        </a>
+      </div>
+    </div>
 
-      <span class="hero-meta__sep" aria-hidden="true"></span>
-
-      <nav class="hero-meta__links" aria-label="Informacje dla kursanta">
-        <a href="/spotkania-organizacyjne/">Spotkania organizacyjne</a>
-        <a href="/badania-lekarskie-i-psychologiczne/">Badania lekarskie i psychologiczne</a>
-        <a href="/profil-kandydata-na-kierowce-pkk/">Profil Kandydata (PKK)</a>
-        <a href="/profil-kierowcy-zawodowego-pkz/">Profil Kierowcy Zawodowego (PKZ)</a>
-      </nav>
+    <!-- 4 numbered anchor circles -->
+    <div class="hero-meta__anchors">
+      <a href="/spotkania-organizacyjne/" class="meta-anchor">
+        <span class="meta-anchor__num">1</span>
+        <span class="meta-anchor__label">Spotkania organizacyjne</span>
+      </a>
+      <a href="/badania-lekarskie-i-psychologiczne/" class="meta-anchor">
+        <span class="meta-anchor__num">2</span>
+        <span class="meta-anchor__label">Badania lekarskie<br>i psychologiczne</span>
+      </a>
+      <a href="/profil-kandydata-na-kierowce-pkk/" class="meta-anchor">
+        <span class="meta-anchor__num">3</span>
+        <span class="meta-anchor__label">Profil Kandydata<br>na Kierowcę - 2026</span>
+      </a>
+      <a href="/profil-kierowcy-zawodowego-pkz/" class="meta-anchor">
+        <span class="meta-anchor__num">4</span>
+        <span class="meta-anchor__label">Profil Kierowcy<br>Zawodowego (PKZ)</span>
+      </a>
     </div>
   </div>
 </section>
-
-<!-- ==================== ANCHOR NAV ==================== -->
-<nav class="anchor-nav" aria-label="Nawigacja po sekcjach">
-  <div class="container">
-    <div class="anchor-nav__inner">
-      <a href="#cennik" class="anchor-nav__link is-active">Cennik</a>
-      <a href="#wymagania" class="anchor-nav__link">Wymagania</a>
-      <a href="#przebieg" class="anchor-nav__link">Przebieg kursu</a>
-      <a href="#zdawalnosc" class="anchor-nav__link">Zdawalność</a>
-      <a href="#plac" class="anchor-nav__link">Plac manewrowy</a>
-      <a href="#lokalizacje" class="anchor-nav__link">Lokalizacje</a>
-      <a href="#faq" class="anchor-nav__link">FAQ</a>
-      <a href="#opinie" class="anchor-nav__link">Opinie</a>
-    </div>
-  </div>
-</nav>
 
 <!-- ==================== CENNIK ==================== -->
 <section id="cennik" class="section">
@@ -483,7 +605,7 @@
           <li>Egzaminy wewnętrzne (teoria + praktyka)</li>
           <li>Jazdy 7 dni w tygodniu</li>
         </ul>
-        <a href="#" class="btn btn--gold">Zapisz się</a>
+        <a href="/formularz-zapisow/" class="btn btn--gold">Zapisz się na kurs</a>
       </div>
 
       <!-- Przyśpieszony -->
@@ -515,6 +637,11 @@
       </div>
 
     </div>
+
+    <p class="pricing-note reveal">
+      <strong>Tylko kurs standardowy ma zapis online.</strong>
+      Po wariant przyśpieszony i kurs po angielsku skontaktuj się z biurem ADJ <a href="/kontakt/">telefonicznie lub mailem</a> - ustalimy indywidualny termin i plan zajęć.
+    </p>
 
     <!-- Cost breakdown -->
     <div class="cost-breakdown reveal">
@@ -549,6 +676,7 @@
         </div>
       </div>
     </div>
+
 
   </div>
 </section>
@@ -1237,31 +1365,6 @@
   </div>
 </section>
 
-<!-- ==================== CTA FINAL ==================== -->
-<section class="cta-final">
-  <div class="container">
-    <div class="cta-final__content reveal">
-      <h2 class="cta-final__title">Gotowy na prawo jazdy?</h2>
-      <p class="cta-final__price">4 500 zł <small>kurs kat. B</small></p>
-      <p class="cta-final__text">
-        Dołącz do tysięcy kursantów, którzy zdali z ADJ.
-        Spotkania organizacyjne w każdy poniedziałek o 16:30.
-      </p>
-      <div class="cta-final__actions">
-        <a href="#" class="btn btn--gold">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.59l-1.95-1.16a.75.75 0 10-.77 1.29l2.75 1.63a.75.75 0 00.77 0l2.75-1.63a.75.75 0 00-.77-1.29l-1.28.76V6.75z" clip-rule="evenodd"/></svg>
-          Zapisz się na kurs
-        </a>
-        <a href="tel:+48575757408" class="cta-final__phone">
-          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-          575 757 408
-        </a>
-      </div>
-      <p class="cta-final__note">Pon 8:00-17:30 &bull; Wt-Pt 8:00-17:00 &bull; 3 lokalizacje we Wrocławiu</p>
-    </div>
-  </div>
-</section>
-
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
   <div class="footer__main">
@@ -1379,7 +1482,7 @@
       <span class="sticky-cta__meta">· wybierz tryb i ośrodek →</span>
     </div>
     <span class="sticky-cta__price">4 500 zł</span>
-    <a href="/formularz-zapisow/?data=26.05.26" class="sticky-cta__btn">
+    <a href="/formularz-zapisow/" class="sticky-cta__btn">
       Zapisz się
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
     </a>
