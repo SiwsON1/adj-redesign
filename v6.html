@@ -83,6 +83,19 @@
       .v6-badge--tl, .v6-badge--bl { left: 10px; }
       .v6-badge--tr, .v6-badge--br { right: 10px; }
     }
+
+    /* V6 hero - form group rowne gaps, lewa (image z badges) nieruszana */
+    @media (min-width: 901px) {
+      .hero__grid { align-items: start !important; }
+      /* GRUPA 1 (cena) -> GRUPA 2 (form): wiekszy oddech miedzy grupami */
+      .hero__content > .hero__price-block { margin-bottom: 40px !important; }
+      /* GRUPA 2 (form): theory + dates + signup-bar - rowne ciasne gaps */
+      .hero__content > .hero__theory { margin-bottom: 14px !important; }
+      .hero__content > .dates-carousel { margin-bottom: 14px !important; }
+      .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
+      .hero__features { gap: 14px !important; }
+    }
+
 .variant-nav { position: fixed; bottom: 70px; left: 0; right: 0; z-index: 199; background: #0E1A2F; color: #fff; padding: 8px 24px; display: flex; gap: 18px; align-items: center; justify-content: center; font-family: "Work Sans", sans-serif; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .variant-nav span { opacity: .6; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; }
     .variant-nav a { color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,.18); transition: background .2s; }
