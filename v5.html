@@ -115,6 +115,27 @@
       right: auto !important;
     }
 
+    /* V5 desktop: signup-bar w waskim panelu - button na gorze, 3 selecty 3-col grid pod */
+    @media (min-width: 901px) {
+      .hero__content .signup-bar { display: grid !important; grid-template-columns: 1fr !important; gap: 8px !important; padding: 10px !important; border-radius: 14px !important; }
+      .hero__content .signup-bar__submit { order: -1 !important; width: 100% !important; justify-content: center !important; padding: 14px !important; font-size: 16px !important; }
+      .hero__content .signup-bar__fields-wrap, .hero__content .signup-bar > label { width: 100% !important; }
+      .hero__content .signup-bar { grid-template-areas: "btn" "fields" !important; }
+      .hero__content .signup-bar__submit { grid-area: btn !important; }
+      .hero__content .signup-bar > label:nth-of-type(1),
+      .hero__content .signup-bar > label:nth-of-type(2),
+      .hero__content .signup-bar > label:nth-of-type(3) {
+        display: block !important;
+      }
+      /* selecty: 3-col grid w kolejnym rzedzie */
+      .hero__content .signup-bar { grid-template-columns: 1fr 1fr 1fr !important; grid-template-areas: "btn btn btn" "f1 f2 f3" !important; }
+      .hero__content .signup-bar__submit { grid-area: btn !important; }
+      .hero__content .signup-bar > label:nth-of-type(1) { grid-area: f1 !important; }
+      .hero__content .signup-bar > label:nth-of-type(2) { grid-area: f2 !important; }
+      .hero__content .signup-bar > label:nth-of-type(3) { grid-area: f3 !important; }
+      .hero__content .signup-bar__field { padding: 8px 12px !important; min-width: 0 !important; }
+    }
+
     .hero__content {
       background: #fff !important;
       border-radius: 24px;
