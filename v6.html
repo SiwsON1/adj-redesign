@@ -279,9 +279,14 @@
     .sticky-cta__close { background: transparent; border: 0; color: #999; cursor: pointer; padding: 6px 10px; font-size: 22px; line-height: 1; }
     .sticky-cta__close:hover { color: #0E1A2F; }
     @media (max-width: 720px) {
-      .sticky-cta__inner { flex-wrap: wrap; gap: 10px; padding: 10px 14px; }
-      .sticky-cta__price { margin-left: 0; }
-      .sticky-cta__btn { flex: 1 1 100%; justify-content: center; padding: 12px 20px; }
+      .sticky-cta__inner { display: grid !important; grid-template-columns: auto 1fr auto !important; grid-template-areas: "pulse date price" "btn btn btn" !important; gap: 6px 10px !important; padding: 10px 14px !important; align-items: center !important; }
+      .sticky-cta__pulse { grid-area: pulse !important; }
+      .sticky-cta__label { display: none !important; }
+      .sticky-cta__date { grid-area: date !important; font-size: 16px !important; }
+      .sticky-cta__meta { display: none !important; }
+      .sticky-cta__price { grid-area: price !important; margin: 0 !important; font-size: 16px !important; padding: 0 !important; }
+      .sticky-cta__btn { grid-area: btn !important; width: 100% !important; justify-content: center !important; padding: 12px 20px !important; }
+      .sticky-cta__close { display: none !important; }
     }
   </style>
 </head>
