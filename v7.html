@@ -157,8 +157,24 @@
     @media (max-width: 900px) {
       /* Order: image full-width -> content -> features */
       .hero__right { display: contents !important; }
-      .hero__image { order: 1 !important; width: 100% !important; max-width: 100% !important; max-height: 200px !important; margin: 0 !important; overflow: hidden !important; border-radius: 16px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 10px 28px rgba(33,49,74,0.10) !important; }
+      .hero__image { order: 1 !important; position: relative !important; width: 100% !important; max-width: 100% !important; max-height: 200px !important; margin: 0 !important; overflow: hidden !important; border-radius: 16px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 10px 28px rgba(33,49,74,0.10) !important; }
       .hero__image img { width: 100% !important; height: 100% !important; max-height: 200px !important; object-fit: cover !important; }
+      /* Cena badge na zdjeciu (pomaranczowy pill prawy dolny) */
+      .hero__image::after {
+        content: "od 4 500 zł" !important;
+        position: absolute !important;
+        right: 12px !important;
+        bottom: 12px !important;
+        padding: 8px 14px !important;
+        background: #FEA900 !important;
+        color: #fff !important;
+        font-family: "Work Sans", sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 15px !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 12px rgba(254,169,0,0.4) !important;
+        z-index: 2 !important;
+      }
       .hero__content { order: 2 !important; gap: 0 !important; padding-top: 18px !important; }
       .hero__features { order: 3 !important; padding-top: 18px !important; margin-top: 18px !important; border-top: 1px solid var(--gray-100) !important; }
 
@@ -218,6 +234,8 @@
         line-height: 1.45 !important;
       }
     }
+
+    
 
     
     @media (max-width: 720px) {
