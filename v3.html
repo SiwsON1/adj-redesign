@@ -208,6 +208,11 @@
 
     /* Mobile (< 901px): hero kompakt jak ADJ orig - premium + Zapisz sie widoczny w 1szym viewporcie */
     @media (max-width: 900px) {
+      /* V3 mobile: ukryj elementy ktore zaslaniaja widget zapisu */
+      .hero-proof-badge { display: none !important; }
+      .v3-installments { display: none !important; }
+      .v3-price { display: none !important; }
+      .v3-booking-panel { padding: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important; margin-top: 0 !important; }
       /* Order: image full-width -> content -> features */
       .hero__right { display: contents !important; }
       .hero__image { order: 1 !important; position: relative !important; width: 100% !important; max-width: 100% !important; max-height: 160px !important; margin: 0 !important; overflow: hidden !important; border-radius: 14px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 8px 22px rgba(33,49,74,0.10) !important; }
