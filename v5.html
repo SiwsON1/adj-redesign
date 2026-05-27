@@ -341,11 +341,15 @@
 
     /* Mobile (< 901px): hero kompakt jak ADJ orig - premium + Zapisz sie widoczny w 1szym viewporcie */
     @media (max-width: 900px) {
-      /* Order: image full-width -> content -> features */
+      /* V5 mobile: wylacz editorial overlap (4:5 portrait + negative margin) - daj standardowy stack image full -> content */
+      .hero__grid { grid-template-columns: 1fr !important; gap: 14px !important; align-items: stretch !important; }
       .hero__right { display: contents !important; }
-      .hero__image { order: 1 !important; position: relative !important; width: 100% !important; max-width: 100% !important; max-height: 160px !important; margin: 0 !important; overflow: hidden !important; border-radius: 14px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 8px 22px rgba(33,49,74,0.10) !important; }
-      .hero__image img { width: 100% !important; height: 100% !important; max-height: 160px !important; object-fit: cover !important; }
-      /* Ukryj Bestseller tag na mobile (zostaje na desktop) */
+      .hero__image { order: 1 !important; position: relative !important; width: 100% !important; max-width: 100% !important; aspect-ratio: 16/10 !important; max-height: 180px !important; min-height: 0 !important; margin: 0 !important; overflow: hidden !important; border-radius: 14px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 8px 22px rgba(33,49,74,0.10) !important; flex: none !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; max-height: 180px !important; object-fit: cover !important; }
+      /* Wylacz editorial content panel overlay */
+      .hero__content { order: 2 !important; background: transparent !important; padding: 0 !important; margin-left: 0 !important; box-shadow: none !important; border: none !important; border-radius: 0 !important; }
+      /* Ukryj v5-badges, image-tag mobile (zostaje cena badge w corner) */
+      .v5-badge { display: none !important; }
       .hero__image-tag { display: none !important; }
       /* Cena badge na zdjeciu - DOM span, nie ::after */
       .mobile-cena-badge {
