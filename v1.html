@@ -174,8 +174,10 @@
     @media (max-width: 900px) {
       /* Order: image full-width -> content -> features */
       .hero__right { display: contents !important; }
-      .hero__image { order: 1 !important; position: relative !important; width: 100% !important; max-width: 100% !important; max-height: 180px !important; margin: 0 !important; overflow: hidden !important; border-radius: 14px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 8px 22px rgba(33,49,74,0.10) !important; }
-      .hero__image img { width: 100% !important; height: 100% !important; max-height: 180px !important; object-fit: cover !important; }
+      .hero__image { order: 1 !important; position: relative !important; width: 100% !important; max-width: 100% !important; max-height: 160px !important; margin: 0 !important; overflow: hidden !important; border-radius: 14px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 8px 22px rgba(33,49,74,0.10) !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; max-height: 160px !important; object-fit: cover !important; }
+      /* Ukryj Bestseller tag na mobile (zostaje na desktop) */
+      .hero__image-tag { display: none !important; }
       /* Cena badge na zdjeciu - DOM span, nie ::after */
       .mobile-cena-badge {
         display: inline-flex !important;
@@ -203,11 +205,11 @@
       .hero__signup-label { display: none !important; }
       .header__anchors { display: none !important; }
 
-      /* H1 - czytelny premium */
-      .hero__title { margin: 12px 0 10px !important; font-size: 21px !important; line-height: 1.22 !important; letter-spacing: -0.015em !important; font-weight: 700 !important; }
-      .hero { padding-top: 14px !important; padding-bottom: 14px !important; }
-      .breadcrumbs { margin-bottom: 8px !important; font-size: 11px !important; }
-      .hero__content { padding-top: 8px !important; }
+      /* H1 - czytelny */
+      .hero__title { margin: 8px 0 6px !important; font-size: 20px !important; line-height: 1.22 !important; letter-spacing: -0.015em !important; font-weight: 700 !important; }
+      .hero { padding-top: 12px !important; padding-bottom: 14px !important; }
+      .breadcrumbs { margin-bottom: 6px !important; font-size: 11px !important; }
+      .hero__content { padding-top: 6px !important; }
 
       /* Cena value ukryta z hero (jest w sticky bottom) - zostaje tylko Raty pill */
       .hero__price-row { display: none !important; }
@@ -231,8 +233,8 @@
         letter-spacing: 0.1em !important;
         margin: 0 0 8px !important;
       }
-      .hero__content > .hero__theory { margin-bottom: 14px !important; }
-      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 14px !important; }
+      .hero__content > .hero__theory { margin-bottom: 10px !important; }
+      .hero__content > .dates-carousel { margin-top: 0 !important; margin-bottom: 10px !important; }
       .hero__content > .signup-bar { margin-top: 0 !important; margin-bottom: 0 !important; }
 
       /* Theory toggle: pelna szerokosc, 3 rowne kolumny */
