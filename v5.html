@@ -115,15 +115,18 @@
       right: auto !important;
     }
 
-    /* V5 desktop: signup-bar kompakt - 3 selecty grid 3-col (horizontal) + button pod */
+    /* V5 desktop: signup-bar kompakt - usun bialy container, samo button + selecty */
     @media (min-width: 901px) {
       .hero__content .signup-bar {
         display: grid !important;
         grid-template-columns: 1fr 1fr 1fr !important;
         grid-template-areas: "f1 f2 f3" "btn btn btn" !important;
         gap: 8px !important;
-        padding: 8px !important;
-        border-radius: 14px !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
       }
       .hero__content .signup-bar > label:nth-of-type(1) { grid-area: f1 !important; }
       .hero__content .signup-bar > label:nth-of-type(2) { grid-area: f2 !important; }
