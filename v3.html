@@ -462,11 +462,68 @@
           </a>
         </div>
 
-        <a href="/formularz-zapisow/" class="v3-cta-primary">
-          <span>Zapisz się na kurs</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
-        </a>
-        <p class="v3-cta-helper">Tryb teorii, termin i ośrodek wybierzesz w formularzu zapisu lub w sekcji <a href="#booking">Wybierz termin</a> niżej.</p>
+        <div class="hero__theory">
+          <p class="hero__theory-label">Wybierz tryb zajęć teoretycznych</p>
+          <div class="hero__theory-toggle" role="tablist">
+            <button type="button" class="theory-btn is-active" role="tab" aria-selected="true">E-learning</button>
+            <button type="button" class="theory-btn" role="tab" aria-selected="false">Stacjonarne</button>
+            <button type="button" class="theory-btn" role="tab" aria-selected="false">Bez teorii</button>
+          </div>
+        </div>
+
+        <div class="dates-carousel">
+          <p class="dates-carousel__title">Najbliższe kursy</p>
+          <div class="dates-carousel__row">
+            <button class="dates-carousel__arrow dates-carousel__arrow--prev" aria-label="Poprzednie">&lsaquo;</button>
+            <div class="dates-carousel__track">
+              <a href="/formularz-zapisow/" class="date-card is-active"><span class="date-card__date">26.05.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">28.05.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">02.06.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">04.06.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">09.06.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">10.06.26</span><span class="date-card__type">E-kurs</span></a>
+              <a href="/formularz-zapisow/" class="date-card"><span class="date-card__date">15.06.26</span><span class="date-card__type">E-kurs</span></a>
+            </div>
+            <button class="dates-carousel__arrow dates-carousel__arrow--next" aria-label="Następne">&rsaquo;</button>
+          </div>
+        </div>
+
+        <p class="hero__signup-label">Wybierz termin</p>
+        <form class="signup-bar" action="/formularz-zapisow/" method="get">
+          <button type="submit" class="signup-bar__submit">
+            <svg class="signup-bar__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+            <span>Zapisz się</span>
+          </button>
+          <label class="signup-bar__field">
+            <span class="signup-bar__label">Data</span>
+            <select class="signup-bar__select" name="data" aria-label="Wybierz datę kursu">
+              <option value="26.05.26" selected>26.05.26</option>
+              <option value="28.05.26">28.05.26</option>
+              <option value="02.06.26">02.06.26</option>
+              <option value="04.06.26">04.06.26</option>
+              <option value="09.06.26">09.06.26</option>
+              <option value="10.06.26">10.06.26</option>
+              <option value="15.06.26">15.06.26</option>
+            </select>
+          </label>
+          <label class="signup-bar__field">
+            <span class="signup-bar__label">Ośrodek</span>
+            <select class="signup-bar__select" name="osrodek" aria-label="Wybierz ośrodek">
+              <option value="e-kurs" selected>E-kurs</option>
+              <option value="brochow">Brochów</option>
+              <option value="psie-pole">Psie Pole</option>
+              <option value="grunwald">Grunwald</option>
+            </select>
+          </label>
+          <label class="signup-bar__field">
+            <span class="signup-bar__label">Teoria</span>
+            <select class="signup-bar__select" name="teoria" aria-label="Wybierz formę teorii">
+              <option value="e-learning" selected>E-learning</option>
+              <option value="stacjonarnie">Stacjonarnie</option>
+              <option value="bez-teorii">Bez teorii</option>
+            </select>
+          </label>
+        </form>
         </div>
 
       </div>
