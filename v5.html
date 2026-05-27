@@ -329,7 +329,8 @@
       /* Cena badge na zdjeciu - DOM span, nie ::after */
       .mobile-cena-badge {
         display: inline-flex !important;
-        align-items: center !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
         position: absolute !important;
         right: 12px !important;
         bottom: 12px !important;
@@ -339,10 +340,12 @@
         font-family: "Work Sans", sans-serif !important;
         font-weight: 800 !important;
         font-size: 15px !important;
+        line-height: 1.1 !important;
         border-radius: 10px !important;
         box-shadow: 0 4px 12px rgba(254,169,0,0.4) !important;
         z-index: 3 !important;
       }
+      .mobile-cena-badge small { font-size: 10px !important; font-weight: 700 !important; opacity: 0.95 !important; letter-spacing: 0.04em !important; text-transform: uppercase !important; margin-top: 2px !important; }
       .hero__content { order: 2 !important; gap: 0 !important; padding-top: 18px !important; }
       .hero__features { order: 3 !important; padding-top: 18px !important; margin-top: 18px !important; border-top: 1px solid var(--gray-100) !important; }
 
@@ -405,6 +408,8 @@
         line-height: 1.45 !important;
       }
     }
+
+    
 
     
 
