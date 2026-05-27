@@ -176,9 +176,10 @@
       .hero__right { display: contents !important; }
       .hero__image { order: 1 !important; position: relative !important; width: 100% !important; max-width: 100% !important; max-height: 180px !important; margin: 0 !important; overflow: hidden !important; border-radius: 14px !important; box-shadow: 0 1px 3px rgba(33,49,74,0.06), 0 8px 22px rgba(33,49,74,0.10) !important; }
       .hero__image img { width: 100% !important; height: 100% !important; max-height: 180px !important; object-fit: cover !important; }
-      /* Cena badge na zdjeciu (pomaranczowy pill prawy dolny) */
-      .hero__image::after {
-        content: "od 4 500 zł" !important;
+      /* Cena badge na zdjeciu - DOM span, nie ::after */
+      .mobile-cena-badge {
+        display: inline-flex !important;
+        align-items: center !important;
         position: absolute !important;
         right: 12px !important;
         bottom: 12px !important;
@@ -190,7 +191,7 @@
         font-size: 15px !important;
         border-radius: 10px !important;
         box-shadow: 0 4px 12px rgba(254,169,0,0.4) !important;
-        z-index: 2 !important;
+        z-index: 3 !important;
       }
       .hero__content { order: 2 !important; gap: 0 !important; padding-top: 18px !important; }
       .hero__features { order: 3 !important; padding-top: 18px !important; margin-top: 18px !important; border-top: 1px solid var(--gray-100) !important; }
@@ -478,6 +479,7 @@
         <div class="hero__image">
           <img src="assets/hero-kat-b.webp" alt="Kurs prawo jazdy kat. B we Wrocławiu - Akademia Dobrej Jazdy" width="1200" height="800">
           <span class="hero__image-tag">Bestseller</span>
+          <span class="mobile-cena-badge">od 4 500 zł</span>
         </div>
 
         <ul class="hero__features">
