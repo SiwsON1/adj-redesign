@@ -27,6 +27,20 @@
       .hero__image { flex: 1 !important; aspect-ratio: auto !important; }
       .hero__image img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
       .v2-badges-strip { margin-top: auto !important; }
+      /* V2 desktop form group gaps - jak V1 (theory + dates + signup-bar rowne 32px) */
+      .hero__theory { margin: 24px 0 32px !important; }
+      .dates-carousel { margin: 0 0 32px !important; }
+      .hero__signup-label { margin: 0 0 10px !important; font-family: "Work Sans", sans-serif !important; font-size: 11px !important; font-weight: 700 !important; color: #777 !important; text-transform: uppercase !important; letter-spacing: 0.12em !important; }
+      .hero__theory-label, .dates-carousel__title {
+        font-family: "Work Sans", sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #777 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.12em !important;
+        margin: 0 0 10px !important;
+      }
+      .signup-bar { margin: 0 !important; }
     }
     @media (max-width: 900px) {
       /* V2 mobile: 1 col, image first, badges pod, content third */
@@ -39,6 +53,8 @@
 
       /* Badges - schowane z hero (info na sticky CTA + osobna sekcja niżej) */
       .v2-badges-strip { display: none !important; }
+      /* V2 mobile: ukryj widget hero (theory + dates + signup-bar) - zostaje SAM CTA do #booking section dolnej */
+      .hero__theory, .dates-carousel, .hero__signup-label, .signup-bar { display: none !important; }
 
       /* Hero content kompakt - tylko najwazniejsze w 1 viewport */
       .hero__eyebrow { font-size: 10.5px !important; margin-bottom: 4px !important; letter-spacing: 0.14em !important; }
