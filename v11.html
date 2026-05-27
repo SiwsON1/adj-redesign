@@ -313,7 +313,8 @@
       .v11-badge__text strong { font-size: 12px; }
       .v11-badge__text small { font-size: 8.5px; }
       .v11-badge--bl { left: 10px; bottom: 10px; }
-      .v11-badge--br { right: 10px; bottom: 10px; }
+      /* Mobile: ukryj v11-badge--br (4,8 Google) - kolidowal z mobile-cena-badge w prawym dolnym rogu */
+      .v11-badge--br { display: none !important; }
     }
 
     /* Sticky bottom CTA - shortcut to /formularz-zapisow/ */
