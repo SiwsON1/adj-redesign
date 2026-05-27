@@ -21,7 +21,13 @@
     .variant-nav a.is-active { background: #FEA900; border-color: #FEA900; }
 
     .hero { padding-top: 56px; padding-bottom: 64px; background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%); }
-    .hero__grid { grid-template-columns: 1.05fr 1fr !important; align-items: center !important; gap: 60px !important; }
+    .hero__grid { grid-template-columns: 1.05fr 1fr !important; align-items: stretch !important; gap: 60px !important; }
+    @media (min-width: 901px) {
+      .hero__right { display: flex !important; flex-direction: column !important; min-height: 100% !important; }
+      .hero__image { flex: 1 !important; aspect-ratio: auto !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+      .v2-badges-strip { margin-top: auto !important; }
+    }
     .hero__eyebrow { font-size: 12px !important; letter-spacing: 0.16em !important; color: #FEA900 !important; font-weight: 700 !important; margin-bottom: 20px !important; }
     .hero__title { font-size: clamp(2.2rem, 4.2vw, 3.2rem) !important; line-height: 1.08 !important; letter-spacing: -0.025em !important; margin-bottom: 24px !important; }
     .hero__lede-clean { font-size: 16.5px; line-height: 1.65; color: #555; max-width: 56ch; margin-bottom: 32px; }
