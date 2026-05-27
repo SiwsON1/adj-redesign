@@ -150,29 +150,12 @@
       }
     }
     @media (max-width: 900px) {
-      /* V5 mobile signup-bar: usun bialy container, zostaje sam button + selecty stacked */
-      .hero__content .signup-bar {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-        padding: 0 !important;
-        border-radius: 0 !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-      }
-      .hero__content .signup-bar > label {
-        background: #fff !important;
-        border: 1px solid #E5E5E5 !important;
-        border-radius: 10px !important;
-        padding: 8px 12px !important;
-        display: block !important;
-        height: auto !important;
-        min-height: 0 !important;
-      }
-      .hero__content .signup-bar > label .signup-bar__label { display: block !important; font-size: 10px !important; letter-spacing: 0.08em !important; margin-bottom: 2px !important; }
-      .hero__content .signup-bar > label .signup-bar__select { display: block !important; width: 100% !important; font-size: 14px !important; height: 24px !important; padding: 0 !important; }
-      .hero__content .signup-bar__submit { order: 99 !important; height: 48px !important; max-height: 48px !important; border-radius: 999px !important; padding: 0 24px !important; align-self: stretch !important; width: 100% !important; box-shadow: 0 6px 16px rgba(254,169,0,0.35) !important; }
+      /* V5 mobile signup-bar: V1 pattern (flex column, button na gorze, selecty pod) */
+      .hero__content .signup-bar { flex-direction: column !important; gap: 6px !important; padding: 10px !important; border-radius: 14px !important; display: flex !important; }
+      .hero__content .signup-bar__submit { order: -1 !important; width: 100% !important; justify-content: center !important; padding: 14px !important; font-size: 16px !important; height: auto !important; max-height: none !important; border-radius: 999px !important; }
+      .hero__content .signup-bar__field { width: 100% !important; padding: 7px 12px !important; }
+      .hero__content .signup-bar__label { font-size: 10px !important; }
+      .hero__content .signup-bar__select { font-size: 14px !important; }
     }
 
     .hero__content {
