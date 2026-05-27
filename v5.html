@@ -115,45 +115,35 @@
       right: auto !important;
     }
 
-    /* V5 desktop: signup-bar w waskim panelu - flex column (3 selecty na gorze 3-col, button na dole) */
+    /* V5 desktop: signup-bar kompakt - 3 selecty grid 3-col (horizontal) + button pod */
     @media (min-width: 901px) {
       .hero__content .signup-bar {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 10px !important;
-        padding: 12px !important;
-        border-radius: 16px !important;
-        align-items: stretch !important;
-      }
-      .hero__content .signup-bar__fields,
-      .hero__content > .signup-bar > .signup-bar__fields {
         display: grid !important;
         grid-template-columns: 1fr 1fr 1fr !important;
+        grid-template-areas: "f1 f2 f3" "btn btn btn" !important;
         gap: 8px !important;
-      }
-      .hero__content .signup-bar > label {
-        padding: 8px 12px !important;
-        min-width: 0 !important;
-        border-radius: 10px !important;
-        flex: 1 !important;
-      }
-      /* Wrap 3 labels w grid via direct order */
-      .hero__content .signup-bar { gap: 10px !important; }
-      .hero__content .signup-bar > label:nth-of-type(1),
-      .hero__content .signup-bar > label:nth-of-type(2),
-      .hero__content .signup-bar > label:nth-of-type(3) { display: flex !important; flex-direction: column !important; }
-      /* Button: NORMALNA wysokość, pill, na dole order: 99 */
-      .hero__content .signup-bar__submit {
-        order: 99 !important;
-        align-self: center !important;
-        width: auto !important;
-        height: 54px !important;
-        max-height: 54px !important;
-        padding: 0 40px !important;
-        font-size: 16px !important;
+        padding: 8px !important;
         border-radius: 14px !important;
+      }
+      .hero__content .signup-bar > label:nth-of-type(1) { grid-area: f1 !important; }
+      .hero__content .signup-bar > label:nth-of-type(2) { grid-area: f2 !important; }
+      .hero__content .signup-bar > label:nth-of-type(3) { grid-area: f3 !important; }
+      .hero__content .signup-bar > label {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 6px 10px !important;
+        min-width: 0 !important;
+        border-radius: 8px !important;
+      }
+      .hero__content .signup-bar__submit {
+        grid-area: btn !important;
+        align-self: stretch !important;
+        height: 48px !important;
+        padding: 0 32px !important;
+        font-size: 15px !important;
+        border-radius: 10px !important;
         justify-content: center !important;
-        box-shadow: 0 6px 18px rgba(254,169,0,0.35) !important;
+        box-shadow: 0 4px 14px rgba(254,169,0,0.32) !important;
       }
     }
     @media (max-width: 900px) {
