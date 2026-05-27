@@ -365,15 +365,41 @@
           <span class="n">Cena końcowa, bez dodatkowych opłat · <a href="/kursy-na-raty/">możliwość rat 0% →</a></span>
         </div>
 
-        <div class="hero__ctas">
-          <a href="#booking" class="hero__primary-cta">
-            <span>Zapisz się na kurs</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
-          </a>
-          <a href="#booking" class="hero__next-course">
-            Najbliższy kurs <strong>26.05.26</strong> · E-learning →
-          </a>
-        </div>
+        <form class="signup-bar" action="/formularz-zapisow/" method="get">
+          <button type="submit" class="signup-bar__submit">
+            <svg class="signup-bar__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+            <span>Zapisz się</span>
+          </button>
+          <label class="signup-bar__field">
+            <span class="signup-bar__label">Data</span>
+            <select class="signup-bar__select" name="data" aria-label="Wybierz datę kursu">
+              <option value="26.05.26" selected>26.05.26</option>
+              <option value="28.05.26">28.05.26</option>
+              <option value="02.06.26">02.06.26</option>
+              <option value="04.06.26">04.06.26</option>
+              <option value="09.06.26">09.06.26</option>
+              <option value="10.06.26">10.06.26</option>
+              <option value="15.06.26">15.06.26</option>
+            </select>
+          </label>
+          <label class="signup-bar__field">
+            <span class="signup-bar__label">Ośrodek</span>
+            <select class="signup-bar__select" name="osrodek" aria-label="Wybierz ośrodek">
+              <option value="e-kurs" selected>E-kurs</option>
+              <option value="brochow">Brochów</option>
+              <option value="psie-pole">Psie Pole</option>
+              <option value="grunwald">Grunwald</option>
+            </select>
+          </label>
+          <label class="signup-bar__field">
+            <span class="signup-bar__label">Teoria</span>
+            <select class="signup-bar__select" name="teoria" aria-label="Wybierz formę teorii">
+              <option value="e-learning" selected>E-learning</option>
+              <option value="stacjonarnie">Stacjonarnie</option>
+              <option value="bez-teorii">Bez teorii</option>
+            </select>
+          </label>
+        </form>
       </div>
 
       <!-- LEFT (visual side at desktop): image + badges strip pod zdjeciem -->
