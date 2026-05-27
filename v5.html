@@ -150,7 +150,26 @@
       }
     }
     @media (max-width: 900px) {
-      .hero__content .signup-bar__submit { height: 48px !important; max-height: 48px !important; border-radius: 999px !important; padding: 0 24px !important; }
+      /* V5 mobile signup-bar: usun bialy container, zostaje sam button + selecty stacked */
+      .hero__content .signup-bar {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      .hero__content .signup-bar > label {
+        background: #fff !important;
+        border: 1px solid #E5E5E5 !important;
+        border-radius: 10px !important;
+        padding: 8px 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .hero__content .signup-bar__submit { order: 99 !important; height: 48px !important; max-height: 48px !important; border-radius: 999px !important; padding: 0 24px !important; align-self: stretch !important; width: 100% !important; box-shadow: 0 6px 16px rgba(254,169,0,0.35) !important; }
     }
 
     .hero__content {
