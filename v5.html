@@ -150,10 +150,11 @@
       }
     }
     @media (max-width: 900px) {
-      /* V5 mobile signup-bar: V1 pattern (flex column, button na gorze, selecty pod) */
-      .hero__content .signup-bar { flex-direction: column !important; gap: 6px !important; padding: 10px !important; border-radius: 14px !important; display: flex !important; }
-      .hero__content .signup-bar__submit { order: -1 !important; width: 100% !important; justify-content: center !important; padding: 14px !important; font-size: 16px !important; height: auto !important; max-height: none !important; border-radius: 999px !important; }
-      .hero__content .signup-bar__field { width: 100% !important; padding: 7px 12px !important; }
+      /* V5 mobile signup-bar: HARD limit height na child elements (fix parent stretch bug) */
+      .hero__content .signup-bar { display: flex !important; flex-direction: column !important; gap: 6px !important; padding: 10px !important; border-radius: 14px !important; align-items: stretch !important; height: auto !important; }
+      .hero__content .signup-bar > * { flex: 0 0 auto !important; height: auto !important; max-height: 56px !important; min-height: 0 !important; }
+      .hero__content .signup-bar__submit { order: -1 !important; width: 100% !important; justify-content: center !important; padding: 0 24px !important; font-size: 16px !important; height: 50px !important; max-height: 50px !important; border-radius: 999px !important; }
+      .hero__content .signup-bar__field { width: 100% !important; padding: 7px 12px !important; height: 50px !important; max-height: 50px !important; }
       .hero__content .signup-bar__label { font-size: 10px !important; }
       .hero__content .signup-bar__select { font-size: 14px !important; }
     }
