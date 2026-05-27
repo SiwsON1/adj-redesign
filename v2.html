@@ -21,12 +21,34 @@
     .variant-nav a.is-active { background: #FEA900; border-color: #FEA900; }
 
     .hero { padding-top: 56px; padding-bottom: 64px; background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%); }
-    .hero__grid { grid-template-columns: 1.05fr 1fr !important; align-items: stretch !important; gap: 60px !important; }
     @media (min-width: 901px) {
+      .hero__grid { grid-template-columns: 1.05fr 1fr !important; align-items: stretch !important; gap: 60px !important; }
       .hero__right { display: flex !important; flex-direction: column !important; min-height: 100% !important; }
       .hero__image { flex: 1 !important; aspect-ratio: auto !important; }
       .hero__image img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
       .v2-badges-strip { margin-top: auto !important; }
+    }
+    @media (max-width: 900px) {
+      /* V2 mobile: 1 col, image first full width, content second */
+      .hero__grid { grid-template-columns: 1fr !important; gap: 16px !important; align-items: start !important; }
+      .hero__right { order: 1 !important; }
+      .hero__content { order: 2 !important; padding: 0 !important; }
+      .hero__image { aspect-ratio: 16/10 !important; max-height: 200px !important; border-radius: 14px !important; overflow: hidden !important; position: relative !important; }
+      .hero__image img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+      .v2-badges-strip { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; margin-top: 12px !important; }
+      .v2-badge { padding: 8px !important; gap: 4px !important; flex-direction: column !important; text-align: center !important; align-items: center !important; }
+      .v2-badge__icon { width: 26px !important; height: 26px !important; }
+      .v2-badge__icon svg { width: 14px !important; height: 14px !important; }
+      .v2-badge__text { align-items: center !important; }
+      .v2-badge__text strong { font-size: 13px !important; }
+      .v2-badge__text small { font-size: 10px !important; line-height: 1.2 !important; }
+      /* Hero content compact */
+      .hero__eyebrow { font-size: 10.5px !important; margin-bottom: 8px !important; }
+      .hero__title { font-size: 22px !important; line-height: 1.22 !important; margin-bottom: 12px !important; }
+      .hero__lede-clean { font-size: 14.5px !important; line-height: 1.55 !important; margin-bottom: 16px !important; }
+      .hero__price-clean { gap: 10px !important; margin-bottom: 18px !important; padding-bottom: 14px !important; }
+      .hero__ctas { gap: 8px !important; flex-direction: column !important; }
+      .hero__ctas .btn { width: 100% !important; padding: 14px !important; justify-content: center !important; font-size: 15px !important; }
     }
     .hero__eyebrow { font-size: 12px !important; letter-spacing: 0.16em !important; color: #FEA900 !important; font-weight: 700 !important; margin-bottom: 20px !important; }
     .hero__title { font-size: clamp(2.2rem, 4.2vw, 3.2rem) !important; line-height: 1.08 !important; letter-spacing: -0.025em !important; margin-bottom: 24px !important; }
