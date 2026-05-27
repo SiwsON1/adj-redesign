@@ -115,33 +115,47 @@
       right: auto !important;
     }
 
-    /* V5 desktop: signup-bar w waskim panelu - button pill na gorze, 3 selecty 3-col pod */
+    /* V5 desktop: signup-bar w waskim panelu - flex column (3 selecty na gorze 3-col, button na dole) */
     @media (min-width: 901px) {
       .hero__content .signup-bar {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr !important;
-        grid-template-areas: "btn btn btn" "f1 f2 f3" !important;
+        display: flex !important;
+        flex-direction: column !important;
         gap: 10px !important;
         padding: 12px !important;
         border-radius: 16px !important;
+        align-items: stretch !important;
       }
+      .hero__content .signup-bar__fields,
+      .hero__content > .signup-bar > .signup-bar__fields {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 8px !important;
+      }
+      .hero__content .signup-bar > label {
+        padding: 8px 12px !important;
+        min-width: 0 !important;
+        border-radius: 10px !important;
+        flex: 1 !important;
+      }
+      /* Wrap 3 labels w grid via direct order */
+      .hero__content .signup-bar { gap: 10px !important; }
+      .hero__content .signup-bar > label:nth-of-type(1),
+      .hero__content .signup-bar > label:nth-of-type(2),
+      .hero__content .signup-bar > label:nth-of-type(3) { display: flex !important; flex-direction: column !important; }
+      /* Button: NORMALNA wysokość, pill, na dole order: 99 */
       .hero__content .signup-bar__submit {
-        grid-area: btn !important;
-        width: auto !important;
-        justify-self: center !important;
-        padding: 14px 36px !important;
+        order: 99 !important;
+        align-self: stretch !important;
+        height: 50px !important;
+        max-height: 50px !important;
+        padding: 0 28px !important;
         font-size: 15px !important;
         border-radius: 999px !important;
-        min-width: 240px !important;
+        justify-content: center !important;
       }
-      .hero__content .signup-bar > label:nth-of-type(1) { grid-area: f1 !important; }
-      .hero__content .signup-bar > label:nth-of-type(2) { grid-area: f2 !important; }
-      .hero__content .signup-bar > label:nth-of-type(3) { grid-area: f3 !important; }
-      .hero__content .signup-bar__field { padding: 8px 12px !important; min-width: 0 !important; border-radius: 10px !important; }
     }
-    /* V5 mobile: signup-bar button pill */
     @media (max-width: 900px) {
-      .hero__content .signup-bar__submit { border-radius: 999px !important; padding: 13px 28px !important; }
+      .hero__content .signup-bar__submit { height: 48px !important; max-height: 48px !important; border-radius: 999px !important; padding: 0 24px !important; }
     }
 
     .hero__content {
