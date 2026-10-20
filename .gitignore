@@ -2,3 +2,4 @@ node_modules/
 temporary-screenshots/
 content-extract.md
 .DS_Store
+filmy/warianty/_base.html
