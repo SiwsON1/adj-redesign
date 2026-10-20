@@ -140,6 +140,11 @@ COMMON_JS = r'''
     f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;border-radius:inherit;background:#000';
     box.appendChild(f); t.remove();
   }
+  if(window.top!==window.self){ var st=document.createElement('style'); st.textContent='.adjv-bar{display:none!important}'; document.head.appendChild(st); }
+  if(location.hash==='#film') addEventListener('load',function(){ setTimeout(function(){
+    var el=document.querySelector('.adjv:not(.adjv-bar)'); if(!el) return; el=el.closest('.kurs-img-wrapper')||el;
+    var y=el.getBoundingClientRect().top+scrollY-Math.max(90,(innerHeight-el.offsetHeight)/2);
+    document.documentElement.style.scrollBehavior='auto'; scrollTo(0,Math.max(0,y)); },300); });
   document.addEventListener('click',function(e){
     var t=e.target.closest('[data-yt]'); if(!t) return; e.preventDefault(); warm();
     var small=matchMedia('(max-width:600px)').matches;
@@ -161,8 +166,9 @@ CARD_CSS = r'''
 '''
 
 VARS = []
+DESC = {'Film w zdjęciu na górze strony': 'Film o kursie w miejscu zdjęcia na górze strony. Gra od razu na stronie, obok przycisku „Zapisz się”.', 'Przycisk na zdjęciu, film w oknie': 'Zdjęcie zostaje bez zmian, na nim przycisk „Obejrzyj film o kursie”. Film otwiera się w oknie.', 'Sekcja kinowa po krokach kursu': 'Osobna sekcja po krokach kursu: duży odtwarzacz, lista filmów o egzaminie i filmy ze skrzyżowań.', 'Filmy przy krokach kursu': 'Przy krokach kursu (jazdy, egzamin wewnętrzny, egzamin DORD) małe przyciski z filmem do danego kroku.', 'Pas z krótkimi filmami pod zdjęciem': 'Pas z okrągłymi miniaturami filmów pod górą strony, jak historyjki na Instagramie.', 'Zakładki przy opisie egzaminu': 'Zakładki z filmami przy opisie egzaminu praktycznego: obsługa auta, światła, płyny, trasy w mieście.', 'Siatka filmów przed FAQ': 'Siatka filmów przed pytaniami (FAQ): duży film o kursie i trzy filmy o egzaminie.', 'Pas z filmem w połowie strony': 'Szeroki pas z kadrem z filmu i dwoma przyciskami: „Obejrzyj film” i „Zapisz się na kurs”.', 'Pytania z jazd w 60 sekund': 'Lista trudnych skrzyżowań z tras egzaminacyjnych we Wrocławiu, każde z krótkim filmem.'}
 def var(name, goal, plus, minus, verdict, css, js, kind):
-    VARS.append(dict(name=name, goal=goal, plus=plus, minus=minus, verdict=verdict, css=css, js=js, kind=kind))
+    VARS.append(dict(desc=DESC.get(name, goal), name=name, goal=goal, plus=plus, minus=minus, verdict=verdict, css=css, js=js, kind=kind))
 
 var('Film w zdjęciu na górze strony',
     'Pierwsze wrażenie: kursant widzi, jak wygląda kurs, zanim przewinie stronę.',
@@ -369,12 +375,7 @@ var('Pytania z jazd w 60 sekund',
 @media (max-width:820px){.adjv10__in{grid-template-columns:1fr}.adjv10__lead{position:static}.adjv10__q{grid-template-columns:104px 1fr;gap:14px}.adjv10__q strong{font-size:16px}}
 ''', '', 'qa')
 
-var('Zestaw polecany: 1 + 4 + 9',
-    'Każdy film tam, gdzie pasuje do etapu decyzji: góra strony, kroki kursu, obawy przed jazdami.',
-    'Film o kursie na górze, krótkie filmy przy krokach, skrzyżowania przed FAQ. Film o kursie nie powtarza się już w treści.',
-    'Trzy miejsca do wdrożenia zamiast jednego.',
-    'Polecany',
-    '', '', 'combo')
+
 
 
 def hero1():
@@ -522,40 +523,68 @@ def build(nr, v, base):
         K={v['kind']:v['css'] for v in VARS}; css = COMMON_CSS + CARD_CSS + K['hero1'] + K['steps'] + K['qa']
     n = len(VARS)
     nav = (f'<nav class="adjv-bar" aria-label="Warianty"><span><b>Wariant {nr} z {n}</b>{v["name"]}</span>'
-           f'<a href="v{(nr-2)%n+1:02d}.html" aria-label="Poprzedni wariant">{SVG_L}</a><a href="index.html" aria-label="Lista wariantów">{SVG_G}</a>'
-           f'<a href="v{nr%n+1:02d}.html" aria-label="Następny wariant">{SVG_R}</a></nav>')
+           f'<a href="v{(nr-2)%n+1:02d}.html#film" aria-label="Poprzedni wariant">{SVG_L}</a><a href="index.html" aria-label="Wszystkie warianty">{SVG_G}</a>'
+           f'<a href="v{nr%n+1:02d}.html#film" aria-label="Następny wariant">{SVG_R}</a></nav>')
     head = f'<meta name="robots" content="noindex, nofollow">\n<style>{css}</style>\n'
     s = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + '\n' + head, s, count=1)
     s = s.replace('</body>', nav + f'<script>{js}</script>\n</body>', 1)
     (BASE / f'v{nr:02d}.html').write_text(s, encoding='utf-8')
 
 def index():
-    tag = {'Polecany': 'ok', 'Do rozważenia': 'mid', 'Niepolecany': 'no'}
-    def t(v): return next((c for kk, c in tag.items() if v.startswith(kk)), 'mid')
     cards = ''.join(
-        f'<li class="{t(v["verdict"])}"><a href="v{n:02d}.html"><span class="n">{n}</span><span class="b"><span class="h"><strong>{v["name"]}</strong><em>{v["verdict"]}</em></span>'
-        f'<span class="g">{v["goal"]}</span><span class="pm"><span><b>Plusy</b>{v["plus"]}</span><span><b>Minusy</b>{v["minus"]}</span></span></span></a></li>'
+        f'<li><a class="th" href="v{n:02d}.html#film" aria-label="Wariant {n}: {v["name"]}, na komputerze"><img src="img/v{n:02d}.jpg" alt="" loading="lazy" width="720" height="450"></a>'
+        f'<div class="tx"><h2><span>{n}</span>{v["name"]}</h2><p>{v["desc"]}</p>'
+        f'<div class="bt"><a class="b1" href="v{n:02d}.html#film">{MON}Na komputerze</a><a class="b2" href="telefon.html?v={n:02d}">{PHN}Na telefonie</a></div></div></li>'
         for n, v in enumerate(VARS, 1))
-    return f'''<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
-<title>ADJ, filmy na stronie kursu kat. B</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>:root{{--n:#1f1f1f;--y:#FEA900}}*{{box-sizing:border-box}}body{{margin:0;background:var(--adj-gray);color:var(--n);font-family:"Work Sans",sans-serif}}::selection{{background:var(--y);color:#0d1522}}
-main{{max-width:920px;margin:0 auto;padding:48px 16px 96px}}h1{{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0 0 12px;letter-spacing:-.01em}}
-.lead{{margin:0 0 32px;color:rgba(31,31,31,.78);font-size:17px;line-height:1.55;max-width:66ch}}
-ul{{list-style:none;margin:0;padding:0;display:grid;gap:12px}}
-li a{{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:20px;border-radius:14px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 1px 0 rgba(31,31,31,.05),0 18px 34px -28px rgba(31,31,31,.55);transition:transform .2s cubic-bezier(.23,1,.32,1)}}
-li a:hover{{transform:translateY(-2px)}}li a:active{{transform:scale(.99)}}li a:focus-visible{{outline:3px solid var(--y);outline-offset:3px}}
-.n{{font-weight:800;font-size:28px;line-height:1;color:var(--n);font-variant-numeric:tabular-nums}}.ok .n{{color:#1f7a3f}}.no .n{{color:#8a93a3}}
-.h{{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:6px}}.h strong{{font-size:19px}}
-.h em{{font-style:normal;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:#f0f0f0}}.ok .h em{{background:#e3f4e8;color:#1f6b38}}.no .h em{{background:#f1f2f4;color:#4f5869}}
-.g{{display:block;font-size:15px;line-height:1.5;margin-bottom:12px}}.pm{{display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:14px;line-height:1.5;color:rgba(31,31,31,.82)}}.pm b{{display:block;color:var(--n);margin-bottom:2px}}
-@media (max-width:640px){{.pm{{grid-template-columns:1fr}}li a{{grid-template-columns:36px 1fr;padding:16px}}}}</style></head>
-<body><main><h1>Filmy na stronie kursu kat. B</h1>
-<p class="lead">Każdy wariant to kopia obecnej strony kursu z innym sposobem pokazania filmów z kanału ADJ. Polecamy zestaw 10: film o kursie na górze strony, krótkie filmy przy krokach kursu i skrzyżowania przed FAQ. Na dole każdej strony jest pasek do przechodzenia między wariantami.</p>
-<ul>{cards}</ul></main></body></html>'''
+    return f"""<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>Filmy na stronie kursu kat. B: warianty</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>*{{box-sizing:border-box}}body{{margin:0;background:#f4f4f4;color:#1f1f1f;font-family:"Work Sans",sans-serif}}::selection{{background:#FEA900;color:#141414}}
+header{{background:#1f1f1f;color:#fff;padding:28px 16px}}header div{{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:16px}}header img{{height:48px;width:auto}}
+main{{max-width:1180px;margin:0 auto;padding:40px 16px 96px}}h1{{font-size:clamp(28px,3.6vw,40px);line-height:1.1;margin:0 0 12px}}.lead{{margin:0 0 32px;font-size:17px;line-height:1.55;max-width:70ch;color:rgba(31,31,31,.8)}}
+ul{{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}}
+li{{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 0 rgba(31,31,31,.05),0 20px 40px -30px rgba(31,31,31,.5);display:flex;flex-direction:column}}
+.th{{display:block;aspect-ratio:16/10;overflow:hidden;background:#1f1f1f}}.th img{{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s cubic-bezier(.23,1,.32,1)}}
+.th:hover img{{transform:scale(1.03)}}.th:focus-visible,.bt a:focus-visible{{outline:3px solid #FEA900;outline-offset:3px}}
+.tx{{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}}h2{{font-size:19px;line-height:1.3;margin:0 0 8px;display:flex;gap:10px;align-items:baseline}}
+h2 span{{flex:0 0 auto;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#FEA900;color:#141414;font-size:15px;font-variant-numeric:tabular-nums;transform:translateY(5px)}}
+p{{margin:0 0 20px;font-size:15px;line-height:1.55;color:rgba(31,31,31,.8);flex:1}}.bt{{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+.bt a{{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 12px;white-space:nowrap;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;transition:transform .15s cubic-bezier(.23,1,.32,1),background-color .2s}}
+.bt a:active{{transform:scale(.97)}}.bt svg{{width:18px;height:18px}}.b1{{background:#FEA900;color:#141414}}.b1:hover{{background:#ffbd33}}.b2{{background:#f4f4f4;color:#1f1f1f}}.b2:hover{{background:#e9e9e9}}</style></head>
+<body><header><div><img src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/logo_ADJ.png" alt="Akademia Dobrej Jazdy" onerror="this.remove()"></div></header>
+<main><h1>Filmy na stronie kursu kat. B</h1>
+<p class="lead">Każdy wariant to podgląd obecnej strony kursu kat. B z innym sposobem pokazania filmów z kanału ADJ. Podgląd otwiera się od razu w miejscu z filmem. Na dole strony są strzałki do kolejnych wariantów.</p>
+<ul>{cards}</ul></main></body></html>"""
+
+MON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+PHN = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+
+def phone():
+    names = [f'"{v["name"]}"' for v in VARS]
+    return """<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>Podgląd na telefonie</title><link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:#1f1f1f;color:#fff;font-family:"Work Sans",sans-serif;display:grid;grid-template-rows:auto 1fr;overflow:hidden}
+.top{display:flex;align-items:center;gap:12px;padding:14px 20px}.top b{color:#FEA900}.top span{flex:1;font-weight:600}
+.top a{display:grid;place-items:center;min-width:44px;height:44px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.1);color:#fff;text-decoration:none;font-weight:600;gap:8px;grid-auto-flow:column}
+.top a:hover{background:rgba(255,255,255,.2)}.top svg{width:18px;height:18px}
+.stage{display:grid;place-items:center;padding:8px 16px 20px;min-height:0}
+.ph{height:min(100%,868px);aspect-ratio:414/868;border-radius:44px;background:#000;padding:12px;box-shadow:0 0 0 2px #3a3a3a,0 40px 80px -30px rgba(0,0,0,.8)}
+.sc{width:100%;height:100%;border-radius:32px;overflow:hidden;background:#fff;position:relative}
+iframe{position:absolute;left:0;top:0;width:390px;height:844px;border:0;transform-origin:0 0}</style></head>
+<body><div class="top"><a href="index.html" aria-label="Wszystkie warianty">""" + SVG_G + """</a><span><b id="n"></b> <span id="t"></span></span>
+<a id="pv" aria-label="Poprzedni wariant">""" + SVG_L + """</a><a id="nx" aria-label="Następny wariant">""" + SVG_R + """</a><a id="pc">""" + MON + """Na komputerze</a></div>
+<div class="stage"><div class="ph"><div class="sc"><iframe id="f" title="Podgląd strony na telefonie"></iframe></div></div></div>
+<script>var N=[""" + ','.join(names) + """],n=N.length,v=parseInt(new URLSearchParams(location.search).get('v')||'1',10);
+function p(x){return String(x).padStart(2,'0')}
+document.getElementById('n').textContent='Wariant '+v+':';document.getElementById('t').textContent=N[v-1];
+document.getElementById('f').src='v'+p(v)+'.html#film';document.getElementById('pc').href='v'+p(v)+'.html#film';
+document.getElementById('pv').href='telefon.html?v='+p((v-2+n)%n+1);document.getElementById('nx').href='telefon.html?v='+p(v%n+1);
+function fit(){var sc=document.querySelector('.sc'),k=sc.clientWidth/390;var f=document.getElementById('f');f.style.transform='scale('+k+')';f.style.height=(sc.clientHeight/k)+'px'}
+addEventListener('resize',fit);fit();</script></body></html>"""
 
 if __name__ == '__main__':
     base = prep((BASE / '_base.html').read_text(encoding='utf-8'))
     for n, v in enumerate(VARS, 1):
         build(n, v, base)
     (BASE / 'index.html').write_text(index(), encoding='utf-8')
+    (BASE / 'telefon.html').write_text(phone(), encoding='utf-8')
     print('ok', len(VARS))
