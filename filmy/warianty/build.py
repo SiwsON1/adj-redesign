@@ -587,4 +587,11 @@ if __name__ == '__main__':
         build(n, v, base)
     (BASE / 'index.html').write_text(index(), encoding='utf-8')
     (BASE / 'telefon.html').write_text(phone(), encoding='utf-8')
+    # jedna strona: film na górze + filmy przy krokach + skrzyżowania przed FAQ, bez paska wariantów
+    K = {v['kind']: v['css'] for v in VARS}
+    r = do_hero(base, hero1()); r = do_steps(r); r = ins(r, faq_pos(r), qa()); r = drop_inline_promo(r)
+    head = f'<meta name="robots" content="noindex, nofollow">\n<style>{COMMON_CSS + CARD_CSS + K["hero1"] + K["steps"] + K["qa"]}</style>\n'
+    r = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + '\n' + head, r, count=1)
+    r = r.replace('</body>', f'<script>{COMMON_JS}</script>\n</body>', 1)
+    (BASE / 'razem.html').write_text(r, encoding='utf-8')
     print('ok', len(VARS))
