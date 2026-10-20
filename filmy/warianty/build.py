@@ -41,8 +41,8 @@ def play(cls=''):
 
 # ---------- wspólne ----------
 COMMON_CSS = r'''
-:root{--adj-navy:#21314a;--adj-navy-d:#182336;--adj-ink:#0d1522;--adj-brand:#FEA900;--adj-brand-l:#ffbd33;
---adj-sh-1:0 1px 0 rgba(24,35,54,.05),0 12px 28px -18px rgba(24,35,54,.55);--adj-sh-2:0 1px 0 rgba(24,35,54,.06),0 30px 60px -34px rgba(24,35,54,.7);
+:root{--adj-navy:#1f1f1f;--adj-navy-d:#1f1f1f;--adj-ink:#141414;--adj-gray:#f4f4f4;--adj-brand:#FEA900;--adj-brand-l:#ffbd33;
+--adj-sh-1:0 1px 0 rgba(31,31,31,.05),0 12px 28px -18px rgba(31,31,31,.55);--adj-sh-2:0 1px 0 rgba(31,31,31,.06),0 30px 60px -34px rgba(31,31,31,.7);
 --adj-out:cubic-bezier(.23,1,.32,1);--adj-in:cubic-bezier(.4,0,1,1)}
 .adjv,.adjv *{box-sizing:border-box}
 .adjv{font-family:"Work Sans",sans-serif}
@@ -55,10 +55,10 @@ COMMON_CSS = r'''
 .adjv ::selection{background:var(--adj-brand);color:var(--adj-ink)}
 .adjv-media{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:var(--adj-ink)}
 .adjv-media>img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;transition:transform .5s var(--adj-out)}
-.adjv-play{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--adj-brand);box-shadow:0 10px 24px -10px rgba(13,21,34,.7);transition:transform .15s var(--adj-out)}
+.adjv-play{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--adj-brand);box-shadow:0 10px 24px -10px rgba(20,20,20,.7);transition:transform .15s var(--adj-out)}
 .adjv-play svg{width:22px;height:22px;fill:var(--adj-ink);margin-left:3px}
 .adjv-media .adjv-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-.adjv-dur{position:absolute;right:10px;bottom:10px;padding:4px 8px;border-radius:6px;background:rgba(13,21,34,.82);color:#fff;font:600 12px/1 "Work Sans",sans-serif;font-variant-numeric:tabular-nums}
+.adjv-dur{position:absolute;right:10px;bottom:10px;padding:4px 8px;border-radius:6px;background:rgba(20,20,20,.82);color:#fff;font:600 12px/1 "Work Sans",sans-serif;font-variant-numeric:tabular-nums}
 @media (hover:hover) and (pointer:fine){[data-yt]:hover .adjv-media>img{transform:scale(1.04)}[data-yt]:hover .adjv-media .adjv-play{transform:translate(-50%,-50%) scale(1.08)}[data-yt]:hover>.adjv-play{transform:scale(1.08)}}
 [data-yt]:active .adjv-media .adjv-play{transform:translate(-50%,-50%) scale(.94)}
 [data-yt]:active>.adjv-play{transform:scale(.94)}
@@ -70,7 +70,7 @@ COMMON_CSS = r'''
 @media (hover:hover) and (pointer:fine){.adjv-btn--primary:hover{background:var(--adj-brand-l)!important}.adjv-btn--ghost:hover{background:rgba(255,255,255,.1)!important}}
 .adjv-btn:active{transform:scale(.97)}
 /* okno z filmem */
-.adjv-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:72px 16px 16px;background:rgba(13,21,34,.9);opacity:0;transition:opacity .22s var(--adj-out)}
+.adjv-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:72px 16px 16px;background:rgba(20,20,20,.9);opacity:0;transition:opacity .22s var(--adj-out)}
 .adjv-modal.is-open{opacity:1}.adjv-modal.is-closing{opacity:0;transition:opacity .15s var(--adj-in)}
 .adjv-modal__box{position:relative;width:min(1100px,100%);transform:translateY(8px) scale(.98);transition:transform .22s var(--adj-out)}
 .adjv-modal.is-open .adjv-modal__box{transform:none}
@@ -168,10 +168,10 @@ var('Film w zdjęciu na górze strony',
     'Pierwsze wrażenie: kursant widzi, jak wygląda kurs, zanim przewinie stronę.',
     'Film 1:03 gra w miejscu, obok przycisku „Zapisz się”. Najwięcej odtworzeń, bo jest na górze strony.',
     'Zdjęcie auta zamienia się w miniaturę filmu. Na telefonie hero jest niskie, więc zostaje sam przycisk i czas.',
-    'Polecany (część zestawu 11)',
+    'Polecany (część zestawu 10)',
     r'''
 .adjv1{position:absolute!important;inset:0;z-index:3;display:block!important;border-radius:inherit}
-.adjv1::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(13,21,34,0) 45%,rgba(13,21,34,.78) 100%)}
+.adjv1::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(20,20,20,0) 45%,rgba(20,20,20,.78) 100%)}
 .adjv1 .adjv-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:80px;height:80px}
 .adjv1 .adjv-play svg{width:30px;height:30px}
 .adjv1:active .adjv-play{transform:translate(-50%,-50%) scale(.94)}
@@ -180,8 +180,8 @@ var('Film w zdjęciu na górze strony',
 .adjv1__cap strong{font:700 clamp(18px,1.7vw,22px)/1.2 "Work Sans",sans-serif}
 .adjv1__cap span{font:600 14px/1 "Work Sans",sans-serif;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums}
 .kurs-img-wrapper.is-playing .kurs-info-tags{display:none!important}
-@media (max-width:600px){.adjv1::before{background:rgba(13,21,34,.18)}.adjv1 .adjv-play{width:64px;height:64px}.adjv1 .adjv-play svg{width:24px;height:24px}
-.adjv1__cap{left:10px;right:auto;top:10px;bottom:auto;background:rgba(13,21,34,.82);padding:6px 12px;border-radius:999px;white-space:nowrap}
+@media (max-width:600px){.adjv1::before{background:rgba(20,20,20,.18)}.adjv1 .adjv-play{width:64px;height:64px}.adjv1 .adjv-play svg{width:24px;height:24px}
+.adjv1__cap{left:auto;right:10px;top:10px;bottom:auto;background:rgba(20,20,20,.82);padding:6px 12px;border-radius:999px;white-space:nowrap}
 .adjv1__cap strong{font-size:13px}.adjv1__cap span{font-size:13px}}
 ''', '', 'hero1')
 
@@ -191,13 +191,13 @@ var('Przycisk na zdjęciu, film w oknie',
     'Przycisk łatwiej przeoczyć niż duży play z wariantu 1.',
     'Do rozważenia',
     r'''
-.adjv2{position:absolute;right:16px;top:16px;z-index:3;display:inline-flex!important;align-items:center;gap:10px;min-height:48px;padding:6px 18px 6px 6px!important;border-radius:999px!important;background:rgba(13,21,34,.88)!important;color:#fff!important;font:600 15px/1 "Work Sans",sans-serif!important;box-shadow:var(--adj-sh-1)!important;transition:transform .15s var(--adj-out),background-color .2s var(--adj-out)}
+.adjv2{position:absolute;left:16px;bottom:16px;z-index:3;display:inline-flex!important;align-items:center;gap:10px;min-height:48px;padding:6px 18px 6px 6px!important;border-radius:999px!important;background:rgba(20,20,20,.88)!important;color:#fff!important;font:600 15px/1 "Work Sans",sans-serif!important;box-shadow:var(--adj-sh-1)!important;transition:transform .15s var(--adj-out),background-color .2s var(--adj-out)}
 .adjv2 .adjv-play{width:36px;height:36px;box-shadow:none}.adjv2 .adjv-play svg{width:14px;height:14px;margin-left:2px}
 .adjv2 em{font-style:normal;color:rgba(255,255,255,.7);font-weight:500;font-variant-numeric:tabular-nums}
 .adjv2:active{transform:scale(.97)}
-@media (hover:hover) and (pointer:fine){.adjv2:hover{background:rgba(13,21,34,.97)!important}}
+@media (hover:hover) and (pointer:fine){.adjv2:hover{background:rgba(20,20,20,.97)!important}}
 .kurs-img-wrapper.is-playing .kurs-info-tags{display:none!important}
-@media (max-width:600px){.adjv2{right:10px;top:10px;min-height:44px;font-size:14px!important}}
+@media (max-width:600px){.adjv2{left:auto;bottom:auto;right:10px;top:10px;min-height:44px;font-size:14px!important}}
 ''', '', 'hero2')
 
 var('Sekcja kinowa po krokach kursu',
@@ -242,55 +242,48 @@ var('Filmy przy krokach kursu',
     'Film odpowiada na pytanie z danego kroku: jak wyglądają jazdy, egzamin wewnętrzny, egzamin DORD.',
     'Najbardziej w kontekście, nie konkuruje z przyciskiem zapisu, nie zmienia wyglądu strony.',
     'Mało widoczne dla kogoś, kto nie czyta kroków.',
-    'Polecany (część zestawu 11)',
+    'Polecany (część zestawu 10)',
     r'''
-.adjv4{display:inline-flex!important;align-items:center;gap:10px;min-height:44px;margin:10px 8px 2px 0!important;padding:4px 16px 4px 4px!important;border-radius:999px!important;background:#fff!important;color:var(--adj-navy)!important;font:600 14px/1.35 "Work Sans",sans-serif!important;text-align:left;box-shadow:inset 0 0 0 1px rgba(33,49,74,.18),var(--adj-sh-1)!important;transition:transform .15s var(--adj-out),box-shadow .2s var(--adj-out)}
+.adjv4{display:inline-flex!important;align-items:center;gap:10px;min-height:44px;margin:10px 8px 2px 0!important;padding:4px 16px 4px 4px!important;border-radius:999px!important;background:#fff!important;color:var(--adj-navy)!important;font:600 14px/1.35 "Work Sans",sans-serif!important;text-align:left;box-shadow:inset 0 0 0 1px rgba(31,31,31,.18),var(--adj-sh-1)!important;transition:transform .15s var(--adj-out),box-shadow .2s var(--adj-out)}
 .adjv4 .adjv-play{width:36px;height:36px;flex:0 0 36px;box-shadow:none}.adjv4 .adjv-play svg{width:14px;height:14px;margin-left:2px}
-.adjv4 i{font-style:normal;font-weight:500;color:rgba(33,49,74,.75);white-space:nowrap;font-variant-numeric:tabular-nums}
+.adjv4 i{font-style:normal;font-weight:500;color:rgba(31,31,31,.75);white-space:nowrap;font-variant-numeric:tabular-nums}
 @media (hover:hover) and (pointer:fine){.adjv4:hover{box-shadow:inset 0 0 0 1px var(--adj-brand),var(--adj-sh-1)!important}}
 .adjv4:active{transform:scale(.97)}
 ''', '', 'steps')
 
-var('Pływający mini-odtwarzacz',
-    'Przypomnienie o filmie dla osób, które przewinęły stronę bez oglądania.',
-    'Widoczny bez szukania. Pojawia się po jednej trzeciej strony, tylko na komputerze, i chowa się przy innym filmie i przy formularzu.',
-    'Rozprasza i łatwo go odebrać jako reklamę. Na telefonie zająłby miejsce przycisku „Zapisz się”, więc tam go nie ma.',
-    'Niepolecany',
-    r'''
-.adjv5{position:fixed;right:24px;bottom:24px;z-index:2147481000;width:300px;border-radius:14px;background:var(--adj-ink);color:#fff;box-shadow:var(--adj-sh-2);opacity:0;transform:translateY(16px);pointer-events:none;visibility:hidden;transition:opacity .25s var(--adj-out),transform .3s var(--adj-out),visibility 0s .3s}
-.adjv5.is-on{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .25s var(--adj-out),transform .3s var(--adj-out),visibility 0s}
-.adjv5 .adjv-card{gap:0}.adjv5 .adjv-media{border-radius:14px 14px 0 0;box-shadow:none}
-.adjv5 .adjv-cap{padding:12px 52px 14px 14px}
-.adjv5__x{position:absolute!important;top:8px;right:8px;z-index:2;width:36px!important;height:36px!important;border-radius:50%!important;display:grid!important;place-items:center;background:rgba(13,21,34,.8)!important;color:#fff!important}
-.adjv5__x svg{width:16px;height:16px}
-@media (max-width:900px){.adjv5{display:none}}
-''', r'''
-(function(){var c=document.querySelector('.adjv5'); if(!c) return; var off=false, KEY='adjv5-off';
- try{off=sessionStorage.getItem(KEY)==='1'}catch(e){}
- c.querySelector('.adjv5__x').addEventListener('click',function(){off=true;try{sessionStorage.setItem(KEY,'1')}catch(e){};c.classList.remove('is-on')});
- var block=[].slice.call(document.querySelectorAll('figure.wp-block-embed, .kurs-info-wrapper, form'));
- var vis=new Set(); var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)});f()});
- block.forEach(function(b){io.observe(b)});
- function f(){ var far=scrollY>(document.documentElement.scrollHeight-innerHeight)*.33; c.classList.toggle('is-on',!off&&far&&vis.size===0); }
- addEventListener('scroll',f,{passive:true}); f();})();
-''', 'floating')
-
-var('Kółka z filmami pod zdjęciem',
+var('Pas z krótkimi filmami pod zdjęciem',
     'Szybki przegląd filmów w formie znanej z Instagrama, dla młodszych kursantów.',
-    'Mało miejsca, znany wzorzec. Film otwiera się w oknie ze strzałkami do następnego filmu.',
-    'Kadr w małym kółku słabo mówi, o czym jest film, więc podpis musi być krótki i konkretny.',
+    'Wyraźny pas z nagłówkiem tuż pod górą strony, duże kółka z play. Film otwiera się w oknie ze strzałkami do następnego.',
+    'Na telefonie pas jest pod terminami i przyciskiem zapisu, więc trzeba trochę przewinąć.',
     'Do rozważenia',
-    r'''
-.adjv6{max-width:1260px;margin:24px auto 8px;padding:0 16px}
-.adjv6__row{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 10px!important;scroll-snap-type:x mandatory;scroll-padding-inline:2px;scrollbar-width:thin}
-.adjv6__s{flex:0 0 auto;width:84px;display:flex!important;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start;color:var(--adj-navy)!important}
-.adjv6__ring{position:relative;width:76px;height:76px;border-radius:50%;padding:3px;background:var(--adj-brand);transition:transform .2s var(--adj-out)}
-.adjv6__ring img{width:100%!important;height:100%!important;border-radius:50%;object-fit:cover;border:3px solid #fff;display:block}
-.adjv6__s>span:last-child{font:600 12px/1.35 "Work Sans",sans-serif;text-align:center}
+    r"""
+.adjv6{width:100vw;margin:28px calc(50% - 50vw) 8px;padding:24px 16px;background:var(--adj-gray)}
+.adjv6__in{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center}
+.adjv6__lead strong{display:block;font:700 20px/1.2 "Work Sans",sans-serif;color:#000}
+.adjv6__lead span{display:block;margin-top:6px;font:500 14px/1.35 "Work Sans",sans-serif;color:rgba(31,31,31,.72)}
+.adjv6__wrap{position:relative;min-width:0}
+.adjv6__row{display:flex;gap:18px;overflow-x:auto;padding:6px 4px 8px!important;scroll-snap-type:x mandatory;scroll-padding-inline:4px;scrollbar-width:none}
+.adjv6__row::-webkit-scrollbar{display:none}
+.adjv6__s{flex:0 0 auto;width:100px;display:flex!important;flex-direction:column;align-items:center;gap:10px;scroll-snap-align:start;color:#000!important}
+.adjv6__ring{position:relative;width:92px;height:92px;border-radius:50%;padding:3px;background:var(--adj-brand);transition:transform .2s var(--adj-out)}
+.adjv6__ring img{width:100%!important;height:100%!important;border-radius:50%;object-fit:cover;border:3px solid var(--adj-gray);display:block}
+.adjv6__ring .adjv-play{position:absolute;right:-2px;bottom:-2px;width:32px;height:32px;border:3px solid var(--adj-gray);box-shadow:none}
+.adjv6__ring .adjv-play svg{width:12px;height:12px;margin-left:2px}
+.adjv6__s>span:last-child{font:600 13px/1.35 "Work Sans",sans-serif;text-align:center}
 @media (hover:hover) and (pointer:fine){.adjv6__s:hover .adjv6__ring{transform:scale(1.05)}}
 .adjv6__s:active .adjv6__ring{transform:scale(.95)}
-@media (max-width:600px){.adjv6{margin:16px auto 4px}}
-''', '', 'stories')
+.adjv6__s:first-child .adjv6__ring::after{content:"";position:absolute;inset:-3px;border-radius:50%;box-shadow:0 0 0 0 rgba(254,169,0,.55);opacity:0}
+.adjv6.is-seen li:first-child .adjv6__ring::after{animation:adjv6p 1.6s var(--adj-out) .3s 2}
+@keyframes adjv6p{0%{opacity:1;box-shadow:0 0 0 0 rgba(254,169,0,.55)}100%{opacity:0;box-shadow:0 0 0 14px rgba(254,169,0,0)}}
+.adjv6__more{position:absolute;right:0;top:0;bottom:0;width:72px;display:flex;align-items:center;justify-content:flex-end;padding-right:4px;background:linear-gradient(90deg,rgba(244,244,244,0),var(--adj-gray) 70%);pointer-events:none;color:#000}
+.adjv6__more svg{width:22px;height:22px}
+.adjv6.is-end .adjv6__more{display:none}
+@media (max-width:900px){.adjv6__in{grid-template-columns:1fr;gap:14px}}
+""", r"""
+(function(){var s=document.querySelector('.adjv6'); if(!s) return; var r=s.querySelector('.adjv6__row');
+ new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){s.classList.add('is-seen');o.disconnect()}})},{threshold:.6}).observe(s);
+ function end(){s.classList.toggle('is-end',r.scrollLeft+r.clientWidth>=r.scrollWidth-8)} r.addEventListener('scroll',end,{passive:true}); end();})();
+""", 'stories')
 
 var('Zakładki przy opisie egzaminu',
     'Pokazuje, jak wygląda egzamin praktyczny: obsługa auta i trasy po Wrocławiu.',
@@ -323,7 +316,7 @@ var('Siatka filmów przed FAQ',
     'Nisko na stronie, więc ogląda go mniej osób. Bez kontekstu tekstu.',
     'Do rozważenia',
     r'''
-.adjv8{padding:56px 16px;background:#f3f5f8}
+.adjv8{padding:56px 16px;background:var(--adj-gray)}
 .adjv8__in{max-width:1180px;margin:0 auto}
 .adjv8__h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
 .adjv8__h h2{margin:0!important;text-align:left!important}
@@ -344,7 +337,7 @@ var('Pas z filmem w połowie strony',
 .adjv9{position:relative;width:100vw;margin:40px calc(50% - 50vw);min-height:clamp(340px,38vw,460px);display:grid;align-items:end;padding:48px 16px;overflow:hidden;background:var(--adj-ink);isolation:isolate}
 .adjv9__bg{position:absolute;inset:0;z-index:-2;width:100%!important;height:100%!important;object-fit:cover}
 @supports (animation-timeline: view()){@media (prefers-reduced-motion:no-preference){.adjv9__bg{animation:adjv9z linear both;animation-timeline:view();animation-range:entry 0% cover 60%}@keyframes adjv9z{from{transform:scale(1.08)}to{transform:scale(1)}}}}
-.adjv9::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(13,21,34,.92) 0%,rgba(13,21,34,.55) 45%,rgba(13,21,34,.1) 100%)}
+.adjv9::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(20,20,20,.92) 0%,rgba(20,20,20,.55) 45%,rgba(20,20,20,.1) 100%)}
 .adjv9__in{max-width:1180px;width:100%;margin:0 auto}
 .adjv9 h2{color:#fff!important;margin:0 0 20px!important;max-width:22ch;text-align:left!important;font-size:clamp(28px,3.2vw,42px)!important;line-height:1.1!important}
 .adjv9__cta{display:flex;flex-wrap:wrap;gap:12px}
@@ -354,7 +347,7 @@ var('Pytania z jazd w 60 sekund',
     'Odpowiada na obawy przed jazdami po mieście: konkretne skrzyżowania Wrocławia.',
     'Konkretne, lokalne, krótkie filmy. Obok cały czas przycisk zapisu i telefon.',
     'Nisko na stronie, przed FAQ.',
-    'Polecany (część zestawu 11)',
+    'Polecany (część zestawu 10)',
     r'''
 .adjv10{padding:56px 16px;background:#fff}
 .adjv10__in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(24px,5vw,72px);align-items:start}
@@ -364,19 +357,19 @@ var('Pytania z jazd w 60 sekund',
 .adjv10__acts{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
 .adjv10__tel{display:inline-flex;align-items:center;gap:8px;min-height:48px;color:var(--adj-navy)!important;font:700 16px/1 "Work Sans",sans-serif;text-decoration:none!important;font-variant-numeric:tabular-nums}
 .adjv10__tel svg{width:18px;height:18px}
-.adjv10__list li+li{border-top:1px solid rgba(33,49,74,.12)!important}
+.adjv10__list li+li{border-top:1px solid rgba(31,31,31,.12)!important}
 .adjv10__q{display:grid!important;grid-template-columns:128px 1fr;gap:18px;align-items:center;width:100%!important;padding:14px 8px!important;border-radius:12px!important;text-align:left;color:var(--adj-navy)!important;transition:background-color .2s var(--adj-out)}
 .adjv10__q .adjv-media{border-radius:8px}
 .adjv10__q .adjv-play{width:36px;height:36px}.adjv10__q .adjv-play svg{width:14px;height:14px}
 .adjv10__q .adjv-dur{right:6px;bottom:6px;font-size:11px}
 .adjv10__q strong{font:600 17px/1.35 "Work Sans",sans-serif}
-.adjv10__q small{display:block;margin-top:6px;font:500 13px/1.3 "Roboto",sans-serif;color:rgba(33,49,74,.72)}
-@media (hover:hover) and (pointer:fine){.adjv10__q:hover{background:#f3f5f8!important}}
-.adjv10__q:active{background:#eaeef4!important}
+.adjv10__q small{display:block;margin-top:6px;font:500 13px/1.3 "Roboto",sans-serif;color:rgba(31,31,31,.72)}
+@media (hover:hover) and (pointer:fine){.adjv10__q:hover{background:var(--adj-gray)!important}}
+.adjv10__q:active{background:#ececec!important}
 @media (max-width:820px){.adjv10__in{grid-template-columns:1fr}.adjv10__lead{position:static}.adjv10__q{grid-template-columns:104px 1fr;gap:14px}.adjv10__q strong{font-size:16px}}
 ''', '', 'qa')
 
-var('Zestaw polecany: 1 + 4 + 10',
+var('Zestaw polecany: 1 + 4 + 9',
     'Każdy film tam, gdzie pasuje do etapu decyzji: góra strony, kroki kursu, obawy przed jazdami.',
     'Film o kursie na górze, krótkie filmy przy krokach, skrzyżowania przed FAQ. Film o kursie nie powtarza się już w treści.',
     'Trzy miejsca do wdrożenia zamiast jednego.',
@@ -416,8 +409,10 @@ def stories():
     items = ['fotel', 'swiatla', 'plyny'] + CITY
     names = {'fotel': 'Fotel', 'swiatla': 'Światła', 'plyny': 'Płyny'}
     li = ''.join(f'<li><button class="adjv6__s" type="button" {yt(k, "stories")} aria-label="Odtwórz film: {V[k][1]}, {V[k][2]}">'
-                 f'<span class="adjv6__ring"><img src="{img(k)}" alt=""></span><span>{names.get(k) or V[k][4]}</span></button></li>' for k in items)
-    return f'<div class="adjv adjv6" aria-label="Filmy instruktorów"><ul class="adjv6__row" role="list">{li}</ul></div>'
+                 f'<span class="adjv6__ring"><img src="{img(k)}" alt="">{play()}</span><span>{names.get(k) or V[k][4]}</span></button></li>' for k in items)
+    return (f'<section class="adjv adjv6" aria-labelledby="adjv6-h"><div class="adjv6__in"><div class="adjv6__lead"><strong id="adjv6-h">Krótkie filmy instruktorów</strong>'
+            f'<span>{len(items)} filmów: egzamin i trasy po Wrocławiu</span></div>'
+            f'<div class="adjv6__wrap"><ul class="adjv6__row" role="list">{li}</ul><span class="adjv6__more" aria-hidden="true">{ARROW}</span></div></div></section>')
 
 def exam():
     tabs = [('t1', 'Obsługa auta', 'fotel'), ('t2', 'Światła', 'swiatla'), ('t3', 'Płyny', 'plyny'), ('t4', 'Trasy w mieście', 'city')]
@@ -468,6 +463,7 @@ def prep(s):
     s = re.sub(r'<img[^>]*>', unlazy, s)
     s = re.sub(r'srcset=""\s+data-srcset="([^"]+)"', r'srcset="\1"', s)
     s = re.sub(r'class="lazy\s+', 'class="', s)
+    s = s.replace('class="bestseller-title-tag"', 'class="bestseller-title-tag show"')
     s = re.sub(r'(<iframe[^>]*?)\sdata-src="([^"]+)"', lambda m: m.group(1) + ' src="' + m.group(2) + '"', s)
     return s
 
@@ -523,7 +519,7 @@ def build(nr, v, base):
     elif k == 'qa': s = ins(s, faq_pos(s), qa())
     elif k == 'combo':
         s = do_hero(s, hero1()); s = do_steps(s); s = ins(s, faq_pos(s), qa()); s = drop_inline_promo(s)
-        css = COMMON_CSS + CARD_CSS + VARS[0]['css'] + VARS[3]['css'] + VARS[9]['css']
+        K={v['kind']:v['css'] for v in VARS}; css = COMMON_CSS + CARD_CSS + K['hero1'] + K['steps'] + K['qa']
     n = len(VARS)
     nav = (f'<nav class="adjv-bar" aria-label="Warianty"><span><b>Wariant {nr} z {n}</b>{v["name"]}</span>'
            f'<a href="v{(nr-2)%n+1:02d}.html" aria-label="Poprzedni wariant">{SVG_L}</a><a href="index.html" aria-label="Lista wariantów">{SVG_G}</a>'
@@ -542,19 +538,19 @@ def index():
         for n, v in enumerate(VARS, 1))
     return f'''<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
 <title>ADJ, filmy na stronie kursu kat. B</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>:root{{--n:#21314a;--y:#FEA900}}*{{box-sizing:border-box}}body{{margin:0;background:#f3f5f8;color:var(--n);font-family:"Work Sans",sans-serif}}::selection{{background:var(--y);color:#0d1522}}
+<style>:root{{--n:#1f1f1f;--y:#FEA900}}*{{box-sizing:border-box}}body{{margin:0;background:var(--adj-gray);color:var(--n);font-family:"Work Sans",sans-serif}}::selection{{background:var(--y);color:#0d1522}}
 main{{max-width:920px;margin:0 auto;padding:48px 16px 96px}}h1{{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0 0 12px;letter-spacing:-.01em}}
-.lead{{margin:0 0 32px;color:rgba(33,49,74,.78);font-size:17px;line-height:1.55;max-width:66ch}}
+.lead{{margin:0 0 32px;color:rgba(31,31,31,.78);font-size:17px;line-height:1.55;max-width:66ch}}
 ul{{list-style:none;margin:0;padding:0;display:grid;gap:12px}}
-li a{{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:20px;border-radius:14px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 1px 0 rgba(24,35,54,.05),0 18px 34px -28px rgba(24,35,54,.55);transition:transform .2s cubic-bezier(.23,1,.32,1)}}
+li a{{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:20px;border-radius:14px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 1px 0 rgba(31,31,31,.05),0 18px 34px -28px rgba(31,31,31,.55);transition:transform .2s cubic-bezier(.23,1,.32,1)}}
 li a:hover{{transform:translateY(-2px)}}li a:active{{transform:scale(.99)}}li a:focus-visible{{outline:3px solid var(--y);outline-offset:3px}}
 .n{{font-weight:800;font-size:28px;line-height:1;color:var(--n);font-variant-numeric:tabular-nums}}.ok .n{{color:#1f7a3f}}.no .n{{color:#8a93a3}}
 .h{{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:6px}}.h strong{{font-size:19px}}
-.h em{{font-style:normal;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:#eef1f5}}.ok .h em{{background:#e3f4e8;color:#1f6b38}}.no .h em{{background:#f1f2f4;color:#4f5869}}
-.g{{display:block;font-size:15px;line-height:1.5;margin-bottom:12px}}.pm{{display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:14px;line-height:1.5;color:rgba(33,49,74,.82)}}.pm b{{display:block;color:var(--n);margin-bottom:2px}}
+.h em{{font-style:normal;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:#f0f0f0}}.ok .h em{{background:#e3f4e8;color:#1f6b38}}.no .h em{{background:#f1f2f4;color:#4f5869}}
+.g{{display:block;font-size:15px;line-height:1.5;margin-bottom:12px}}.pm{{display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:14px;line-height:1.5;color:rgba(31,31,31,.82)}}.pm b{{display:block;color:var(--n);margin-bottom:2px}}
 @media (max-width:640px){{.pm{{grid-template-columns:1fr}}li a{{grid-template-columns:36px 1fr;padding:16px}}}}</style></head>
 <body><main><h1>Filmy na stronie kursu kat. B</h1>
-<p class="lead">Każdy wariant to kopia obecnej strony kursu z innym sposobem pokazania filmów z kanału ADJ. Polecamy zestaw 11: film o kursie na górze strony, krótkie filmy przy krokach kursu i skrzyżowania przed FAQ. Na dole każdej strony jest pasek do przechodzenia między wariantami.</p>
+<p class="lead">Każdy wariant to kopia obecnej strony kursu z innym sposobem pokazania filmów z kanału ADJ. Polecamy zestaw 10: film o kursie na górze strony, krótkie filmy przy krokach kursu i skrzyżowania przed FAQ. Na dole każdej strony jest pasek do przechodzenia między wariantami.</p>
 <ul>{cards}</ul></main></body></html>'''
 
 if __name__ == '__main__':
