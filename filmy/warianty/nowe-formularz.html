@@ -1,0 +1,671 @@
+<!DOCTYPE html><html lang="pl"><head>
+<meta name="robots" content="noindex, nofollow">
+<style>
+.adjn,.adjn *{box-sizing:border-box}
+.adjn{font-family:"Work Sans",sans-serif;color:#000}
+:where(.adjn) button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer}
+:where(.adjn) img,:where(.adjn) video{max-width:none;margin:0}
+.adjn ul{list-style:none!important;margin:0!important;padding:0!important}.adjn li{margin:0!important;padding:0!important;list-style:none!important}
+.adjn :focus-visible{outline:3px solid #FEA900;outline-offset:3px}
+.adjn-play{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#FEA900;box-shadow:0 8px 20px -8px rgba(0,0,0,.45);transition:transform .15s cubic-bezier(.23,1,.32,1)}
+.adjn-play svg{width:24px;height:24px;fill:#fff;margin-left:3px}
+.adjn-ico{flex:0 0 50px;width:50px;height:50px;border-radius:50%;background:#FEA900;color:#fff;display:grid;place-items:center}
+.adjn-ico svg{width:24px;height:24px}
+.adjn-btn{display:inline-flex!important;align-items:center;justify-content:center;min-height:48px;padding:0 28px!important;border-radius:6px!important;background:#FEA900!important;color:#fff!important;font:600 17px/1 "Work Sans",sans-serif!important;text-decoration:none!important;transition:background-color .2s,transform .15s cubic-bezier(.23,1,.32,1)}
+.adjn-btn:hover{background:#e59800!important}.adjn-btn:active{transform:scale(.97)}
+
+/* film pionowy w karcie (gra w miejscu) */
+.adjn-vid{position:relative;width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#1a1a1a;border:1px solid #e5e5e5}
+.adjn-vid video{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;display:block}
+.adjn-vid__go{position:absolute!important;inset:0;z-index:2;display:grid!important;place-items:center;width:100%!important;height:100%!important}
+.adjn-vid__go::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%)}
+.adjn-vid__go .adjn-play{position:relative}
+.adjn-vid__t{position:absolute;left:14px;right:14px;bottom:12px;color:#fff;font:600 14px/1.3 "Work Sans",sans-serif;text-align:left}
+@media (hover:hover) and (pointer:fine){.adjn-vid__go:hover .adjn-play{transform:scale(1.07)}}
+.adjn-vid__go:active .adjn-play{transform:scale(.94)}
+.adjn-vid.is-playing .adjn-vid__go{display:none!important}
+
+/* kat. B: film w kolumnie „Wymagania” */
+.adjn16{width:min(340px,100%);margin:0 auto}
+@media (max-width:780px){.adjn16{width:min(280px,100%);margin:8px auto 24px}}
+.adjn16__cap{margin:12px 0 0!important;font:500 14px/1.4 "Work Sans",sans-serif;color:#555;text-align:center}
+
+/* strona główna: pas z zapisem i reklamą w telefonie */
+.adjnr{padding:150px 16px 72px}
+.adjnr__card{position:relative;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:64px;align-items:center;padding:48px 64px;background:#FEA900;border-radius:14px}
+.adjnr h2{margin:0 0 12px!important;font:800 36px/1.15 "Work Sans",sans-serif!important;color:#1a1a1a!important;text-align:left!important;max-width:20ch}
+.adjnr__lead{margin:0 0 28px!important;padding:0!important;font:500 17px/1.55 "Work Sans",sans-serif;color:#1a1a1a;text-align:left!important;max-width:46ch}
+.adjnr__cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.adjnr__b1{display:inline-flex!important;align-items:center;min-height:52px;padding:0 28px!important;border-radius:6px!important;background:#1a1a1a!important;color:#fff!important;font:600 17px/1 "Work Sans",sans-serif!important;text-decoration:none!important;transition:background-color .2s,transform .15s cubic-bezier(.23,1,.32,1)}
+.adjnr__b1:hover{background:#000!important}.adjnr__b1:active{transform:scale(.97)}
+.adjnr__b2{display:inline-flex!important;align-items:center;gap:10px;min-height:52px;padding:0 22px!important;border-radius:6px!important;background:#fff!important;color:#1a1a1a!important;font:600 17px/1 "Work Sans",sans-serif!important;text-decoration:none!important;font-variant-numeric:tabular-nums;transition:transform .15s cubic-bezier(.23,1,.32,1),box-shadow .2s}
+.adjnr__b2 svg{width:18px;height:18px}.adjnr__b2:hover{box-shadow:0 8px 20px -10px rgba(0,0,0,.35)}.adjnr__b2:active{transform:scale(.97)}
+.adjnr__media{align-self:end;margin:-200px 0 -48px}
+.adjnr__ph{position:relative;padding:9px;border-radius:38px;background:#141414;box-shadow:0 30px 60px -28px rgba(0,0,0,.55)}
+.adjnr__ph::before{content:"";position:absolute;left:50%;top:16px;z-index:2;width:70px;height:18px;margin-left:-35px;border-radius:12px;background:#141414}
+.adjnr__ph video{display:block;width:100%!important;aspect-ratio:9/16;object-fit:cover;border-radius:30px;background:#222}
+@media (max-width:900px){.adjnr{padding:40px 16px 56px}.adjnr__card{grid-template-columns:1fr;gap:28px;padding:0 20px 32px}.adjnr__media{order:-1;width:min(220px,62vw);margin:-24px auto 0;align-self:auto}.adjnr h2{font-size:28px!important}}
+@media (max-width:900px){.adjnr{padding-top:64px}.adjnr__media{margin-top:-48px}}
+
+/* strona główna: filmy 9:16 (tokeny strony: nagłówek 20/700 + kreska 30x1, karta grid-card r10 cień 0 0 14px 4px) */
+.adjnf{padding:24px 0 40px}
+.adjnf__in{max-width:1200px;margin:0 auto;padding:0 30px}
+.adjnf h2{margin:0!important;font:700 20px/1.5 "Work Sans",sans-serif!important;color:#000!important;text-align:center!important}
+.adjnf__line{display:block;width:30px;height:1px;margin:12.8px auto 32px;background:#FEA900}
+.adjnf__wrap{position:relative}
+.adjnf__row{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 80px)/5);gap:20px;overflow-x:auto;padding:16px 16px 24px!important;margin:-16px -16px 0!important;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scroll-behavior:smooth;scrollbar-width:none}
+.adjnf__row::-webkit-scrollbar{display:none}
+.adjnf .adjnf__row>li{scroll-snap-align:start;display:block!important}
+.adjnf__c{position:relative;display:block!important;width:100%!important;aspect-ratio:9/16;border-radius:10px!important;overflow:hidden;background:#1a1a1a!important;box-shadow:0 0 14px 4px rgba(66,66,66,.2);text-align:left;transition:transform .3s cubic-bezier(.23,1,.32,1),box-shadow .3s cubic-bezier(.23,1,.32,1)}
+.adjnf__c img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;transition:transform .6s cubic-bezier(.23,1,.32,1)}
+.adjnf__c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.72) 100%)}
+.adjnf__c .adjn-play{position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-50%);width:52px;height:52px}
+.adjnf__c .adjn-play svg{width:20px;height:20px}
+.adjnf__t{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;font:700 15px/1.3 "Work Sans",sans-serif;color:#fff}
+@media (hover:hover) and (pointer:fine){.adjnf__c:hover{transform:translateY(-6px);box-shadow:0 0 14px 4px rgba(66,66,66,.2),0 24px 40px -24px rgba(0,0,0,.45)}.adjnf__c:hover img{transform:scale(1.04)}.adjnf__c:hover .adjn-play{transform:translate(-50%,-50%) scale(1.08)}}
+.adjnf__c:active{transform:scale(.98)}
+.adjnf__arr{position:absolute;top:50%;z-index:3;width:34px!important;height:34px!important;margin-top:-17px;border-radius:50%!important;background:#f5f5f5!important;color:#444!important;display:grid!important;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:opacity .2s,transform .15s}
+.adjnf__arr svg{width:16px;height:16px}.adjnf__arr:active{transform:scale(.92)}
+.adjnf__arr[disabled]{opacity:0;pointer-events:none}
+.adjnf__prev{left:-17px}.adjnf__next{right:-17px}
+.adjnf__more{display:flex;justify-content:center;margin-top:28px}
+.adjnf__more a{display:inline-flex!important;align-items:center;min-height:44px;padding:0 20px!important;border-radius:6px!important;background:#FEA900!important;color:#fff!important;font:600 16px/1 "Work Sans",sans-serif!important;text-decoration:none!important;transition:background-color .2s,transform .15s}
+.adjnf__more a:hover{background:#e59800!important}.adjnf__more a:active{transform:scale(.97)}
+@media (max-width:1100px){.adjnf__row{grid-auto-columns:calc((100% - 60px)/4)}}
+@media (max-width:860px){.adjnf__row{grid-auto-columns:calc((100% - 40px)/3)}}
+@media (max-width:640px){.adjnf__in{padding:0 16px}.adjnf__row{grid-auto-columns:62%;gap:14px}.adjnf__arr{display:none!important}.adjnf__t{font-size:15px}}
+
+/* okno z filmem pionowym */
+.adjn-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:64px 16px 16px;background:rgba(17,17,17,.88);opacity:0;transition:opacity .2s cubic-bezier(.23,1,.32,1)}
+.adjn-modal.is-open{opacity:1}
+.adjn-modal__box{position:relative;height:min(82dvh,760px);aspect-ratio:9/16;max-width:100%;border-radius:14px;overflow:hidden;background:#000}
+.adjn-modal__box video,.adjn-modal__box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:contain;background:#000}
+.adjn-modal__x{position:absolute;right:max(16px,calc(50% - min(82dvh,760px)*9/32 - 56px));top:12px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff!important;color:#000!important;border:0;cursor:pointer}
+.adjn-modal__x svg{width:20px;height:20px}
+@media (prefers-reduced-motion:reduce){.adjn *,.adjn-modal{transition:none!important}}
+
+/* 1. slajd z filmem w banerze strony głównej */
+.adjs-slide{position:relative;overflow:hidden;background:#141414}
+.adjs-bg{position:absolute;inset:-40px;background:var(--bg) center/cover;filter:blur(30px) brightness(.5);transform:scale(1.1)}
+.adjs-vid{position:absolute;top:0;bottom:0;left:22%;height:100%!important;width:auto!important;max-width:none!important;aspect-ratio:9/16;object-fit:cover;box-shadow:0 0 60px rgba(0,0,0,.5)}
+@media (max-width:900px){.adjs-vid{left:50%;transform:translateX(-50%)}}
+/* 2. karta „Skuteczność” z filmem w tle */
+.adv-card.adjc{position:relative;overflow:hidden;isolation:isolate}
+.adjc video{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;z-index:-2}
+.adjc::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(254,169,0,.55) 0%,rgba(254,169,0,.92) 62%)}
+/* 3. intro strony głównej z filmem obok tekstu */
+.adji{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:56px;align-items:center;max-width:1100px;margin:0 auto;padding:8px 30px 24px}
+.adji h1,.adji p{text-align:left!important}.adji .underline-long{margin-left:0!important}
+.adji .adjn-vid{box-shadow:0 0 14px 4px rgba(66,66,66,.2);border:0}
+@media (max-width:820px){.adji{grid-template-columns:1fr;gap:24px;padding:8px 16px 24px}.adji__m{width:min(240px,70vw);margin:0 auto}}
+/* 4. formularz zapisów: film nad formularzem */
+.adjf{max-width:732px;margin:28px auto 0;padding:0 30px}
+.adjf__card{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:24px;align-items:center;padding:16px;background:#fff;border:1px solid #e5e5e5;border-radius:14px}
+.adjf__th{position:relative;display:block!important;width:96px!important;aspect-ratio:9/16;border-radius:10px!important;overflow:hidden;background:#1a1a1a}
+.adjf__th img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover}
+.adjf__th .adjn-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:44px;height:44px}
+.adjf__th .adjn-play svg{width:16px;height:16px}
+.adjf__t{font:700 18px/1.3 "Work Sans",sans-serif;color:#1a1a1a}
+.adjf__d{margin:6px 0 0!important;font:400 15px/1.5 "Work Sans",sans-serif;color:#555}
+.adjf__b{display:inline-flex!important;align-items:center;gap:8px;min-height:44px;padding:0 18px!important;border-radius:6px!important;background:#FEA900!important;color:#fff!important;font:600 15px/1 "Work Sans",sans-serif!important;white-space:nowrap}
+.adjf__b:hover{background:#e59800!important}.adjf__b:active{transform:scale(.97)}
+@media (max-width:700px){.adjf{padding:0 16px}.adjf__card{grid-template-columns:88px minmax(0,1fr);gap:14px}.adjf__th{width:88px!important}.adjf__b{grid-column:1/-1;justify-content:center}}
+</style>
+<script data-no-optimize="1">var litespeed_docref=sessionStorage.getItem("litespeed_docref");litespeed_docref&&(Object.defineProperty(document,"referrer",{get:function(){return litespeed_docref}}),sessionStorage.removeItem("litespeed_docref"));</script> <meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="page-topic" content="Szkoła jazdy, Nauka jazdy, Prawo jazdy, OSK" /><meta name="publisher" content="Szkoła Jazdy Akademia Dobrej Jazdy" /><meta name="classification" content="Szkoła Jazdy Akademia Dobrej Jazdy" /><meta name="copyrights" content="Szkoła Jazdy Akademia Dobrej Jazdy" /><meta name="title" content="Szkoła jazdy Wrocław - Nauka i kurs prawo jazdy w OSK Akademia" /> <script type="litespeed/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=!0;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-MHSWJST')</script> <script type="litespeed/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","musjeio2ac")</script> <link rel="icon" href="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/favicon.png" type="image/x-icon" /><link rel="shortcut icon" href="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/favicon.png" type="image/x-icon" /><link rel="canonical" href="https://www.naukajazdy.wroc.pl/formularz-zapisow/" /><meta property="og:locale" content="pl_PL" /><meta property="og:type" content="article" /><meta property="og:title" content="Formularz zapisów na prawo jazdy - Akademia Dobrej Jazdy" /><meta property="og:url" content="https://www.naukajazdy.wroc.pl/formularz-zapisow/" /><meta property="og:site_name" content="Akademia Dobrej Jazdy" /><meta property="article:publisher" content="https://www.facebook.com/adjsuperoska" /><meta property="article:modified_time" content="2022-11-16T12:19:45+00:00" /><meta name="twitter:card" content="summary_large_image" /> <script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/www.naukajazdy.wroc.pl\/formularz-zapisow\/","url":"https:\/\/www.naukajazdy.wroc.pl\/formularz-zapisow\/","name":"Formularz zapisów na prawo jazdy - Akademia Dobrej Jazdy","isPartOf":{"@id":"https:\/\/www.naukajazdy.wroc.pl\/#website"},"datePublished":"2022-06-03T06:50:40+00:00","dateModified":"2022-11-16T12:19:45+00:00","breadcrumb":{"@id":"https:\/\/www.naukajazdy.wroc.pl\/formularz-zapisow\/#breadcrumb"},"inLanguage":"pl-PL","potentialAction":[{"@type":"ReadAction","target":["https:\/\/www.naukajazdy.wroc.pl\/formularz-zapisow\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/www.naukajazdy.wroc.pl\/formularz-zapisow\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https:\/\/www.naukajazdy.wroc.pl\/"},{"@type":"ListItem","position":2,"name":"Formularz zapisów na prawo jazdy"}]},{"@type":"WebSite","@id":"https:\/\/www.naukajazdy.wroc.pl\/#website","url":"https:\/\/www.naukajazdy.wroc.pl\/","name":"Akademia Dobrej Jazdy","description":"Strona Akademii Jazdy","publisher":{"@id":"https:\/\/www.naukajazdy.wroc.pl\/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.naukajazdy.wroc.pl\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"pl-PL"},{"@type":"Organization","@id":"https:\/\/www.naukajazdy.wroc.pl\/#organization","name":"Akademia Dobrej Jazdy","url":"https:\/\/www.naukajazdy.wroc.pl\/","logo":{"@type":"ImageObject","inLanguage":"pl-PL","@id":"https:\/\/www.naukajazdy.wroc.pl\/#\/schema\/logo\/image\/","url":"https:\/\/www.naukajazdy.wroc.pl\/wp-content\/uploads\/2022\/10\/logo_ADJ.png","contentUrl":"https:\/\/www.naukajazdy.wroc.pl\/wp-content\/uploads\/2022\/10\/logo_ADJ.png","width":400,"height":200,"caption":"Akademia Dobrej Jazdy"},"image":{"@id":"https:\/\/www.naukajazdy.wroc.pl\/#\/schema\/logo\/image\/"},"sameAs":["https:\/\/www.facebook.com\/adjsuperoska","https:\/\/www.youtube.com\/user\/adjsuperosk"]}]}</script> <link rel='dns-prefetch' href='//fonts.googleapis.com' /><link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.naukajazdy.wroc.pl/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.naukajazdy.wroc.pl%2Fformularz-zapisow%2F" /><link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.naukajazdy.wroc.pl/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.naukajazdy.wroc.pl%2Fformularz-zapisow%2F&#038;format=xml" /><style id="wp-img-auto-sizes-contain-inline-css">img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */</style><link data-optimized="2" rel="stylesheet" href="https://www.naukajazdy.wroc.pl/wp-content/litespeed/css/7a05f526669b20091c70e0b0240d44b2.css?ver=6dccc" /><style id="wp-block-library-inline-css">:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */</style><style id="classic-theme-styles-inline-css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */</style><style id="global-styles-inline-css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 16px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--normal: 14px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-normal-font-size{font-size: var(--wp--preset--font-size--normal) !important;}
+/*# sourceURL=global-styles-inline-css */</style> <script id="jquery-core-js" type="litespeed/javascript" data-src="https://www.naukajazdy.wroc.pl/wp-includes/js/jquery/jquery.min.js"></script> <link rel="https://api.w.org/" href="https://www.naukajazdy.wroc.pl/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.naukajazdy.wroc.pl/wp-json/wp/v2/pages/742" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.naukajazdy.wroc.pl/xmlrpc.php?rsd" /><meta name="generator" content="WordPress 7.0.2" /><link rel='shortlink' href='https://www.naukajazdy.wroc.pl/?p=742' /><style id="wp-custom-css">.cta-box1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 250px;
+    margin: 0 auto;
+    padding: 25px;
+    margin-top: 25px;
+    background: #21314a;
+}
+
+.cta-box2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 120px;
+    margin: 0 auto;
+    padding: 25px;
+    margin-top: 25px;
+    background: #21314a;
+}
+
+.cta-box1 h5 {
+	  font-size: 2em;
+	  color: #1f91c7;
+	  font-weight:600;
+    font-size: 3 em!important;
+    color: #fff!important;
+}
+
+.cta-box2 h6 {
+	  font-size: 1.3em;
+	  color: #1f91c7;
+	  font-weight:600;
+    font-size: 3 em!important;
+    color: #fff!important;
+}
+
+
+.cta1 {
+    font-size: 17px!important;
+    text-align: center;
+    line-height: initial;
+    color: #f6f6f6!important;
+	  padding-bottom: 15px;
+}
+.cta-box1 a {
+    border: 0;
+    background: #ffc107;
+    color: #333;
+    padding: 20px;
+    width: 250px;
+    margin: 0 auto;
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+.cta-box2 a {
+    border: 0;
+    background: #ffc107;
+    color: #333;
+    padding: 15px;
+    width: 250px;
+    margin: 0 auto;
+    font-size: 17px;
+    text-decoration: none;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+        .cta-banner-mid-adj {
+            width: 100%;
+            display: flex;
+            align-items: center;
+						flex-direction: row !important;
+            justify-content: space-between;
+            background: linear-gradient(90deg, #FEA900 0%, #ffad33 100%);
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 30px;
+            margin: 20px auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            gap: 2px;
+        }
+
+        .cta-banner-mid-adj::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%) rotate(45deg);
+            z-index: 0;
+        }
+
+        .cta-banner-mid-adj:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-text-mid-adj {
+            font-size: 22px;
+            font-weight: 700;
+            font-family: 'Arial', sans-serif;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1.2px;
+        }
+
+        .cta-text-mid-adj i {
+            font-size: 28px;
+            margin-left: 15px;
+        }
+
+        .cta-button-mid-adj {
+            background-color: #fff;
+            color: #FEA900;
+            text-decoration: none;
+            padding: 15px 60px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Arial', sans-serif;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button-mid-adj::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.5));
+            transition: transform 0.3s;
+            transform: translateX(-100%);
+            z-index: 0;
+        }
+
+        .cta-button-mid-adj:hover::before {
+            transform: translateX(0);
+        }
+
+        .cta-button-mid-adj:hover {
+            background-color: #ffd95e;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .cta-button-mid-adj span {
+            position: relative;
+            z-index: 1;
+        }
+
+.cmtt-backlink.cmtt-backlink-top {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 0 !important;
+}
+
+body.single-glossary #toc-wrapper {
+    display: none !important;
+}
+
+
+        @media screen and (max-width: 768px) {
+            .cta-banner-mid-adj {
+                width: 100%;
+                padding: 20px;
+                border-radius: 20px;
+								flex-direction: column !important;
+							        text-align: center;
+        line-height: 1.6;
+            }
+
+            .cta-text-mid-adj {
+                font-size: 16px;
+								margin-bottom: 10px;
+            }
+
+            .cta-text-mid-adj i {
+                font-size: 24px;
+                margin-left: 10px;
+            }
+
+            .cta-button-mid-adj {
+                padding: 15px 30px;
+            }
+        }
+@media screen and (min-width: 992px)
+p {
+    font-size: 16px!important;
+    line-height: 22px;
+}
+}</style><title>Formularz zapisów na prawo jazdy - Akademia Dobrej Jazdy</title>
+ <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Szkoła jazdy - nauka na prawo jazdy w Akademia Dobrej Jazdy Wrocław",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Wiaduktowa 21",
+        "addressLocality": "Wrocław",
+        "addressRegion": "PL",
+        "addressCountry": "Poland",
+        "postalCode": "52-111"
+      },
+      "image": "https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/logo_ADJ.png.webp",
+      "email": "adjsuperosk@gmail.com",
+      "telePhone": "575 757 408",
+      "url": "https://www.naukajazdy.wroc.pl/",
+      "paymentAccepted": ["cash", "credit card", "invoice"],
+      "openingHours": "Mo,Tu,We,Th,Fr 09:00-17:00",
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      }],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.07081369660437",
+        "longitude": "17.074457079873024"
+      },
+      "priceRange": "$"
+
+    }</script> </head><body class="wp-singular page-template page-template-page-templates page-template-page-formularz page-template-page-templatespage-formularz-php page page-id-742 wp-theme-akademia_custom">
+<noscript><iframe data-lazyloaded="1" src="about:blank" data-litespeed-src="https://www.googletagmanager.com/ns.html?id=GTM-MHSWJST" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div class="search-modal hidden-search-modal"><form role="search" method="get" action="https://www.naukajazdy.wroc.pl/">
+<input class="search-input-field" type="text" name="s" value="" placeholder="Szukasz kursu? Napisz jakiego :)">
+<button type="submit">Wyszukaj</button></form>
+<a href="#" rel="nofollow" class="search-close-btn">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-down-arrow.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-down-arrow.png" alt="" width="37" height="21" />
+</a></div><header><div class="main-logo"><a href="https://www.naukajazdy.wroc.pl/"><img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/logo_ADJ.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/logo_ADJ.png" alt="Akademia Dobrej Jazdy logo" height="60px" width="120px"></a></div><nav class="mobile-menu-modal container hide-menu-modal"><div class="menu-mobile-menu-container"><ul id="menu-mobile-menu" class="top-bar-mobile-menu"><li id="menu-item-209" class="hidden-sub-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-209"><a rel="nofollow" href="#">Kursy prawa jazdy</a><ul class="sub-menu"><li id="menu-item-217" class="submenu-icon-1 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-217"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a/">Kategoria A</a></li><li id="menu-item-3740" class="submenu-icon-7 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-3740"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-am-motorower/">Kategoria AM&nbsp;(motorower)</a></li><li id="menu-item-218" class="submenu-icon-2 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-218"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/">Kategoria B</a></li><li id="menu-item-219" class="submenu-icon-3 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-219"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-c/">Kategoria C</a></li><li id="menu-item-220" class="submenu-icon-4 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-220"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a1/">Kategoria A1</a></li><li id="menu-item-226" class="submenu-icon-5 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-226"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b-automat/">Kategoria B-automat</a></li><li id="menu-item-224" class="submenu-icon-6 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-224"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-c-e/">Kategoria C&nbsp;+ E</a></li><li id="menu-item-223" class="submenu-icon-7 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-223"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a2/">Kategoria A2</a></li><li id="menu-item-222" class="submenu-icon-8 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-222"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b-e/">Kategoria B&nbsp;+ E</a></li><li id="menu-item-221" class="submenu-icon-9 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-221"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-d/">Kategoria D po&nbsp;B</a></li><li id="menu-item-3747" class="submenu-icon-9 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-3747"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-d-po-c/">Kategoria D po&nbsp;C</a></li></ul></li><li id="menu-item-210" class="hidden-sub-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-210"><a rel="nofollow" href="#">Kierowcy zawodowi</a><ul class="sub-menu"><li id="menu-item-1742" class="submenu-icon-kierowcy-1 menu-item menu-item-type-post_type menu-item-object-page menu-item-1742"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/szkolenia-okresowe/">Szkolenie okresowe</a></li><li id="menu-item-1678" class="submenu-icon-kierowcy-2 menu-item menu-item-type-post_type menu-item-object-page menu-item-1678"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/kursy-kwalifikacji-przewoz-rzeczy/">Kursy kwalifikacji – przewóz rzeczy</a></li><li id="menu-item-1677" class="submenu-icon-kierowcy-4 menu-item menu-item-type-post_type menu-item-object-page menu-item-1677"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/kursy-kwalifikacji-przewoz-osob/">Kursy kwalifikacji – przewóz osób</a></li><li id="menu-item-1676" class="submenu-icon-kierowcy-3 menu-item menu-item-type-post_type menu-item-object-page menu-item-1676"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/adr-przewoz-materialow-niebezpiecznych/">ADR &#8211; Przewóz mat. <br>niebezpiecznych</a></li><li id="menu-item-844" class="submenu-icon-kierowcy-5 menu-item menu-item-type-post_type menu-item-object-page menu-item-844"><a href="https://www.naukajazdy.wroc.pl/kursy-pakietowe/">Kursy pakietowe</a></li><li id="menu-item-1675" class="submenu-icon-kierowcy-6 menu-item menu-item-type-post_type menu-item-object-page menu-item-1675"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-instruktorow/">Szkolenia dla instruktorów nauki jazdy</a></li></ul></li><li id="menu-item-212" class="hidden-sub-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-212"><a rel="nofollow" href="#">Informacje dla kursantów</a><ul class="sub-menu"><li id="menu-item-4046" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4046"><a href="https://www.naukajazdy.wroc.pl/akademia-dobrej-jazdy-liderem-w-zdawalnosci-egzaminow-word-wroclaw/">Akademia liderem w&nbsp;zdawalności egzaminów WORD Wrocław</a></li><li id="menu-item-211" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.naukajazdy.wroc.pl/terminy-szkolen/">Terminy szkoleń</a></li><li id="menu-item-411" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-411"><a href="https://www.naukajazdy.wroc.pl/spotkania-organizacyjne/">Spotkania organizacyjne</a></li><li id="menu-item-238" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-238"><a href="https://www.naukajazdy.wroc.pl/profil-kandydata-na-kierowce-pkk/">Profil Kandydata na&nbsp;Kierowcę – przewodnik 2026</a></li><li id="menu-item-412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-412"><a href="https://www.naukajazdy.wroc.pl/profil-kierowcy-zawodowego-pkz/">Profil Kierowcy Zawodowego (PKZ)</a></li><li id="menu-item-246" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-246"><a href="https://www.naukajazdy.wroc.pl/e-learning/">E-learning – teoria kursu</a></li><li id="menu-item-235" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-235"><a href="https://www.naukajazdy.wroc.pl/plac-manewrowy/">Plac manewrowy do&nbsp;nauki jazdy we&nbsp;Wrocławiu</a></li><li id="menu-item-237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-237"><a href="https://www.naukajazdy.wroc.pl/badania-lekarskie-i-psychologiczne/">Badania lekarskie i&nbsp;psychologiczne</a></li><li id="menu-item-2564" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2564"><a href="https://www.naukajazdy.wroc.pl/%d0%b2%d0%be%d0%b4%d1%96%d0%b9%d1%81%d1%8c%d0%ba%d1%96-%d0%bf%d1%80%d0%b0%d0%b2%d0%b0-%d1%83%d0%ba%d1%80%d0%b0%d1%97%d0%bd%d1%81%d1%8c%d0%ba%d0%be%d1%8e-%d0%bc%d0%be%d0%b2%d0%be%d1%8e/">Водійські права українською мовою</a></li><li id="menu-item-1422" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1422"><a href="https://www.naukajazdy.wroc.pl/driving-licences-in-english/">Driving licences in&nbsp;english</a></li></ul></li><li id="menu-item-213" class="hidden-sub-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-213"><a rel="nofollow" href="#">Działy szkoleniowe</a><ul class="sub-menu"><li id="menu-item-243" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-243"><a href="https://www.naukajazdy.wroc.pl/akademia-dobrej-jazdy/">OSK Akademia Dobrej Jazdy</a></li><li id="menu-item-242" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-242"><a href="https://www.naukajazdy.wroc.pl/akademia-motocyklisty/">Akademia Motocyklisty</a></li><li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-241"><a href="https://www.naukajazdy.wroc.pl/akademia-operatora/">Akademia Operatora</a></li><li id="menu-item-240" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-240"><a href="https://www.naukajazdy.wroc.pl/akademia-spawania/">Akademia Spawania</a></li><li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-239"><a href="https://www.naukajazdy.wroc.pl/akademia-dla-przemyslu/">Akademia dla Przemysłu</a></li></ul></li><li id="menu-item-214" class="hidden-sub-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-214"><a rel="nofollow" href="#">Dla biznesu</a><ul class="sub-menu"><li id="menu-item-245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-245"><a href="https://www.naukajazdy.wroc.pl/oferta-dla-firm-i-instytucji/">Oferta dla firm i&nbsp;instytucji</a></li><li id="menu-item-244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-244"><a href="https://www.naukajazdy.wroc.pl/umowy-ramowe/">Umowy ramowe</a></li></ul></li><li id="menu-item-215" class="hidden-sub-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-215"><a rel="nofollow" href="#">O&nbsp;nas</a><ul class="sub-menu"><li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="https://www.naukajazdy.wroc.pl/o-akademii/">O&nbsp;Akademii</a></li><li id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410"><a href="https://www.naukajazdy.wroc.pl/badania-i-rozwoj-prace-badawcze/">Badania i&nbsp;rozwój – prace badawcze</a></li><li id="menu-item-248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-248"><a href="https://www.naukajazdy.wroc.pl/w-trosce-o-srodowisko/">W&nbsp;trosce o&nbsp;środowisko</a></li><li id="menu-item-247" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-247"><a href="https://www.naukajazdy.wroc.pl/park-maszyn/">Park maszyn</a></li><li id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-249"><a href="https://www.naukajazdy.wroc.pl/pojazdy-szkoleniowe/">Pojazdy szkoleniowe w&nbsp;Akademii Dobrej Jazdy</a></li></ul></li><li id="menu-item-2490" class="no-arrow menu-item menu-item-type-post_type menu-item-object-page menu-item-2490"><a href="https://www.naukajazdy.wroc.pl/faq/">FAQ</a></li><li id="menu-item-216" class="no-arrow menu-item menu-item-type-post_type menu-item-object-page menu-item-216"><a href="https://www.naukajazdy.wroc.pl/kontakt/">Kontakt</a></li><li id="menu-item-573" class="no-arrow menu-item menu-item-type-post_type menu-item-object-page menu-item-573"><a href="https://www.naukajazdy.wroc.pl/blog/">Blog</a></li><li id="menu-item-2984" class="no-arrow menu-item menu-item-type-post_type menu-item-object-page menu-item-2984"><a href="https://www.naukajazdy.wroc.pl/opinie/">Opinie</a></li></ul>
+<a href="https://www.naukajazdy.wroc.pl/oferta/" class="pelna-oferta-link">Pełna oferta</a></div></nav><nav class="top-bar-desktop-menu"><ul class="desktop-menu"><li class="have-submenu">
+<a href="#" id="kursy-prawa-jazdy" rel="nofollow">Kursy prawa jazdy</a><div class="kursy-hidden-submenu kursy-submenu"><div class="submenu-wrapper container"><div class="menu-main-menu-kursy-container"><ul id="menu-main-menu-kursy" class="submenu-list"><li id="menu-item-197" class="submenu-icon-1 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-197"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a/"><div class="submenu-icon"></div>Kategoria A</a></li><li id="menu-item-3739" class="submenu-icon-7 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-3739"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-am-motorower/"><div class="submenu-icon"></div>Kategoria AM&nbsp;(motorower)</a></li><li id="menu-item-198" class="submenu-icon-2 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-198"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/"><div class="submenu-icon"></div>Kategoria B</a></li><li id="menu-item-195" class="submenu-icon-3 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-195"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-c/"><div class="submenu-icon"></div>Kategoria C</a></li><li id="menu-item-196" class="submenu-icon-4 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-196"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a1/"><div class="submenu-icon"></div>Kategoria A1</a></li><li id="menu-item-194" class="submenu-icon-5 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-194"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b-automat/"><div class="submenu-icon"></div>Kategoria B-automat</a></li><li id="menu-item-193" class="submenu-icon-6 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-193"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-c-e/"><div class="submenu-icon"></div>Kategoria C&nbsp;+ E</a></li><li id="menu-item-208" class="submenu-icon-7 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-208"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a2/"><div class="submenu-icon"></div>Kategoria A2</a></li><li id="menu-item-207" class="submenu-icon-8 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-207"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b-e/"><div class="submenu-icon"></div>Kategoria B&nbsp;+ E</a></li><li id="menu-item-206" class="submenu-icon-9 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-206"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-d/"><div class="submenu-icon"></div>Kategoria D po&nbsp;B</a></li><li id="menu-item-3746" class="submenu-icon-9 menu-item menu-item-type-post_type menu-item-object-kursy menu-item-3746"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-d-po-c/"><div class="submenu-icon"></div>Kategoria D po&nbsp;C</a></li></ul></div><div class="kursy-submenu-item informacje-submenu"><div class="h4">Informacje</div><ul id="menu-informacje-kursanta" class="informacje-menu"><li id="menu-item-4045" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4045"><a href="https://www.naukajazdy.wroc.pl/akademia-dobrej-jazdy-liderem-w-zdawalnosci-egzaminow-word-wroclaw/">Akademia liderem zdawalności &#8211; WORD Wrocław</a></li><li id="menu-item-2544" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2544"><a href="https://www.naukajazdy.wroc.pl/terminy-szkolen/">Terminy szkoleń</a></li><li id="menu-item-395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-395"><a href="https://www.naukajazdy.wroc.pl/spotkania-organizacyjne/">Spotkania organizacyjne</a></li><li id="menu-item-3254" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3254"><a href="https://www.naukajazdy.wroc.pl/obszary-na-ktorych-dzialamy/">Obszary na&nbsp;których&nbsp;działamy</a></li><li id="menu-item-164" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164"><a href="https://www.naukajazdy.wroc.pl/badania-lekarskie-i-psychologiczne/">Badania lekarskie i&nbsp;psychologiczne</a></li><li id="menu-item-167" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-167"><a href="https://www.naukajazdy.wroc.pl/profil-kandydata-na-kierowce-pkk/">Profil Kandydata na&nbsp;Kierowcę – przewodnik 2026</a></li><li id="menu-item-396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-396"><a href="https://www.naukajazdy.wroc.pl/profil-kierowcy-zawodowego-pkz/">Profil Kierowcy Zawodowego (PKZ)</a></li><li id="menu-item-404" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-404"><a href="https://www.naukajazdy.wroc.pl/e-learning/">E-learning – teoria kursu</a></li><li id="menu-item-165" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165"><a href="https://www.naukajazdy.wroc.pl/plac-manewrowy/">Plac manewrowy</a></li><li id="menu-item-1425" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1425"><a href="https://www.naukajazdy.wroc.pl/jazdy-doszkalajace-wroclaw-wszystkie-kat-abcd-e/">Jazdy doszkalające</a></li><li id="menu-item-3324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3324"><a href="https://www.naukajazdy.wroc.pl/instruktorzy/">Instruktorzy</a></li><li id="menu-item-1423" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1423"><a href="https://www.naukajazdy.wroc.pl/driving-licences-in-english/">Driving licences in&nbsp;english</a></li><li id="menu-item-1791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1791"><a href="https://www.naukajazdy.wroc.pl/%d0%b2%d0%be%d0%b4%d1%96%d0%b9%d1%81%d1%8c%d0%ba%d1%96-%d0%bf%d1%80%d0%b0%d0%b2%d0%b0-%d1%83%d0%ba%d1%80%d0%b0%d1%97%d0%bd%d1%81%d1%8c%d0%ba%d0%be%d1%8e-%d0%bc%d0%be%d0%b2%d0%be%d1%8e/">Водійські права українською мовою</a></li><li id="menu-item-4331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4331"><a href="https://www.naukajazdy.wroc.pl/leksykon-znakow-drogowych/">Leksykon znaków drogowych</a></li><li id="menu-item-3823" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3823"><a href="https://www.naukajazdy.wroc.pl/slownik/">Słownik</a></li><li id="menu-item-1790" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1790"><a href="https://www.naukajazdy.wroc.pl/regulamin/">Regulamin</a></li><li id="menu-item-2785" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2785"><a href="https://www.naukajazdy.wroc.pl/mapa-strony/">Mapa Strony</a></li></ul></div></div><div class="kursy-menu-bestsellers"><div class="container"><p class="h2">Bestsellery</p><div class="arrow-wrapper">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" alt="arrow icon" width="52" height="16" /></div><div class="outer-wrapper swiper bestseller-menu-swiper"><div id="kursy-menu-bestseller-grid" class="swiper-wrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-prev"></div><div class="swiper-button-next"></div></div></div></div></div></li><li class="have-submenu">
+<a href="#" id="kierowcy-zawodowi" rel="nofollow">Kierowcy zawodowi</a><div class="kursy-hidden-submenu kierowcy-submenu"><div class="submenu-wrapper container"><div class="menu-main-menu-kierowcy-container"><ul id="menu-main-menu-kierowcy" class="submenu-list"><li id="menu-item-1741" class="submenu-icon-kierowcy-1 menu-item menu-item-type-post_type menu-item-object-page menu-item-1741"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/szkolenia-okresowe/"><div class="submenu-icon"></div>Szkolenie okresowe</a></li><li id="menu-item-1673" class="submenu-icon-kierowcy-2 menu-item menu-item-type-post_type menu-item-object-page menu-item-1673"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/kursy-kwalifikacji-przewoz-rzeczy/"><div class="submenu-icon"></div>Kursy kwalifikacji – przewóz rzeczy</a></li><li id="menu-item-1671" class="submenu-icon-kierowcy-3 menu-item menu-item-type-post_type menu-item-object-page menu-item-1671"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/adr-przewoz-materialow-niebezpiecznych/"><div class="submenu-icon"></div>ADR &#8211; Przewóz materiałów<br>niebezpiecznych</a></li><li id="menu-item-1672" class="submenu-icon-kierowcy-4 menu-item menu-item-type-post_type menu-item-object-page menu-item-1672"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/kursy-kwalifikacji-przewoz-osob/"><div class="submenu-icon"></div>Kurs kwalifikacji – przewóz osób</a></li><li id="menu-item-776" class="submenu-icon-kierowcy-5 menu-item menu-item-type-post_type menu-item-object-page menu-item-776"><a href="https://www.naukajazdy.wroc.pl/kursy-pakietowe/"><div class="submenu-icon"></div>Kursy pakietowe</a></li><li id="menu-item-1670" class="submenu-icon-kierowcy-6 menu-item menu-item-type-post_type menu-item-object-page menu-item-1670"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-instruktorow/"><div class="submenu-icon"></div>Szkolenia dla instruktorów nauki jazdy</a></li></ul></div><div class="kursy-submenu-item informacje-submenu"><div class="h4">Informacje</div><ul id="menu-informacje-kursanta-1" class="informacje-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4045"><a href="https://www.naukajazdy.wroc.pl/akademia-dobrej-jazdy-liderem-w-zdawalnosci-egzaminow-word-wroclaw/">Akademia liderem zdawalności &#8211; WORD Wrocław</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2544"><a href="https://www.naukajazdy.wroc.pl/terminy-szkolen/">Terminy szkoleń</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-395"><a href="https://www.naukajazdy.wroc.pl/spotkania-organizacyjne/">Spotkania organizacyjne</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3254"><a href="https://www.naukajazdy.wroc.pl/obszary-na-ktorych-dzialamy/">Obszary na&nbsp;których&nbsp;działamy</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164"><a href="https://www.naukajazdy.wroc.pl/badania-lekarskie-i-psychologiczne/">Badania lekarskie i&nbsp;psychologiczne</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-167"><a href="https://www.naukajazdy.wroc.pl/profil-kandydata-na-kierowce-pkk/">Profil Kandydata na&nbsp;Kierowcę – przewodnik 2026</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-396"><a href="https://www.naukajazdy.wroc.pl/profil-kierowcy-zawodowego-pkz/">Profil Kierowcy Zawodowego (PKZ)</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-404"><a href="https://www.naukajazdy.wroc.pl/e-learning/">E-learning – teoria kursu</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165"><a href="https://www.naukajazdy.wroc.pl/plac-manewrowy/">Plac manewrowy</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1425"><a href="https://www.naukajazdy.wroc.pl/jazdy-doszkalajace-wroclaw-wszystkie-kat-abcd-e/">Jazdy doszkalające</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3324"><a href="https://www.naukajazdy.wroc.pl/instruktorzy/">Instruktorzy</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1423"><a href="https://www.naukajazdy.wroc.pl/driving-licences-in-english/">Driving licences in&nbsp;english</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1791"><a href="https://www.naukajazdy.wroc.pl/%d0%b2%d0%be%d0%b4%d1%96%d0%b9%d1%81%d1%8c%d0%ba%d1%96-%d0%bf%d1%80%d0%b0%d0%b2%d0%b0-%d1%83%d0%ba%d1%80%d0%b0%d1%97%d0%bd%d1%81%d1%8c%d0%ba%d0%be%d1%8e-%d0%bc%d0%be%d0%b2%d0%be%d1%8e/">Водійські права українською мовою</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4331"><a href="https://www.naukajazdy.wroc.pl/leksykon-znakow-drogowych/">Leksykon znaków drogowych</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3823"><a href="https://www.naukajazdy.wroc.pl/slownik/">Słownik</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1790"><a href="https://www.naukajazdy.wroc.pl/regulamin/">Regulamin</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2785"><a href="https://www.naukajazdy.wroc.pl/mapa-strony/">Mapa Strony</a></li></ul></div></div></div></li><li><a href="https://www.naukajazdy.wroc.pl/faq/">FAQ</a></li><li><a href="https://www.naukajazdy.wroc.pl/kontakt/">Kontakt</a></li><li><a href="https://www.naukajazdy.wroc.pl/blog/">Blog</a></li><li><a href="https://www.naukajazdy.wroc.pl/opinie/">Opinie</a></li></ul></nav><div class="top-bar-icons">
+<a class="phone-icon" href="tel:+48575757408"><img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/phone-icon.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/phone-icon.png" rel="nofollow" alt="phone icon" width="50" height="50" /></a>
+<a class="search-icon" href="#"><img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/search-icon.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/search-icon.png" rel="nofollow" alt="search icon" width="40" height="40" /></a></div><nav class="kursy-hidden-submenu top-bar-secondary-menu-modal"><div class="menu-wrapper"><ul id="menu-secondary-desktop-menu" class="secondary-menu"><li id="menu-item-105" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-105"><a rel="nofollow" href="#">Działy szkoleniowe</a><ul class="sub-menu"><li id="menu-item-110" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-110"><a href="https://www.naukajazdy.wroc.pl/akademia-dobrej-jazdy/">Akademia Dobrej Jazdy</a></li><li id="menu-item-109" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-109"><a href="https://www.naukajazdy.wroc.pl/akademia-motocyklisty/">Akademia Motocyklisty</a></li><li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-108"><a href="https://www.naukajazdy.wroc.pl/akademia-operatora/">Akademia Operatora</a></li><li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-107"><a href="https://www.naukajazdy.wroc.pl/akademia-spawania/">Akademia Spawania</a></li><li id="menu-item-106" class="menu-item menu-item-type-post_type menu-item-object-akademie menu-item-106"><a href="https://www.naukajazdy.wroc.pl/akademia-dla-przemyslu/">Akademia dla Przemysłu</a></li></ul></li><li id="menu-item-112" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-112"><a rel="nofollow" href="#">Dla Biznesu</a><ul class="sub-menu"><li id="menu-item-113" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"><a href="https://www.naukajazdy.wroc.pl/oferta-dla-firm-i-instytucji/">Dla firm</a></li><li id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="https://www.naukajazdy.wroc.pl/umowy-ramowe/">Umowy ramowe</a></li></ul></li><li id="menu-item-115" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-115"><a rel="nofollow" href="#">O&nbsp;Nas</a><ul class="sub-menu"><li id="menu-item-117" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117"><a href="https://www.naukajazdy.wroc.pl/o-akademii/">O&nbsp;Akademii</a></li><li id="menu-item-3323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3323"><a href="https://www.naukajazdy.wroc.pl/instruktorzy/">Instruktorzy</a></li><li id="menu-item-119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-119"><a href="https://www.naukajazdy.wroc.pl/pojazdy-szkoleniowe/">Pojazdy szkoleniowe w&nbsp;Akademii Dobrej Jazdy</a></li><li id="menu-item-1143" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1143"><a href="https://www.naukajazdy.wroc.pl/pracownie-szkoleniowe/">Pracownie szkoleniowe</a></li><li id="menu-item-118" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118"><a href="https://www.naukajazdy.wroc.pl/park-maszyn/">Park maszyn</a></li><li id="menu-item-409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-409"><a href="https://www.naukajazdy.wroc.pl/badania-i-rozwoj-prace-badawcze/">Badania i&nbsp;rozwój – prace badawcze</a></li><li id="menu-item-120" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-120"><a href="https://www.naukajazdy.wroc.pl/w-trosce-o-srodowisko/">W&nbsp;trosce o&nbsp;środowisko</a></li><li id="menu-item-1138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1138"><a href="https://www.naukajazdy.wroc.pl/projekty-ue/">Projekty UE</a></li><li id="menu-item-2694" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2694"><a href="https://www.naukajazdy.wroc.pl/zapytanie-ofertowe/">USŁUGI DODATKOWE</a></li><li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-116"><a href="https://www.naukajazdy.wroc.pl/e-learning/">E-learning – teoria kursu</a></li><li id="menu-item-2492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2492"><a href="https://www.naukajazdy.wroc.pl/faq/">FAQ</a></li></ul></li><li id="menu-item-122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-122"><a rel="nofollow" href="#">Kontakt</a><ul class="sub-menu"><li id="menu-item-123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123"><a href="tel:+48-57-57-57-408">+48 57 57 57 408</a></li><li id="menu-item-124" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-124"><a href="mailto:adjsuperosk@gmail.com">adjsuperosk@gmail.com</a></li><li id="menu-item-125" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-125"><a rel="nofollow" href="#"><strong>Adresy ośrodków:</strong> <br>Wiaduktowa 21<br>Bierutowska 1A<br>Wrocławczyka 42/1a</a></li></ul></li></ul><div class="social-media-links">
+<a href="https://www.facebook.com/adjsuperoska/" class="facebook-link" target="_blank" rel="noopener noreferrer"></a>
+<a href="https://www.instagram.com/akademia_szkolen/" class="instagram-link" target="_blank" rel="noopener noreferrer"></a>
+<a href="https://www.youtube.com/@akademia_szkolen/" class="youtube-link" target="_blank" rel="noopener noreferrer"></a>
+<a href="https://www.linkedin.com/company/akademiaszkolen/" class="linkedin-link" target="_blank" rel="noopener noreferrer"></a></div><div class="secondary-menu-oferta-btn">
+<a href="https://www.naukajazdy.wroc.pl/oferta/">Pełna oferta</a></div></div></nav><div class="eng-ukr-info-links">
+<a class="eng-link" href="https://www.naukajazdy.wroc.pl/driving-licences-in-english/">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-icons/uk-flag-icon.png.webp" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-icons/uk-flag-icon.png.webp" alt="english flag icon" width="32" height="32" />
+</a>
+<a class="ukr-link mobile-hide" href="https://www.naukajazdy.wroc.pl/водійські-права-українською-мовою/">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-icons/ukr-flag-icon.png.webp" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-icons/ukr-flag-icon.png.webp" alt="ukrainian flag icon" width="32" height="32" />
+</a></div><div class="secondary-desktop-menu-btn">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/hamburger-icon.png" class="desktop-hamb-icon" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/hamburger-icon.png" alt="secondary menu icon" width="86" height="51" /><img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/mobile-close-btn.png" class="hidden-icon mobile-close-icon" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/mobile-close-btn.png" alt="secondary menu icon" width="47" height="47" /><p>MENU</p></div><div class="secondary-mobile-menu-btn">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/hamburger-mobile.png" class="mobile-hamb-icon" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/hamburger-mobile.png" alt="secondary menu icon" width="50" height="51" />
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/mobile-close-btn.png" class="hidden-icon mobile-close-icon" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/mobile-close-btn.png" alt="secondary menu icon" width="47" height="47" /></div></header><main class="page-main-content"><p id="breadcrumbs"><span><span><a href="https://www.naukajazdy.wroc.pl/">Strona główna</a></span> &gt; <span class="breadcrumb_last" aria-current="page"><strong>Formularz zapisów na prawo jazdy</strong></span></span></p><div class="adjn adjf"><div class="adjf__card"><button class="adjf__th adjf__open" type="button" data-src="media/16-lat.mp4" aria-label="Odtwórz film"><img src="media/16-lat.jpg" alt=""><span class="adjn-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span></button><div><div class="adjf__t">Zanim wypełnisz formularz</div><p class="adjf__d">Instruktorka ADJ w 16 sekund mówi, od kiedy możesz zacząć kurs i czego potrzebujesz.</p></div><button class="adjf__b adjf__open" type="button" data-src="media/16-lat.mp4">Obejrzyj film</button></div></div><form id="formularz-zapisy" method="POST" action="https://www.naukajazdy.wroc.pl/formularz-submit/" autocomplete="on"><div class="form-step form-step-1 container active"><div class="form-header"><h1>Podanie na kurs <span class="mobile-disabled">|</span><br class="desktop-disabled"> Krok 1 z 4</h1><p>
+<strong>Krok 1.</strong>Wypełnij pola formularza, prześlemy Ci na
+mail szczegółowe informacje.<br />
+W następnym kroku uzupełnisz informacje potrzebne do zapisu na kurs.</p></div><ul class="form-grid-container"><li>
+<label for="form-fname">Imię <sup>*</sup></label>
+<input type="text" name="form-fname" id="form-fname" placeholder="Wpisz swoje imię" class="" minlength="2" maxlength="32" required autofocus />
+<span></span>
+<small></small>
+<label for="form-lname">Nazwisko <sup>*</sup></label>
+<input type="text" name="form-lname" id="form-lname" placeholder="Wpisz swoje nazwisko" minlength="2" maxlength="32" required />
+<span></span>
+<small></small>
+<label for="form-email">E-mail <sup>*</sup></label>
+<input type="email" name="form-email" id="form-email" placeholder="Wpisz swój e-mail" minlength="5" maxlength="48" required />
+<span></span>
+<small></small></li><li>
+<label for="form-birthplace">Miejsce urodzenia <sup>*</sup></label>
+<input type="text" name="form-birthplace" id="form-birthplace" placeholder="Wpisz miejsce urodzenia" minlength="2" maxlength="32" required />
+<span></span>
+<small></small></li><li class="formularz-kategoria-input"><div class="formularz-kategoria-input">
+<label for="form-category">Kategoria <sup>*</sup></label>
+<select id="form-category" name="form-category" required><option value="" selected></option>
+</select>
+<span></span>
+<small></small>
+<input type="hidden" name="form-category-ksiazka-ewidencji" id="form-category-ksiazka-ewidencji" value="" required>
+<input type="hidden" name="form-category-price" id="form-category-price" value="" required>
+<input type="hidden" name="form-termin-id" id="form-termin-id" value="" required>
+<input type="hidden" name="form-category-exam-price" id="form-category-exam-price" value="">
+<input type="hidden" name="form-category-exam-price-inc" id="form-category-exam-price-inc" value="">
+<input type="hidden" name="form-category-start-time" id="form-category-start-time" value=""></div><div class="formularz-data-input">
+<label for="form-date">Data kursu <sup>*</sup></label>
+<select name="form-date" id="form-date" required><option value="" data-termin-id="" selected></option>
+</select>
+<span></span>
+<small></small></div></li><li class="formularz-teoria">
+<label>Teoria</label>
+<select id="form-teoria" name="form-teoria"><option value="" selected></option>
+</select></li><li class="formularz-osrodek">
+<label>Ośrodek</label>
+<select id="form-osrodek" name="form-osrodek"><option value="" selected></option>
+</select></li><li class="formularz-pkk"><div class="pkk-checkbox-wrapper">
+<input type="checkbox" name="form-pkk-checkbox" id="form-pkk-checkbox">
+<label for="form-pkk-checkbox">Mam przydzielony nr PKK</label></div><div class="hidden form-pkk-dane">
+<label>Nr PKK (wpisz 20-cyfrowy numer PKK)</label><div class="input-pkk-group">
+<input type="text" name="form-pkk" id="form-pkk-1" maxlength=5 placeholder="- - - - -"><span>-</span>
+<input type="text" name="form-pkk" id="form-pkk-2" maxlength=5 placeholder="- - - - -"><span>-</span>
+<input type="text" name="form-pkk" id="form-pkk-3" maxlength=5 placeholder="- - - - -"><span>-</span>
+<input type="text" name="form-pkk" id="form-pkk-4" maxlength=5 placeholder="- - - - -"></div>
+<input type="hidden" name="form-pkk-total" id="form-pkk-total">
+<span></span>
+<small></small></div></li><li class="formularz-pkz"><div class="pkz-checkbox-wrapper">
+<input type="checkbox" name="form-pkz-checkbox" id="form-pkz-checkbox">
+<label for="form-pkz-checkbox">Mam przydzielony nr PKZ</label></div><div class="hidden form-pkz-dane">
+<label>Nr PKZ (wpisz 21-cyfrowy numer PKZ)</label><div class="input-pkz-group">
+<input type="text" name="form-pkz" id="form-pkz-1" maxlength=5 placeholder="- - - - -"><span>-</span>
+<input type="text" name="form-pkz" id="form-pkz-2" maxlength=5 placeholder="- - - - -"><span>-</span>
+<input type="text" name="form-pkz" id="form-pkz-3" maxlength=5 placeholder="- - - - -"><span>-</span>
+<input type="text" name="form-pkz" id="form-pkz-4" maxlength=6 placeholder="- - - - - -"></div>
+<input type="hidden" name="form-pkz-total" id="form-pkz-total">
+<span></span>
+<small></small></div></li><li>
+<input type="checkbox" name="form-regulamin" id="form-regulamin" required />
+<label for="form-regulamin">Akceptuję <a href="https://www.naukajazdy.wroc.pl/regulamin/" target="_blank" rel="noopener noreferrer"><strong>regulamin</strong></a> Akademii Dobrej Jazdy. <sup>*</sup></label></li><li>
+<input type="checkbox" name="form-rodo" id="form-rodo" required />
+<label for="form-rodo">Zapoznałem się z polityką prywatnośći <a href="https://www.naukajazdy.wroc.pl/polityka-prywatnosci/" target="_blank" rel="noopener noreferrer"><strong>Akademii Dobrej Jazdy - RODO</strong>.</a> Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w formularzu przez Zofia Rabsztyn Akademia Dobrej Jazdy oraz Akademia Szkoleń sp. z o.o. w celu rekrutacji na kurs. Zapoznałem się z Informacją udzieloną podczas zbierania moich danych osobowych. <sup>*</sup></label></li><li>
+<input type="checkbox" name="form-zgoda-marketing" id="form-zgoda-marketing" />
+<label for="form-zgoda-marketing">Wyrażam zgodę na otrzymywanie informacji handlowych od Zofia Rabsztyn Akademia Dobrej Jazdy oraz Akademia Szkoleń sp. z o.o drogą elektroniczną. Zapoznałem się z Informacją udzieloną podczas zbierania moich danych osobowych.</label></li><li>
+<input type="checkbox" name="form-zgoda-telefon" id="form-zgoda-telefon" />
+<label for="form-zgoda-telefon">Wyrażam zgodę na inicjowanie połączeń telefonicznych przez Zofia Rabsztyn Akademia Dobrej Jazdy oraz Akademia Szkoleń sp. z o.o w celu kontaktu o charakterze marketingowym. Zapoznałem się z Informacją udzieloną podczas zbierania moich danych osobowych.</label></li><li>
+<input type="checkbox" name="form-zgoda-required" id="form-zgoda-required" />
+<label for="form-zgoda-required">Akceptuję wszystkie wymagane zgody</label></li></ul><div class="prev-next-buttons">
+<a href="#" class="form-next-btn first-btn locked">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" alt="" width="52" height="28" />
+Dalej</a></div></div><div class="form-step form-step-2 container"><div class="form-header"><h1>Podanie na kurs <span class="mobile-disabled">|</span><br class="desktop-disabled"> Krok 2 z 4</h1><p>
+<strong>Krok 2.</strong>Wypełnij formularz, potrzebujemy tych danych
+aby móc <br />zapisać Cię na wybrany przez Ciebie kurs.</p></div><ul class="form-grid-container"><li>
+<label for="form-nationality">Narodowość</label>
+<select name="form-nationality" id="form-nationality"><option value="" disabled selected hidden>
+Podaj Twoją narodowość</option><option value="PL">Polska</option><option value="UA">Ukraina</option><option value="RU">Rosja</option><option value="BY">Białoruś</option><option value="CZ">Czechy</option><option value="AF">Afganistan</option><option value="SK">Słowacja</option><option value="AS">Arabia Saudyjska</option><option value="SY">Syria</option><option value="IR">Irak</option><option value="BG">Bangladesz</option><option value="TK">Turcja</option><option value="KU">Kuwejt</option><option value="GH">Ghana</option><option value="LB">Liban</option><option value="EN">Anglia</option><option value="DE">Niemcy</option><option value="IN">Indie</option><option value="GE">Gruzja</option><option value="EY">Egipt</option><option value="FR">Francja</option><option value="NL">Niderlandy</option><option value="SWE">Szwecja</option><option value="EE">Estonia</option><option value="FI">Finlandia</option><option value="NOR">Norwegia</option><option value="MOL?">Republika Mołdawii</option><option value="OTHER">Inna</option>        </select>
+<label for="form-pesel">PESEL <sup>*</sup></label>
+<input type="text" name="form-pesel" id="form-pesel" minlength="10" maxlength="12" required />
+<span></span>
+<small></small></li><li class="formularz-adres">
+<label for="form-adres">Adres zamieszkania <sup>*</sup></label>
+<input type="text" name="form-adres" id="form-adres" placeholder="Ulica i numer" minlength="2" maxlength="48" required />
+<span></span>
+<small></small>
+<input type="text" name="form-city" class="form-city" id="form-city" placeholder="Miejscowość" minlength="2" maxlength="48" required />
+<span></span>
+<small></small>
+<input type="text" name="form-city-id" class="form-city-id" id="form-city-id" placeholder="00-000" minlength="4" maxlength="24" required autocomplete="postal-code" />
+<span></span>
+<small></small><div class="adres-checkbox-wrapper">
+<input type="checkbox" name="form-adres-checkbox" id="form-adres-checkbox">
+<label for="form-adres-checkbox">Adres korespondencyjny, inny niż adres zamieszkania</label></div><div class="hidden form-adres-dane">
+<input type="text" name="form-contact-adres" id="form-contact-adres" placeholder="Ulica i numer" minlength="2" maxlength="48" />
+<span></span>
+<small></small>
+<input type="text" name="form-contact-city" class="form-city" id="form-contact-city" placeholder="Miejscowość" minlength="2" maxlength="48" />
+<span></span>
+<small></small>
+<input type="text" name="form-contact-city-id" class="form-city-id" id="form-contact-city-id" placeholder="00-000" minlength="2" maxlength="24" autocomplete="postal-code" />
+<span></span>
+<small></small></div></li><li>
+<label for="form-phone">Telefon kontaktowy <sup>*</sup></label>
+<input type="tel" name="form-phone" id="form-phone" placeholder="+XX(X) XXX XXX XXX" minlength="6" maxlength="18" required />
+<span></span>
+<small></small></li><li class="formularz-firma"><div class="firma-checkbox-wrapper">
+<input type="checkbox" name="form-firma-checkbox" id="form-firma-checkbox">
+<label for="form-firma-checkbox">Firma - dane do faktury</label></div><div class="hidden form-firma-dane">
+<label for="form-firma-name">Dane firmy do faktury <sup>*</sup></label>
+<input type="text" name="form-firma-name" id="form-firma-name" placeholder="Pełna nazwa firmy" minlength="2" maxlength="80">
+<span></span>
+<small></small>
+<input type="text" name="form-firma-adres" id="form-firma-adres" placeholder="Ulica" minlength="2" maxlength="48">
+<span></span>
+<small></small>
+<input type="text" name="form-firma-city" class="form-city" id="form-firma-city" placeholder="Miejscowość" minlength="2" maxlength="48">
+<span></span>
+<small></small>
+<input type="text" name="form-firma-city-id" class="form-city-id" id="form-firma-city-id" placeholder="00-000" minlength="2" maxlength="24">
+<span></span>
+<small></small>
+<input type="text" name="form-firma-nip" id="form-firma-nip" placeholder="NIP" minlength="9" maxlength="16">
+<span></span>
+<small></small>
+<input type="tel" name="form-firma-phone" id="form-firma-phone" placeholder="+48 xxx xxx xxx" minlength="6" maxlength="16">
+<span></span>
+<small></small></div></li></ul><div class="prev-next-buttons">
+<a href="#" class="form-prev-btn">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" alt="" width="52" height="28" />
+Wstecz
+</a>
+<a href="#" class="form-next-btn second-btn">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" alt="" width="52" height="28" />
+Dalej
+</a></div></div><div class="form-step form-step-3 container"><div class="form-header"><h1>Podanie na kurs <span class="mobile-disabled">|</span><br class="desktop-disabled"> Krok 3 z 4</h1><p>
+<strong>Krok 3.</strong>Sprawdź poprawność danych i potwierdź chęć
+zapisu na kurs.</p></div><div class="form-data-overview">
+<template id="formularz-podsumowanie-template"><div class="formularz-template"><h2>PODANIE</h2><div class="underline-short"></div><div class="p-1 div-1"><p>Proszę o przyjęcie na kurs kat. <strong><span>{KATEGORIA}</span></strong></p><p class="single-course-teoria-info">Forma realizacji kursu teoretycznego: <strong><span>{Teoria}</span></strong></p></div><div class="underline-short"></div><div class="dane-osobowe"><dl><dt>Imię i nazwisko:</dt><dd>{IMIĘ} {NAZWISKO}</dd><dt>PESEL:</dt><dd>{PESEL}</dd><dt>Miejsce urodzenia:</dt><dd>{URODZONY}</dd><dt>Adres zamieszkania:</dt><dd>{ADRES} {KOD} {MIASTO}</dd><dt class="hidden adres-korespondencyjny">Adres korespondencyjny:</dt><dd class="hidden adres-korespondencyjny-value">{ADRES2} {KOD2} {MIASTO2}</dd><dt>Telefon kontaktowy:</dt><dd>{TELEFON}</dd><dt>E-mail:</dt><dd>{E-MAIL}</dd><dt class="hidden pkk-label"> Nr PKK:</dt><dd class="hidden pkk-field">{PKK}</dd><dt class="hidden pkz-label"> Nr PKZ:</dt><dd class="hidden pkz-field">{PKZ}</dd></dl></div><div class="cena-kursu"><p>
+Niniejszym zobowiązuje się do uiszczenia pełnej opłaty za kurs w
+kwocie:</p><p><strong>{CENA_KURSU} PLN</strong></p><div class="hidden exam-price-info">{EXAM PRICE INFO}</div></div><div class="underline-short"></div><div class="p-1 dane-kursu"><ul><li class="kurs-osrodek">Kurs realizowany w ośrodku: <strong>{OSRODEK}</strong></li><li class="kurs-daty">Data rozpoczęcia: <strong>{DATA_KURSU}</strong></li><li class="kurs-ksiazka">Książka ewidencji: <strong>{KSIAZKA}</strong></li></ul></div><div class="underline-short"></div><div class="p-1 udzielone-zgody"><h3>Udzielone zgody</h3><p>Akceptuję regulamin <strong>Akademii Dobrej Jazdy.</strong></p><p>
+Wyrażam zgodę na przetwarzanie moich danych
+osobowych zawartych w formularzu przez Zofia Rabsztyn Akademia Dobrej
+Jazdy oraz Akademia Szkoleń sp. z o.o. w celu rekrutacji na kurs.
+Zapoznałem się z Informacją udzieloną podczas zbierania moich danych
+osobowych.</p><p class="hidden zgoda-marketing">
+Wyrażam zgodę na otrzymywanie informacji handlowych
+od Zofia Rabsztyn Akademia Dobrej Jazdy oraz Akademia Szkoleń sp. z
+o.o drogą elektroniczną. Zapoznałem się z Informacją udzieloną podczas
+zbierania moich danych osobowych.</p><p class="hidden zgoda-telefon">
+Wyrażam zgodę na inicjowanie połączeń
+telefonicznych przez Zofia Rabsztyn Akademia Dobrej Jazdy oraz
+Akademia Szkoleń sp. z o.o w celu kontaktu o charakterze
+marketingowym. Zapoznałem się z Informacją udzieloną podczas zbierania
+moich danych osobowych.</p></div><div class="underline-short"></div><div class="hidden p-1 dane-firmy"><h3>Dane firmy / dane do faktury:</h3><dl><dt>Pełna nazwa firmy:</dt><dd>{NAZWA_FIRMA}</dd><dt>Adres firmy:</dt><dd>{ADRES_FIRMA} {KOD_FIRMA} {MIASTO_FIRMA}</dd><dt>NIP:</dt><dd>{NIP}</dd><dt>Telefon:</dt><dd>{TELEFON_FIRMA}</dd></dl><p>
+<strong>Oświadczam że zostałem skierowany na szkolenie przez wyżej
+wymienioną firmę.</strong></p></div><div class="hidden firma-underline underline-short"></div></div>
+</template></div><div class="payment-options"><div class="form-header"><h2>Płatność za kurs <span class="mobile-disabled">|</span><br class="desktop-disabled"> Krok 4 z 4</h2><p>
+<strong>Krok 4.</strong>Wybierz formę płatności za kurs.</p></div><div class="payment-office payment-single-option"><div class="input-wrapper">
+<input type="radio" name="form-payment-type" id="form-payment-office" value="office" checked>
+<label for="form-payment-office"><strong>Płatność w biurze</strong></label></div><div class="payment-info"><p>
+Możesz zapłacić gotówką lub kartą w jednym z naszych ośrodków.</p><div class="osrodki-info"><div class="wiaduktowa"><h4>Wiaduktowa 21, Wrocław</h4><p>
+poniedziałek 8:00-17:30<br />
+wtorek 8:00-17:00<br />
+środa 8:00-17:00<br />
+czwartek 8:00-17:00<br />
+piątek 8:00-17:00</p></div><div class="bierutowska"><h4>Bierutowska 1a, Wrocław</h4><p>
+poniedziałek 10:00-16:00<br />
+wtorek 9:00-17:00<br />
+środa 9:00-17:00<br />
+czwartek 9:00-17:00<br />
+piątek 8:00-16:00</p></div><div class="sienkiewicza"><h4>Wrocławczyka 42, Wrocław</h4><p>
+poniedziałek 10:00-17:00<br />
+wtorek 9:00-17:00<br />
+środa 9:00-17:00<br />
+czwartek 9:00-17:00<br />
+piątek 8:00-16:00</p></div></div></div></div><div class="payment-bank-transfer payment-single-option"><div class="input-wrapper">
+<input type="radio" name="form-payment-type" id="form-payment-bank-transfer" value="transfer">
+<label for="form-payment-bank-transfer"><strong>Przelew tradycyjny na konto</strong></label></div><div class="payment-info"><div class="account-number"><p class="text">PKO BANK POLSKI</p><p class="number">PL 31 1020 5226 0000 6402 0261 0855</p></div><p>
+Akademia Dobrej Jazdy Sp. z o.o.<br />
+ul. Bierutowska 1A, 51-317 Wrocław<br />
+NIP 895 227 45 71 <br /></p><p>
+W tytule proszę wpisać imię, nazwisko, datę urodzenia oraz za co dokonywany jest przelew. W przypadku firm
+prosimy dodać NIP nabywcy - potrzebny do wystawienia faktury zgodnie z Dz.U. poz. 1520.</p></div></div><div class="payment-online payment-single-option"><div class="input-wrapper">
+<input type="radio" name="form-payment-type" id="form-payment-online" value="online">
+<label for="form-payment-online"><strong>Płatność online - Przelewy24</strong></label></div><div class="payment-info">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/social-media-icons/przelewy24_logo.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/social-media-icons/przelewy24_logo.png" alt="przelewy-24 logo" width="300" height="101" /><p>
+Wybranie tej opcji przekieruje cię do bramki płatności Przelewy 24 po wysłaniu podania.</p></div></div><div class="payment-online-installment payment-single-option"><div class="input-wrapper">
+<input type="radio" name="form-payment-type" id="form-payment-online-installment" value="online-installment">
+<label for="form-payment-online-installment"><strong>Kurs na raty - płatność ratalna obsługiwana przez Przelewy24</strong></label></div><div class="payment-info">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/social-media-icons/przelewy24_logo.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/social-media-icons/przelewy24_logo.png" alt="przelewy-24 logo" width="300" height="101" /><p>
+Wybranie tej opcji przekieruje cię do bramki płatności ratalnej Przelewy 24 po wysłaniu podania.</p></div></div></div><div class="potwierdzenie-poprawnosci">
+<input type="checkbox" name="form-poprawnosc" id="form-poprawnosc" />
+<label for="form-poprawnosc">Dokonuję zapisu z obowiązkiem zapłaty, potwierdzam poprawność wprowadzonych danych i wysyłam podanie na kurs.</label>
+<input type="hidden" name="data-overview" id="collected-data-overview"></div><div class="prev-next-buttons">
+<a href="#" class="form-prev-btn">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" alt="" width="52" height="28" />
+Wstecz</a>
+<input class="locked" type="submit" value="Wyślij" /></div></div></form></main><div class="fair-price-info-slider">
+<a href="https://www.naukajazdy.wroc.pl/polityka-cenowa/"><div class="inner-wrapper no-scrollbar"><div class="h4">Przejrzyste ceny bez niespodzianek</div>
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " alt="thumbs up icon" width="80" height="80" /><div class="h4">Nie doliczamy ukrytych opłat</div>
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " alt="thumbs up icon" width="80" height="80" /></div><div class="inner-wrapper no-scrollbar"><div class="h4">Przejrzyste ceny bez niespodzianek</div>
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " alt="thumbs up icon" width="80" height="80" /><div class="h4">Nie doliczamy ukrytych opłat</div>
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " alt="thumbs up icon" width="80" height="80" /></div><div class="inner-wrapper no-scrollbar"><div class="h4">Przejrzyste ceny bez niespodzianek</div>
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " alt="thumbs up icon" width="80" height="80" /><div class="h4">Nie doliczamy ukrytych opłat</div>
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/thumbs-up-icon.png " alt="thumbs up icon" width="80" height="80" /></div>
+</a></div><footer><div class="footer-menu container"><div class="kursy-footer-menu"><div class="h4 mobile-accordion">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-down-arrow.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-down-arrow.png" alt="" width="37" height="21" />KURSY</div><div class="underline-long"></div><ul id="menu-footer-kursy" class="hidden-footer-menu wrapper"><li id="menu-item-263" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-263"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a/">Prawo jazdy kat. A</a></li><li id="menu-item-262" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-262"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a1/">Prawo jazdy kat.  A1</a></li><li id="menu-item-254" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-254"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-a2/">Prawo jazdy kat. A2</a></li><li id="menu-item-3741" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-3741"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-am-motorower/">Prawo jazdy kat. AM&nbsp;(motorower)</a></li><li id="menu-item-264" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-264"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b/">Prawo jazdy kat. B</a></li><li id="menu-item-256" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-256"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b-automat/">Prawo jazdy kat. B-automat</a></li><li id="menu-item-255" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-255"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-c-e/">Prawo jazdy kat. C&nbsp;+ E</a></li><li id="menu-item-253" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-253"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-b-e/">Prawo jazdy kat. B&nbsp;+ E</a></li><li id="menu-item-261" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-261"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-c/">Prawo jazdy kat. C</a></li><li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-252"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-d/">Prawo jazdy kat. D po&nbsp;B</a></li><li id="menu-item-3748" class="menu-item menu-item-type-post_type menu-item-object-kursy menu-item-3748"><a href="https://www.naukajazdy.wroc.pl/kursy/prawo-jazdy-kat-d-po-c/">Prawo jazdy kat. D po&nbsp;B</a></li><li id="menu-item-1679" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1679"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-instruktorow/">Szkolenia dla instruktorów nauki jazdy</a></li><li id="menu-item-1740" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1740"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/szkolenia-okresowe/">Szkolenie okresowe i&nbsp;świadectwo kwalifikacyjne C&nbsp;dla kierowców zawodowych we&nbsp;Wrocławiu</a></li><li id="menu-item-1681" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1681"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/kursy-kwalifikacji-przewoz-osob/">Kursy kwalifikacji – przewóz osób</a></li><li id="menu-item-1682" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1682"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/kursy-kwalifikacji-przewoz-rzeczy/">Kursy kwalifikacji – przewóz rzeczy</a></li><li id="menu-item-1680" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1680"><a href="https://www.naukajazdy.wroc.pl/szkolenia-dla-kierowcow/adr-przewoz-materialow-niebezpiecznych/">Kurs ADR – przewóz materiałów niebezpiecznych</a></li><li id="menu-item-845" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-845"><a href="https://www.naukajazdy.wroc.pl/kursy-pakietowe/">Kursy pakietowe</a></li></ul></div><div class="informacje-footer-menu"><div class="h4 mobile-accordion"><img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-down-arrow.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-down-arrow.png" alt="" width="37" height="21" />INFORMACJE</div><div class="underline-long"></div><ul id="menu-informacje-kursanta-2" class="hidden-footer-menu wrapper"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4045"><a href="https://www.naukajazdy.wroc.pl/akademia-dobrej-jazdy-liderem-w-zdawalnosci-egzaminow-word-wroclaw/">Akademia liderem zdawalności &#8211; WORD Wrocław</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2544"><a href="https://www.naukajazdy.wroc.pl/terminy-szkolen/">Terminy szkoleń</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-395"><a href="https://www.naukajazdy.wroc.pl/spotkania-organizacyjne/">Spotkania organizacyjne</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3254"><a href="https://www.naukajazdy.wroc.pl/obszary-na-ktorych-dzialamy/">Obszary na&nbsp;których&nbsp;działamy</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164"><a href="https://www.naukajazdy.wroc.pl/badania-lekarskie-i-psychologiczne/">Badania lekarskie i&nbsp;psychologiczne</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-167"><a href="https://www.naukajazdy.wroc.pl/profil-kandydata-na-kierowce-pkk/">Profil Kandydata na&nbsp;Kierowcę – przewodnik 2026</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-396"><a href="https://www.naukajazdy.wroc.pl/profil-kierowcy-zawodowego-pkz/">Profil Kierowcy Zawodowego (PKZ)</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-404"><a href="https://www.naukajazdy.wroc.pl/e-learning/">E-learning – teoria kursu</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165"><a href="https://www.naukajazdy.wroc.pl/plac-manewrowy/">Plac manewrowy</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1425"><a href="https://www.naukajazdy.wroc.pl/jazdy-doszkalajace-wroclaw-wszystkie-kat-abcd-e/">Jazdy doszkalające</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3324"><a href="https://www.naukajazdy.wroc.pl/instruktorzy/">Instruktorzy</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1423"><a href="https://www.naukajazdy.wroc.pl/driving-licences-in-english/">Driving licences in&nbsp;english</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1791"><a href="https://www.naukajazdy.wroc.pl/%d0%b2%d0%be%d0%b4%d1%96%d0%b9%d1%81%d1%8c%d0%ba%d1%96-%d0%bf%d1%80%d0%b0%d0%b2%d0%b0-%d1%83%d0%ba%d1%80%d0%b0%d1%97%d0%bd%d1%81%d1%8c%d0%ba%d0%be%d1%8e-%d0%bc%d0%be%d0%b2%d0%be%d1%8e/">Водійські права українською мовою</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4331"><a href="https://www.naukajazdy.wroc.pl/leksykon-znakow-drogowych/">Leksykon znaków drogowych</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3823"><a href="https://www.naukajazdy.wroc.pl/slownik/">Słownik</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1790"><a href="https://www.naukajazdy.wroc.pl/regulamin/">Regulamin</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2785"><a href="https://www.naukajazdy.wroc.pl/mapa-strony/">Mapa Strony</a></li></ul></div><div class="dane-przelewy"><div class="h4 mobile-accordion"><img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-down-arrow.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/menu-down-arrow.png" alt="" width="37" height="21" />DANE DO PRZELEWU</div><div class="underline-long"></div><div class="hidden-footer-menu wrapper"><div class="h5">Akademia Dobrej Jazdy Sp. z o.o.<br />
+ul. Bierutowska 1A, 51-317 Wrocław <br />
+NIP 895 227 45 71</div><p class="przelewy-nr-konta">PKO BANK POLSKI<br />PL 31 1020 5226 0000 6402 0261 0855</p><p class="przelewy-text">
+W tytule proszę wpisać imię, nazwisko, datę urodzenia oraz za co dokonywany jest przelew. W przypadku firm prosimy dodać NIP nabywcy - potrzebny do wystawienia faktury zgodnie z Dz.U. poz. 1520.</p></div></div><div class="footer-contact"><div class="h4">KONTAKT</div><div class="underline-long"></div><div class="underline-short"></div><a href="tel:+48-57-57-57-408" class="footer-phone-link">tel./fax 57 57 57 408</a>
+<a href="mailto:adjsuperosk@gmail.com" class="footer-mail-link">adjsuperosk@gmail.com</a><p class="adresy-osrodkow">
+<strong>Adresy ośrodków:</strong><br />
+Wiaduktowa 21<br />
+Bierutowska 1A <br />
+Wrocławczyka 42 / 1a<br /></p><div class="social-media-links">
+<a href="https://www.facebook.com/adjsuperoska/" class="facebook-link" target="_blank" rel="noopener noreferrer"></a>
+<a href="https://www.instagram.com/akademia_szkolen/" class="instagram-link" target="_blank" rel="noopener noreferrer"></a>
+<a href="https://www.youtube.com/@akademia_szkolen/" class="youtube-link" target="_blank" rel="noopener noreferrer"></a>
+<a href="https://www.linkedin.com/company/akademiaszkolen/" class="linkedin-link" target="_blank" rel="noopener noreferrer"></a></div></div></div><div class="recaptcha-statement container">
+Ta strona jest chroniona przez reCAPTCHA i mają do niej zastosowanie
+<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer nofollow">Polityka&nbsp;prywatności</a> i&nbsp;
+<a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer nofollow">Warunki&nbsp;korzystania</a> z&nbsp;usługi Google.</div><div class="copyright-bar"><p>Copyright © 2022 Akademia Dobrej jazdy. All rights reserved.<br />
+<span>Designed by: <a href="" class="fuku-link">FU-KU Creative Concept</a></span></p><div class="scroll-up-btn" id="scroll-up-btn">
+<img data-lazyloaded="1" src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" data-orig-src="https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/white-arrow-up.png" alt="" width="52" height="28" /></div></div></footer> <script type="speculationrules">{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/akademia_custom/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}</script> <script id="wp-i18n-js-after" type="litespeed/javascript">wp.i18n.setLocaleData({'text direction\u0004ltr':['ltr']})</script> <script id="contact-form-7-js-translations" type="litespeed/javascript">(function(domain,translations){var localeData=translations.locale_data[domain]||translations.locale_data.messages;localeData[""].domain=domain;wp.i18n.setLocaleData(localeData,domain)})("contact-form-7",{"translation-revision-date":"2025-12-11 12:03:49+0000","generator":"GlotPress\/4.0.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);","lang":"pl"},"This contact form is placed in the wrong place.":["Ten formularz kontaktowy zosta\u0142 umieszczony w niew\u0142a\u015bciwym miejscu."],"Error:":["B\u0142\u0105d:"]}},"comment":{"reference":"includes\/js\/index.js"}})</script> <script id="contact-form-7-js-before" type="litespeed/javascript">var wpcf7={"api":{"root":"https:\/\/www.naukajazdy.wroc.pl\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":1}</script> <script id="kursy-js-js-extra" type="litespeed/javascript">var php_vars={"jsonMapCategory":null,"jsonMapPakietId":null,"formularzUrl":"https://www.naukajazdy.wroc.pl/formularz-zapisow/","apiToken":"ab52302c6179144d7bf8f6c2e82e3553"}</script> <script id="jquery-lazyloadxt-js-extra" type="litespeed/javascript">var a3_lazyload_params={"apply_images":"1","apply_videos":"1"}</script> <script id="jquery-lazyloadxt-extend-js-extra" type="litespeed/javascript">var a3_lazyload_extend_params={"edgeY":"0","horizontal_container_classnames":""}</script> <script id="google-recaptcha-js" type="litespeed/javascript" data-src="https://www.google.com/recaptcha/api.js?render=6Lf0sAgjAAAAAJtiIMrxK9uvp-AMU-hjk4PLnJJ-&#038;ver=3.0"></script> <script id="wpcf7-recaptcha-js-before" type="litespeed/javascript">var wpcf7_recaptcha={"sitekey":"6Lf0sAgjAAAAAJtiIMrxK9uvp-AMU-hjk4PLnJJ-","actions":{"homepage":"homepage","contactform":"contactform"}}</script> <div id="tt" role="tooltip" aria-label="Tooltip content" class="cmtt"></div><script data-no-optimize="1">window.lazyLoadOptions=Object.assign({},{threshold:300},window.lazyLoadOptions||{});!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).LazyLoad=e()}(this,function(){"use strict";function e(){return(e=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n,a=arguments[e];for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(t[n]=a[n])}return t}).apply(this,arguments)}function o(t){return e({},at,t)}function l(t,e){return t.getAttribute(gt+e)}function c(t){return l(t,vt)}function s(t,e){return function(t,e,n){e=gt+e;null!==n?t.setAttribute(e,n):t.removeAttribute(e)}(t,vt,e)}function i(t){return s(t,null),0}function r(t){return null===c(t)}function u(t){return c(t)===_t}function d(t,e,n,a){t&&(void 0===a?void 0===n?t(e):t(e,n):t(e,n,a))}function f(t,e){et?t.classList.add(e):t.className+=(t.className?" ":"")+e}function _(t,e){et?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\s+)"+e+"(\\s+|$)")," ").replace(/^\s+/,"").replace(/\s+$/,"")}function g(t){return t.llTempImage}function v(t,e){!e||(e=e._observer)&&e.unobserve(t)}function b(t,e){t&&(t.loadingCount+=e)}function p(t,e){t&&(t.toLoadCount=e)}function n(t){for(var e,n=[],a=0;e=t.children[a];a+=1)"SOURCE"===e.tagName&&n.push(e);return n}function h(t,e){(t=t.parentNode)&&"PICTURE"===t.tagName&&n(t).forEach(e)}function a(t,e){n(t).forEach(e)}function m(t){return!!t[lt]}function E(t){return t[lt]}function I(t){return delete t[lt]}function y(e,t){var n;m(e)||(n={},t.forEach(function(t){n[t]=e.getAttribute(t)}),e[lt]=n)}function L(a,t){var o;m(a)&&(o=E(a),t.forEach(function(t){var e,n;e=a,(t=o[n=t])?e.setAttribute(n,t):e.removeAttribute(n)}))}function k(t,e,n){f(t,e.class_loading),s(t,st),n&&(b(n,1),d(e.callback_loading,t,n))}function A(t,e,n){n&&t.setAttribute(e,n)}function O(t,e){A(t,rt,l(t,e.data_sizes)),A(t,it,l(t,e.data_srcset)),A(t,ot,l(t,e.data_src))}function w(t,e,n){var a=l(t,e.data_bg_multi),o=l(t,e.data_bg_multi_hidpi);(a=nt&&o?o:a)&&(t.style.backgroundImage=a,n=n,f(t=t,(e=e).class_applied),s(t,dt),n&&(e.unobserve_completed&&v(t,e),d(e.callback_applied,t,n)))}function x(t,e){!e||0<e.loadingCount||0<e.toLoadCount||d(t.callback_finish,e)}function M(t,e,n){t.addEventListener(e,n),t.llEvLisnrs[e]=n}function N(t){return!!t.llEvLisnrs}function z(t){if(N(t)){var e,n,a=t.llEvLisnrs;for(e in a){var o=a[e];n=e,o=o,t.removeEventListener(n,o)}delete t.llEvLisnrs}}function C(t,e,n){var a;delete t.llTempImage,b(n,-1),(a=n)&&--a.toLoadCount,_(t,e.class_loading),e.unobserve_completed&&v(t,n)}function R(i,r,c){var l=g(i)||i;N(l)||function(t,e,n){N(t)||(t.llEvLisnrs={});var a="VIDEO"===t.tagName?"loadeddata":"load";M(t,a,e),M(t,"error",n)}(l,function(t){var e,n,a,o;n=r,a=c,o=u(e=i),C(e,n,a),f(e,n.class_loaded),s(e,ut),d(n.callback_loaded,e,a),o||x(n,a),z(l)},function(t){var e,n,a,o;n=r,a=c,o=u(e=i),C(e,n,a),f(e,n.class_error),s(e,ft),d(n.callback_error,e,a),o||x(n,a),z(l)})}function T(t,e,n){var a,o,i,r,c;t.llTempImage=document.createElement("IMG"),R(t,e,n),m(c=t)||(c[lt]={backgroundImage:c.style.backgroundImage}),i=n,r=l(a=t,(o=e).data_bg),c=l(a,o.data_bg_hidpi),(r=nt&&c?c:r)&&(a.style.backgroundImage='url("'.concat(r,'")'),g(a).setAttribute(ot,r),k(a,o,i)),w(t,e,n)}function G(t,e,n){var a;R(t,e,n),a=e,e=n,(t=Et[(n=t).tagName])&&(t(n,a),k(n,a,e))}function D(t,e,n){var a;a=t,(-1<It.indexOf(a.tagName)?G:T)(t,e,n)}function S(t,e,n){var a;t.setAttribute("loading","lazy"),R(t,e,n),a=e,(e=Et[(n=t).tagName])&&e(n,a),s(t,_t)}function V(t){t.removeAttribute(ot),t.removeAttribute(it),t.removeAttribute(rt)}function j(t){h(t,function(t){L(t,mt)}),L(t,mt)}function F(t){var e;(e=yt[t.tagName])?e(t):m(e=t)&&(t=E(e),e.style.backgroundImage=t.backgroundImage)}function P(t,e){var n;F(t),n=e,r(e=t)||u(e)||(_(e,n.class_entered),_(e,n.class_exited),_(e,n.class_applied),_(e,n.class_loading),_(e,n.class_loaded),_(e,n.class_error)),i(t),I(t)}function U(t,e,n,a){var o;n.cancel_on_exit&&(c(t)!==st||"IMG"===t.tagName&&(z(t),h(o=t,function(t){V(t)}),V(o),j(t),_(t,n.class_loading),b(a,-1),i(t),d(n.callback_cancel,t,e,a)))}function $(t,e,n,a){var o,i,r=(i=t,0<=bt.indexOf(c(i)));s(t,"entered"),f(t,n.class_entered),_(t,n.class_exited),o=t,i=a,n.unobserve_entered&&v(o,i),d(n.callback_enter,t,e,a),r||D(t,n,a)}function q(t){return t.use_native&&"loading"in HTMLImageElement.prototype}function H(t,o,i){t.forEach(function(t){return(a=t).isIntersecting||0<a.intersectionRatio?$(t.target,t,o,i):(e=t.target,n=t,a=o,t=i,void(r(e)||(f(e,a.class_exited),U(e,n,a,t),d(a.callback_exit,e,n,t))));var e,n,a})}function B(e,n){var t;tt&&!q(e)&&(n._observer=new IntersectionObserver(function(t){H(t,e,n)},{root:(t=e).container===document?null:t.container,rootMargin:t.thresholds||t.threshold+"px"}))}function J(t){return Array.prototype.slice.call(t)}function K(t){return t.container.querySelectorAll(t.elements_selector)}function Q(t){return c(t)===ft}function W(t,e){return e=t||K(e),J(e).filter(r)}function X(e,t){var n;(n=K(e),J(n).filter(Q)).forEach(function(t){_(t,e.class_error),i(t)}),t.update()}function t(t,e){var n,a,t=o(t);this._settings=t,this.loadingCount=0,B(t,this),n=t,a=this,Y&&window.addEventListener("online",function(){X(n,a)}),this.update(e)}var Y="undefined"!=typeof window,Z=Y&&!("onscroll"in window)||"undefined"!=typeof navigator&&/(gle|ing|ro)bot|crawl|spider/i.test(navigator.userAgent),tt=Y&&"IntersectionObserver"in window,et=Y&&"classList"in document.createElement("p"),nt=Y&&1<window.devicePixelRatio,at={elements_selector:".lazy",container:Z||Y?document:null,threshold:300,thresholds:null,data_src:"src",data_srcset:"srcset",data_sizes:"sizes",data_bg:"bg",data_bg_hidpi:"bg-hidpi",data_bg_multi:"bg-multi",data_bg_multi_hidpi:"bg-multi-hidpi",data_poster:"poster",class_applied:"applied",class_loading:"litespeed-loading",class_loaded:"litespeed-loaded",class_error:"error",class_entered:"entered",class_exited:"exited",unobserve_completed:!0,unobserve_entered:!1,cancel_on_exit:!0,callback_enter:null,callback_exit:null,callback_applied:null,callback_loading:null,callback_loaded:null,callback_error:null,callback_finish:null,callback_cancel:null,use_native:!1},ot="src",it="srcset",rt="sizes",ct="poster",lt="llOriginalAttrs",st="loading",ut="loaded",dt="applied",ft="error",_t="native",gt="data-",vt="ll-status",bt=[st,ut,dt,ft],pt=[ot],ht=[ot,ct],mt=[ot,it,rt],Et={IMG:function(t,e){h(t,function(t){y(t,mt),O(t,e)}),y(t,mt),O(t,e)},IFRAME:function(t,e){y(t,pt),A(t,ot,l(t,e.data_src))},VIDEO:function(t,e){a(t,function(t){y(t,pt),A(t,ot,l(t,e.data_src))}),y(t,ht),A(t,ct,l(t,e.data_poster)),A(t,ot,l(t,e.data_src)),t.load()}},It=["IMG","IFRAME","VIDEO"],yt={IMG:j,IFRAME:function(t){L(t,pt)},VIDEO:function(t){a(t,function(t){L(t,pt)}),L(t,ht),t.load()}},Lt=["IMG","IFRAME","VIDEO"];return t.prototype={update:function(t){var e,n,a,o=this._settings,i=W(t,o);{if(p(this,i.length),!Z&&tt)return q(o)?(e=o,n=this,i.forEach(function(t){-1!==Lt.indexOf(t.tagName)&&S(t,e,n)}),void p(n,0)):(t=this._observer,o=i,t.disconnect(),a=t,void o.forEach(function(t){a.observe(t)}));this.loadAll(i)}},destroy:function(){this._observer&&this._observer.disconnect(),K(this._settings).forEach(function(t){I(t)}),delete this._observer,delete this._settings,delete this.loadingCount,delete this.toLoadCount},loadAll:function(t){var e=this,n=this._settings;W(t,n).forEach(function(t){v(t,e),D(t,n,e)})},restoreAll:function(){var e=this._settings;K(e).forEach(function(t){P(t,e)})}},t.load=function(t,e){e=o(e);D(t,e)},t.resetStatus=function(t){i(t)},t}),function(t,e){"use strict";function n(){e.body.classList.add("litespeed_lazyloaded")}function a(){console.log("[LiteSpeed] Start Lazy Load"),o=new LazyLoad(Object.assign({},t.lazyLoadOptions||{},{elements_selector:"[data-lazyloaded]",callback_finish:n})),i=function(){o.update()},t.MutationObserver&&new MutationObserver(i).observe(e.documentElement,{childList:!0,subtree:!0,attributes:!0})}var o,i;t.addEventListener?t.addEventListener("load",a,!1):t.attachEvent("onload",a)}(window,document);</script><script data-no-optimize="1">window.litespeed_ui_events=window.litespeed_ui_events||["mouseover","click","keydown","wheel","touchmove","touchstart","pointerup","pointerdown"];var urlCreator=window.URL||window.webkitURL;function litespeed_load_delayed_js_force(){console.log("[LiteSpeed] Start Load JS Delayed"),litespeed_ui_events.forEach(e=>{window.removeEventListener(e,litespeed_load_delayed_js_force,{passive:!0})}),document.querySelectorAll("iframe[data-litespeed-src]").forEach(e=>{e.setAttribute("src",e.getAttribute("data-litespeed-src"))}),"loading"==document.readyState?window.addEventListener("DOMContentLoaded",litespeed_load_delayed_js):litespeed_load_delayed_js()}litespeed_ui_events.forEach(e=>{window.addEventListener(e,litespeed_load_delayed_js_force,{passive:!0})});async function litespeed_load_delayed_js(){let t=[];for(var d in document.querySelectorAll('script[type="litespeed/javascript"]').forEach(e=>{t.push(e)}),t)await new Promise(e=>litespeed_load_one(t[d],e));document.dispatchEvent(new Event("DOMContentLiteSpeedLoaded")),window.dispatchEvent(new Event("DOMContentLiteSpeedLoaded"))}function litespeed_load_one(t,e){console.log("[LiteSpeed] Load ",t);function d(){o.src.startsWith("blob:")&&URL.revokeObjectURL(o.src),e()}var o=document.createElement("script");o.addEventListener("load",d),o.addEventListener("error",d),t.getAttributeNames().forEach(e=>{"type"!=e&&o.setAttribute("data-src"==e?"src":e,t.getAttribute(e))}),o.type="text/javascript",!o.src&&t.textContent&&(o.src=litespeed_inline2src(t.textContent)),t.after(o),t.remove()}function litespeed_inline2src(t){try{var d=urlCreator.createObjectURL(new Blob([t.replace(/^(?:<!--)?(.*?)(?:-->)?$/gm,"$1")],{type:"text/javascript"}))}catch(e){d="data:text/javascript;base64,"+btoa(t.replace(/^(?:<!--)?(.*?)(?:-->)?$/gm,"$1"))}return d}</script><script data-no-optimize="1">var litespeed_vary=document.cookie.replace(/(?:(?:^|.*;\s*)_lscache_vary\s*\=\s*([^;]*).*$)|^.*$/,"");litespeed_vary||(sessionStorage.getItem("litespeed_reloaded")?console.log("LiteSpeed: skipping guest vary reload (already reloaded this session)"):fetch("/wp-content/plugins/litespeed-cache/guest.vary.php",{method:"POST",cache:"no-cache",redirect:"follow"}).then(e=>e.json()).then(e=>{console.log(e),e.hasOwnProperty("reload")&&"yes"==e.reload&&(sessionStorage.setItem("litespeed_docref",document.referrer),sessionStorage.setItem("litespeed_reloaded","1"),window.location.reload(!0))}));</script><script data-optimized="1" type="litespeed/javascript" data-src="https://www.naukajazdy.wroc.pl/wp-content/litespeed/js/cc32860c982ca53556487a2d9d558420.js?ver=6dccc"></script><script>
+(function(){
+  // film w karcie: start po kliknięciu, z dźwiękiem
+  document.querySelectorAll('.adjn-vid[data-click]').forEach(function(box){ var v=box.querySelector('video');
+    box.querySelector('.adjn-vid__go').addEventListener('click',function(){ box.classList.add('is-playing'); v.controls=true; v.muted=false; v.play(); }); });
+  // reklama: bez dźwięku, w pętli, tylko gdy widoczna
+  var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-loop] video').forEach(function(v){ if(still) return;
+    new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting ? v.play().catch(function(){}) : v.pause() }) },{threshold:.3}).observe(v); });
+  // okno z filmem pionowym
+  var y=0;
+  function open(t){
+    var m=document.createElement('div'); m.className='adjn-modal'; m.setAttribute('role','dialog'); m.setAttribute('aria-modal','true'); m.setAttribute('aria-label',t.dataset.title||'Film');
+    var src=t.dataset.kind==='mp4' ? '<video src="'+t.dataset.src+'" controls autoplay playsinline></video>'
+      : '<iframe src="'+t.dataset.src+'" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="'+(t.dataset.title||'Film')+'"></iframe>';
+    m.innerHTML='<button class="adjn-modal__x" type="button" aria-label="Zamknij film">'+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'+'</button><div class="adjn-modal__box">'+src+'</div>';
+    var last=document.activeElement; y=scrollY; var b=document.body.style; b.position='fixed'; b.top=-y+'px'; b.left=b.right='0'; b.width='100%';
+    document.body.appendChild(m); requestAnimationFrame(function(){ m.classList.add('is-open') }); m.querySelector('.adjn-modal__x').focus();
+    function close(){ document.removeEventListener('keydown',key); m.remove(); b.position=b.top=b.left=b.right=b.width=''; document.documentElement.style.scrollBehavior='auto'; scrollTo(0,y); if(last) last.focus({preventScroll:true}); }
+    function key(e){ if(e.key==='Escape') close(); if(e.key==='Tab'){ e.preventDefault(); m.querySelector('.adjn-modal__x').focus(); } }
+    m.addEventListener('click',function(e){ if(e.target===m||e.target.closest('.adjn-modal__x')) close(); });
+    document.addEventListener('keydown',key);
+  }
+  document.querySelectorAll('.adjnf__wrap').forEach(function(w){ var r=w.querySelector('.adjnf__row'), pv=w.querySelector('.adjnf__prev'), nx=w.querySelector('.adjnf__next');
+    function st(){ pv.disabled=r.scrollLeft<8; nx.disabled=r.scrollLeft+r.clientWidth>=r.scrollWidth-8; }
+    pv.addEventListener('click',function(){ r.scrollBy({left:-r.clientWidth*.8}) }); nx.addEventListener('click',function(){ r.scrollBy({left:r.clientWidth*.8}) });
+    r.addEventListener('scroll',st,{passive:true}); st(); });
+  document.addEventListener('click',function(e){ var t=e.target.closest('.adjnf__c'); if(!t) return; e.preventDefault(); open(t); });
+})();
+
+(function(){
+  document.querySelectorAll('.adjf__open').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault();
+    var t=document.createElement('button'); t.className='adjnf__c'; t.dataset.kind='mp4'; t.dataset.src=b.dataset.src; t.dataset.title='Film'; t.style.display='none';
+    document.body.appendChild(t); t.click(); t.remove(); }); });
+  // wideo w pętli startuje także w slajdach karuzeli
+  document.querySelectorAll('.adjs-vid,.adjc video').forEach(function(v){ v.muted=true; var p=v.play(); if(p) p.catch(function(){}); });
+})();
+</script>
+</body></html>
+<!-- Page optimized by LiteSpeed Cache @2026-10-20 20:50:40 -->
+
+<!-- Page cached by LiteSpeed Cache 7.9 on 2026-10-20 20:50:40 -->
+<!-- Guest Mode -->
+<!-- QUIC.cloud UCSS in queue -->
