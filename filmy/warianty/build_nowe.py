@@ -119,11 +119,11 @@ JS = r'''
 
 def vid_click(src, poster, label, title):
     return (f'<div class="adjn-vid" data-click><video src="{src}" poster="{poster}" preload="none" playsinline></video>'
-            f'<button class="adjn-vid__go" type="button" aria-label="{label}">{PLAYB}<span class="adjn-vid__t">{title}</span></button></div>')
+            f'<button class="adjn-vid__go" type="button" aria-label="{label}">{PLAYB}</button></div>')
 
 def kurs16_media():
-    return (f'<div class="adjn adjn16">{vid_click("media/16-lat.mp4", "media/16-lat.jpg", "Odtwórz film: kurs od 16 lat i 9 miesięcy, 0:16", "Kurs od 16 lat i 9 miesięcy")}'
-            f'<p class="adjn16__cap">Film 0:16 · Instruktorka ADJ wyjaśnia, jak zacząć kurs przed 17. urodzinami</p></div>')
+    return (f'<div class="adjn adjn16">{vid_click("media/16-lat.mp4", "media/16-lat.jpg", "Odtwórz film", "")}'
+            f'</div>')
 
 def reklama():
     pts = [('trophy', '6 lat z rzędu lider zdawalności', 'Ranking zdawalności WORD Wrocław, kategoria B'),
@@ -149,9 +149,9 @@ FILMS = [
 
 def filmy():
     li = ''.join(
-        f'<li><button class="adjnf__c" type="button" data-kind="{k}" data-src="{s}" data-title="{t}" aria-label="Odtwórz film: {t}">'
-        f'<span class="adjnf__m"><img src="{p}" alt="" loading="lazy">{"<span class=adjnf__new>Nowy</span>" if n else ""}{PLAYB}</span>'
-        f'<span class="adjnf__b"><strong>{t}</strong><small>{m}</small></span></button></li>'
+        f'<li><button class="adjnf__c" type="button" data-kind="{k}" data-src="{s}" data-title="{t}" aria-label="Odtwórz film">'
+        f'<span class="adjnf__m"><img src="{p}" alt="" loading="lazy">{PLAYB}</span>'
+        f'</button></li>'
         for k, s, p, t, m, n in FILMS)
     return (f'<section class="adjn adjnf" aria-labelledby="adjnf-h"><div class="adjnf__in"><h2 id="adjnf-h">Filmy instruktorów</h2><span class="adjnf__line"></span>'
             f'<p class="adjnf__sub">Krótko i konkretnie: jak zacząć kurs, jak wygląda egzamin i czego unikać na placu.</p>'
