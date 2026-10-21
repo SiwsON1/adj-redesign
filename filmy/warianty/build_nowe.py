@@ -45,40 +45,47 @@ CSS = r'''
 @media (max-width:780px){.adjn16{width:min(280px,100%);margin:8px auto 24px}}
 .adjn16__cap{margin:12px 0 0!important;font:500 14px/1.4 "Work Sans",sans-serif;color:#555;text-align:center}
 
-/* strona główna: karta z reklamą */
-.adjnr{padding:0 16px 64px}
-.adjnr__card{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,560px) 300px;justify-content:space-evenly;gap:56px;align-items:center;padding:40px 48px;background:#fff;border:1px solid #e5e5e5;border-radius:14px}
-.adjnr h2{margin:0 0 14px!important;font:800 36px/1.15 "Work Sans",sans-serif!important;color:#1a1a1a!important;text-align:left!important;max-width:18ch}
-.adjnr h2 span{color:#FEA900}
-.adjnr__lead{margin:0 0 28px!important;padding:0!important;font:400 16px/1.6 "Work Sans",sans-serif;color:#555;text-align:left!important;max-width:48ch}
-.adjnr .adjnr__list{display:grid;gap:16px;margin:0 0 32px!important}
-.adjnr__list li{display:flex!important;align-items:center;gap:16px;font:700 16px/1.35 "Work Sans",sans-serif}
-.adjnr__list small{display:block;font:400 14px/1.4 "Work Sans",sans-serif;color:#666;margin-top:2px}
-.adjnr .adjn-vid video{pointer-events:none}
-@media (max-width:860px){.adjnr__card{grid-template-columns:1fr;gap:28px;padding:28px 20px}.adjnr h2{font-size:28px!important}.adjnr__media{width:min(280px,100%);margin:0 auto;order:-1}}
+/* strona główna: pas z zapisem i reklamą w telefonie */
+.adjnr{padding:150px 16px 72px}
+.adjnr__card{position:relative;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:64px;align-items:center;padding:48px 64px;background:#FEA900;border-radius:14px}
+.adjnr h2{margin:0 0 12px!important;font:800 36px/1.15 "Work Sans",sans-serif!important;color:#1a1a1a!important;text-align:left!important;max-width:20ch}
+.adjnr__lead{margin:0 0 28px!important;padding:0!important;font:500 17px/1.55 "Work Sans",sans-serif;color:#1a1a1a;text-align:left!important;max-width:46ch}
+.adjnr__cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.adjnr__b1{display:inline-flex!important;align-items:center;min-height:52px;padding:0 28px!important;border-radius:6px!important;background:#1a1a1a!important;color:#fff!important;font:600 17px/1 "Work Sans",sans-serif!important;text-decoration:none!important;transition:background-color .2s,transform .15s cubic-bezier(.23,1,.32,1)}
+.adjnr__b1:hover{background:#000!important}.adjnr__b1:active{transform:scale(.97)}
+.adjnr__b2{display:inline-flex!important;align-items:center;gap:10px;min-height:52px;padding:0 22px!important;border-radius:6px!important;background:#fff!important;color:#1a1a1a!important;font:600 17px/1 "Work Sans",sans-serif!important;text-decoration:none!important;font-variant-numeric:tabular-nums;transition:transform .15s cubic-bezier(.23,1,.32,1),box-shadow .2s}
+.adjnr__b2 svg{width:18px;height:18px}.adjnr__b2:hover{box-shadow:0 8px 20px -10px rgba(0,0,0,.35)}.adjnr__b2:active{transform:scale(.97)}
+.adjnr__media{align-self:end;margin:-200px 0 -48px}
+.adjnr__ph{position:relative;padding:9px;border-radius:38px;background:#141414;box-shadow:0 30px 60px -28px rgba(0,0,0,.55)}
+.adjnr__ph::before{content:"";position:absolute;left:50%;top:16px;z-index:2;width:70px;height:18px;margin-left:-35px;border-radius:12px;background:#141414}
+.adjnr__ph video{display:block;width:100%!important;aspect-ratio:9/16;object-fit:cover;border-radius:30px;background:#222}
+@media (max-width:900px){.adjnr{padding:40px 16px 56px}.adjnr__card{grid-template-columns:1fr;gap:28px;padding:0 20px 32px}.adjnr__media{order:-1;width:min(220px,62vw);margin:-24px auto 0;align-self:auto}.adjnr h2{font-size:28px!important}}
+@media (max-width:900px){.adjnr{padding-top:64px}.adjnr__media{margin-top:-48px}}
 
-/* strona główna: filmy instruktorów */
-.adjnf{padding:56px 16px 64px}
-.adjnf__in{max-width:1200px;margin:0 auto}
-.adjnf h2{margin:0!important;font:700 20px/1.3 "Work Sans",sans-serif!important;color:#000!important;text-align:center!important}
-.adjnf__line{display:block;width:40px;height:2px;margin:14px auto 12px;background:#FEA900}
-.adjnf__sub{margin:0 auto 32px!important;padding:0!important;max-width:52ch;text-align:center!important;font:400 15px/1.55 "Work Sans",sans-serif;color:#555}
-.adjnf__row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}
-.adjnf .adjnf__row>li{display:flex!important}
-.adjnf__b{flex:1}
-.adjnf__c{display:flex!important;flex-direction:column;width:100%!important;text-align:left;background:#fff;border:1px solid #e5e5e5;border-radius:14px;overflow:hidden;transition:transform .25s cubic-bezier(.23,1,.32,1),box-shadow .25s}
+/* strona główna: filmy (wymiary i styl jak sekcje „Ośrodki” i „Opinie klientów”) */
+.adjnf{padding:48px 16px 56px}
+.adjnf__in{position:relative;max-width:1100px;margin:0 auto}
+.adjnf h2{margin:0!important;font:700 20px/1.5 "Work Sans",sans-serif!important;color:#000!important;text-align:center!important}
+.adjnf__line{display:block;width:30px;height:1px;margin:12.8px auto 30px;background:#FEA900}
+.adjnf__wrap{position:relative}
+.adjnf__row{display:flex;gap:24px;overflow-x:auto;padding:14px 4px 18px!important;margin:-14px -4px 0!important;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.adjnf__row::-webkit-scrollbar{display:none}
+.adjnf .adjnf__row>li{flex:0 0 calc((100% - 96px)/5);scroll-snap-align:start;display:flex!important}
+.adjnf__c{display:block!important;width:100%!important;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 0 14px 4px rgba(66,66,66,.2);transition:transform .25s cubic-bezier(.23,1,.32,1)}
 .adjnf__m{position:relative;display:block;aspect-ratio:9/16;background:#1a1a1a}
 .adjnf__m img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover}
-.adjnf__m .adjn-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px}
+.adjnf__m::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.35))}
+.adjnf__m .adjn-play{position:absolute;left:50%;top:50%;z-index:1;transform:translate(-50%,-50%);width:52px;height:52px}
 .adjnf__m .adjn-play svg{width:20px;height:20px}
-.adjnf__new{position:absolute;left:10px;top:10px;padding:5px 9px;border-radius:6px;background:#FEA900;color:#fff;font:700 12px/1 "Work Sans",sans-serif}
-.adjnf__b{display:block;padding:14px 14px 16px}
-.adjnf__b strong{display:block;font:700 15px/1.3 "Work Sans",sans-serif;color:#000}
-.adjnf__b small{display:block;margin-top:6px;font:500 13px/1.3 "Work Sans",sans-serif;color:#666}
-@media (hover:hover) and (pointer:fine){.adjnf__c:hover{transform:translateY(-4px);box-shadow:0 18px 36px -24px rgba(0,0,0,.35)}.adjnf__c:hover .adjn-play{transform:translate(-50%,-50%) scale(1.07)}}
+@media (hover:hover) and (pointer:fine){.adjnf__c:hover{transform:translateY(-4px)}.adjnf__c:hover .adjn-play{transform:translate(-50%,-50%) scale(1.07)}}
 .adjnf__c:active{transform:scale(.98)}
-@media (max-width:1000px){.adjnf__row{display:flex;overflow-x:auto;gap:14px;margin:0 -16px;padding:4px 16px 12px;scroll-snap-type:x mandatory;scroll-padding-inline:16px}.adjnf__row>li{flex:0 0 44%;scroll-snap-align:start}}
-@media (max-width:560px){.adjnf__row>li{flex:0 0 58%}}
+.adjnf__arr{position:absolute;top:50%;z-index:2;width:30px!important;height:30px!important;margin-top:-15px;border-radius:50%!important;background:#fff!important;color:#666!important;display:grid!important;place-items:center;box-shadow:0 0 6px rgba(0,0,0,.25);transition:opacity .2s,transform .15s}
+.adjnf__arr svg{width:14px;height:14px}.adjnf__arr:active{transform:scale(.92)}
+.adjnf__arr[disabled]{opacity:0;pointer-events:none}
+.adjnf__prev{left:-46px}.adjnf__next{right:-46px}
+@media (max-width:1200px){.adjnf__prev{left:-12px}.adjnf__next{right:-12px}}
+@media (max-width:900px){.adjnf .adjnf__row>li{flex:0 0 calc((100% - 48px)/3)}}
+@media (max-width:600px){.adjnf .adjnf__row>li{flex:0 0 46%}.adjnf__row{gap:14px;margin:-14px -16px 0!important;padding:14px 16px 18px!important;scroll-padding-inline:16px}.adjnf__arr{display:none!important}}
 
 /* okno z filmem pionowym */
 .adjn-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:64px 16px 16px;background:rgba(17,17,17,.88);opacity:0;transition:opacity .2s cubic-bezier(.23,1,.32,1)}
@@ -97,7 +104,7 @@ JS = r'''
     box.querySelector('.adjn-vid__go').addEventListener('click',function(){ box.classList.add('is-playing'); v.controls=true; v.muted=false; v.play(); }); });
   // reklama: bez dźwięku, w pętli, tylko gdy widoczna
   var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.adjn-vid[data-loop] video').forEach(function(v){ if(still) return;
+  document.querySelectorAll('[data-loop] video').forEach(function(v){ if(still) return;
     new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting ? v.play().catch(function(){}) : v.pause() }) },{threshold:.3}).observe(v); });
   // okno z filmem pionowym
   var y=0;
@@ -113,6 +120,10 @@ JS = r'''
     m.addEventListener('click',function(e){ if(e.target===m||e.target.closest('.adjn-modal__x')) close(); });
     document.addEventListener('keydown',key);
   }
+  document.querySelectorAll('.adjnf__wrap').forEach(function(w){ var r=w.querySelector('.adjnf__row'), pv=w.querySelector('.adjnf__prev'), nx=w.querySelector('.adjnf__next');
+    function st(){ pv.disabled=r.scrollLeft<8; nx.disabled=r.scrollLeft+r.clientWidth>=r.scrollWidth-8; }
+    pv.addEventListener('click',function(){ r.scrollBy({left:-r.clientWidth*.8}) }); nx.addEventListener('click',function(){ r.scrollBy({left:r.clientWidth*.8}) });
+    r.addEventListener('scroll',st,{passive:true}); st(); });
   document.addEventListener('click',function(e){ var t=e.target.closest('.adjnf__c'); if(!t) return; e.preventDefault(); open(t); });
 })();
 '''.replace('%X%', repr(X))
@@ -126,15 +137,13 @@ def kurs16_media():
             f'</div>')
 
 def reklama():
-    pts = [('trophy', '6 lat z rzędu lider zdawalności', 'Ranking zdawalności WORD Wrocław, kategoria B'),
-           ('road', 'Ćwiczysz na trasach egzaminacyjnych', 'Skrzyżowania z egzaminu, także w goglach VR'),
-           ('pin', '3 lokalizacje i plac egzaminacyjny', 'Wiaduktowa 21, Bierutowska 1A, Wrocławczyka 42/1a')]
-    li = ''.join(f'<li>{icon(i)}<span>{a}<small>{b}</small></span></li>' for i, a, b in pts)
+    phone = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg>'
     return (f'<section class="adjn adjnr" aria-labelledby="adjnr-h"><div class="adjnr__card"><div>'
-            f'<h2 id="adjnr-h">Kurs na prawo jazdy <span>we Wrocławiu</span></h2>'
-            f'<p class="adjnr__lead">Uczysz się jeździć pewnie na tych samych skrzyżowaniach, przez które prowadzi trasa egzaminu.</p>'
-            f'<ul class="adjnr__list" role="list">{li}</ul><a class="adjn-btn" href="{FORM}">Zapisz się na kurs</a></div>'
-            f'<div class="adjnr__media"><div class="adjn-vid" data-loop><video src="media/reklama-10a.mp4" poster="media/reklama-10a.jpg" muted loop playsinline preload="metadata" aria-label="Film: kurs na prawo jazdy we Wrocławiu"></video></div></div>'
+            f'<h2 id="adjnr-h">Zacznij kurs prawa jazdy we Wrocławiu</h2>'
+            f'<p class="adjnr__lead">Zapisz się online albo zadzwoń. Pomożemy wybrać termin i tryb zajęć.</p>'
+            f'<div class="adjnr__cta"><a class="adjnr__b1" href="{FORM}">Zapisz się na kurs</a>'
+            f'<a class="adjnr__b2" href="tel:+48575757408">{phone}575 757 408</a></div></div>'
+            f'<div class="adjnr__media"><div class="adjnr__ph" data-loop><video src="media/reklama-10a.mp4" poster="media/reklama-10a.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video></div></div>'
             f'</div></section>')
 
 TT = 'https://www.tiktok.com/player/v1/{}?autoplay=1&loop=1&music_info=0&description=0&rel=0&native_context_menu=0'
@@ -147,6 +156,9 @@ FILMS = [
     ('tt', TT.format('7543981236197297430'), 'img/tt/7543981236197297430.jpg', 'Instruktor kontra złamany paznokieć', 'TikTok ADJ', False),
 ]
 
+CHEV_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+CHEV_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+
 def filmy():
     li = ''.join(
         f'<li><button class="adjnf__c" type="button" data-kind="{k}" data-src="{s}" data-title="{t}" aria-label="Odtwórz film">'
@@ -154,8 +166,9 @@ def filmy():
         f'</button></li>'
         for k, s, p, t, m, n in FILMS)
     return (f'<section class="adjn adjnf" aria-labelledby="adjnf-h"><div class="adjnf__in"><h2 id="adjnf-h">Filmy instruktorów</h2><span class="adjnf__line"></span>'
-            f'<p class="adjnf__sub">Krótko i konkretnie: jak zacząć kurs, jak wygląda egzamin i czego unikać na placu.</p>'
-            f'<ul class="adjnf__row" role="list">{li}</ul></div></section>')
+            f'<div class="adjnf__wrap"><button class="adjnf__arr adjnf__prev" type="button" aria-label="Poprzednie filmy" disabled>{CHEV_L}</button>'
+            f'<ul class="adjnf__row" role="list">{li}</ul>'
+            f'<button class="adjnf__arr adjnf__next" type="button" aria-label="Następne filmy">{CHEV_R}</button></div></div></section>')
 
 def page(src, out, edit):
     s = prep((BASE / src).read_text(encoding='utf-8'))
