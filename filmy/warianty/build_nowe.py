@@ -62,30 +62,37 @@ CSS = r'''
 @media (max-width:900px){.adjnr{padding:40px 16px 56px}.adjnr__card{grid-template-columns:1fr;gap:28px;padding:0 20px 32px}.adjnr__media{order:-1;width:min(220px,62vw);margin:-24px auto 0;align-self:auto}.adjnr h2{font-size:28px!important}}
 @media (max-width:900px){.adjnr{padding-top:64px}.adjnr__media{margin-top:-48px}}
 
-/* strona główna: filmy (wymiary i styl jak sekcje „Ośrodki” i „Opinie klientów”) */
-.adjnf{padding:48px 16px 56px}
-.adjnf__in{position:relative;max-width:1100px;margin:0 auto}
+/* strona główna: filmy, bliźniak widżetu „Opinie klientów” (te same wymiary i style) */
+.adjnf{padding:16px 0}
+.adjnf__in{max-width:1320px;margin:0 auto;padding:0 30px}
 .adjnf h2{margin:0!important;font:700 20px/1.5 "Work Sans",sans-serif!important;color:#000!important;text-align:center!important}
 .adjnf__line{display:block;width:30px;height:1px;margin:12.8px auto 30px;background:#FEA900}
-.adjnf__wrap{position:relative}
-.adjnf__row{display:flex;gap:24px;overflow-x:auto;padding:14px 4px 18px!important;margin:-14px -4px 0!important;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.adjnf__box{display:grid;grid-template-columns:315px minmax(0,1fr);align-items:center}
+.adjnf__head{display:flex;gap:12px;align-items:flex-start;padding:16px}
+.adjnf__logo{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);display:grid;place-items:center;overflow:hidden}
+.adjnf__logo img{width:40px!important;height:auto!important}
+.adjnf__name{font:700 16px/1.3 "Work Sans",sans-serif;color:#333}
+.adjnf__meta{margin:6px 0 10px!important;padding:0!important;font:400 16px/1.4 "Work Sans",sans-serif;color:#777;text-align:left!important}
+.adjnf__pill{display:inline-flex!important;align-items:center;gap:6px;padding:5px 12px 6px!important;border-radius:27px!important;background:#FEA900!important;color:#1a1a1a!important;font:600 15px/1.2 "Work Sans",sans-serif!important;text-decoration:none!important;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);transition:transform .15s cubic-bezier(.23,1,.32,1)}
+.adjnf__pill:hover{background:#e59800!important}.adjnf__pill:active{transform:scale(.97)}
+.adjnf__wrap{position:relative;min-width:0}
+.adjnf__row{display:flex;gap:4px;overflow-x:auto;padding:4px 3px 8px!important;margin:0!important;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
 .adjnf__row::-webkit-scrollbar{display:none}
-.adjnf .adjnf__row>li{flex:0 0 calc((100% - 96px)/5);scroll-snap-align:start;display:flex!important}
-.adjnf__c{display:block!important;width:100%!important;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 0 14px 4px rgba(66,66,66,.2);transition:transform .25s cubic-bezier(.23,1,.32,1)}
-.adjnf__m{position:relative;display:block;aspect-ratio:9/16;background:#1a1a1a}
-.adjnf__m img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover}
-.adjnf__m::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.35))}
+.adjnf .adjnf__row>li{flex:0 0 301px;padding:4px 3px!important;scroll-snap-align:start;display:flex!important}
+.adjnf__c{display:block!important;width:100%!important;padding:16px!important;border-radius:8px;background:#f4f4f4!important;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);text-align:left;transition:box-shadow .2s}
+.adjnf__m{position:relative;display:block;aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:#1a1a1a}
+.adjnf__m img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;object-position:50% 22%;transition:transform .5s cubic-bezier(.23,1,.32,1)}
 .adjnf__m .adjn-play{position:absolute;left:50%;top:50%;z-index:1;transform:translate(-50%,-50%);width:52px;height:52px}
 .adjnf__m .adjn-play svg{width:20px;height:20px}
-@media (hover:hover) and (pointer:fine){.adjnf__c:hover{transform:translateY(-4px)}.adjnf__c:hover .adjn-play{transform:translate(-50%,-50%) scale(1.07)}}
-.adjnf__c:active{transform:scale(.98)}
-.adjnf__arr{position:absolute;top:50%;z-index:2;width:30px!important;height:30px!important;margin-top:-15px;border-radius:50%!important;background:#fff!important;color:#666!important;display:grid!important;place-items:center;box-shadow:0 0 6px rgba(0,0,0,.25);transition:opacity .2s,transform .15s}
-.adjnf__arr svg{width:14px;height:14px}.adjnf__arr:active{transform:scale(.92)}
+.adjnf__t{display:block;margin-top:12px;font:700 16px/1.35 "Work Sans",sans-serif;color:#154fc1}
+.adjnf__d{display:block;margin-top:4px;font:400 13px/1.3 "Work Sans",sans-serif;color:#555}
+@media (hover:hover) and (pointer:fine){.adjnf__c:hover{box-shadow:0 0 2px rgba(0,0,0,.12),0 6px 14px rgba(0,0,0,.22)}.adjnf__c:hover img{transform:scale(1.04)}.adjnf__c:hover .adjn-play{transform:translate(-50%,-50%) scale(1.07)}}
+.adjnf__c:active{transform:scale(.99)}
+.adjnf__arr{position:absolute;top:50%;z-index:2;width:34px!important;height:34px!important;margin-top:-17px;padding:8px!important;border-radius:50%!important;background:#f5f5f5!important;color:#555!important;display:grid!important;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:opacity .2s,transform .15s}
+.adjnf__arr svg{width:16px;height:16px}.adjnf__arr:active{transform:scale(.92)}
 .adjnf__arr[disabled]{opacity:0;pointer-events:none}
-.adjnf__prev{left:-46px}.adjnf__next{right:-46px}
-@media (max-width:1200px){.adjnf__prev{left:-12px}.adjnf__next{right:-12px}}
-@media (max-width:900px){.adjnf .adjnf__row>li{flex:0 0 calc((100% - 48px)/3)}}
-@media (max-width:600px){.adjnf .adjnf__row>li{flex:0 0 46%}.adjnf__row{gap:14px;margin:-14px -16px 0!important;padding:14px 16px 18px!important;scroll-padding-inline:16px}.adjnf__arr{display:none!important}}
+.adjnf__prev{left:-17px}.adjnf__next{right:-17px}
+@media (max-width:900px){.adjnf__in{padding:0 16px}.adjnf__box{grid-template-columns:1fr}.adjnf__head{padding:0 0 12px}.adjnf .adjnf__row>li{flex:0 0 min(301px,78%)}.adjnf__row{margin:0 -16px!important;padding:4px 13px 8px!important;scroll-padding-inline:16px}.adjnf__arr{display:none!important}}
 
 /* okno z filmem pionowym */
 .adjn-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:64px 16px 16px;background:rgba(17,17,17,.88);opacity:0;transition:opacity .2s cubic-bezier(.23,1,.32,1)}
@@ -150,7 +157,7 @@ TT = 'https://www.tiktok.com/player/v1/{}?autoplay=1&loop=1&music_info=0&descrip
 FILMS = [
     ('mp4', 'media/16-lat.mp4', 'media/16-lat.jpg', 'Kurs od 16 lat i 9 miesięcy', '0:16 · Instruktorka ADJ', True),
     ('tt', TT.format('7543984782145867030'), 'img/tt/7543984782145867030.jpg', 'Witamy w Akademii', 'TikTok ADJ', False),
-    ('yt', 'https://www.youtube-nocookie.com/embed/MVWxbNE8Wwk?autoplay=1&rel=0&playsinline=1&cc_load_policy=1&cc_lang_pref=pl', 'https://i.ytimg.com/vi/MVWxbNE8Wwk/hq1.jpg', 'Jak wygląda egzamin praktyczny', '0:51 · Instruktor ADJ', False),
+    ('yt', 'https://www.youtube-nocookie.com/embed/MVWxbNE8Wwk?autoplay=1&rel=0&playsinline=1&cc_load_policy=1&cc_lang_pref=pl', 'https://i.ytimg.com/vi/MVWxbNE8Wwk/oardefault.jpg', 'Jak wygląda egzamin praktyczny', '0:51 · Instruktor ADJ', False),
     ('tt', TT.format('7556221278558883094'), 'img/tt/7556221278558883094.jpg', 'Jak nie robić łuku', 'TikTok ADJ', False),
     ('tt', TT.format('7543984156921908502'), 'img/tt/7543984156921908502.jpg', 'Jakich butów nie nosić na motocykl', 'TikTok ADJ', False),
     ('tt', TT.format('7543981236197297430'), 'img/tt/7543981236197297430.jpg', 'Instruktor kontra złamany paznokieć', 'TikTok ADJ', False),
@@ -161,14 +168,18 @@ CHEV_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fil
 
 def filmy():
     li = ''.join(
-        f'<li><button class="adjnf__c" type="button" data-kind="{k}" data-src="{s}" data-title="{t}" aria-label="Odtwórz film">'
+        f'<li><button class="adjnf__c" type="button" data-kind="{k}" data-src="{s}" data-title="{t}" aria-label="Odtwórz film: {t}">'
         f'<span class="adjnf__m"><img src="{p}" alt="" loading="lazy">{PLAYB}</span>'
-        f'</button></li>'
+        f'<span class="adjnf__t">{t}</span><span class="adjnf__d">{m}</span></button></li>'
         for k, s, p, t, m, n in FILMS)
+    logo = 'https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/logo_ADJ.png'
     return (f'<section class="adjn adjnf" aria-labelledby="adjnf-h"><div class="adjnf__in"><h2 id="adjnf-h">Filmy instruktorów</h2><span class="adjnf__line"></span>'
+            f'<div class="adjnf__box"><div class="adjnf__head"><span class="adjnf__logo"><img src="{logo}" alt=""></span><div>'
+            f'<div class="adjnf__name">Akademia Dobrej Jazdy Wrocław</div><p class="adjnf__meta">Krótkie filmy z placu, z trasy i z ośrodka</p>'
+            f'<a class="adjnf__pill" href="https://www.tiktok.com/@akademiadobrejjazdy" target="_blank" rel="noopener">Zobacz nasz TikTok</a></div></div>'
             f'<div class="adjnf__wrap"><button class="adjnf__arr adjnf__prev" type="button" aria-label="Poprzednie filmy" disabled>{CHEV_L}</button>'
             f'<ul class="adjnf__row" role="list">{li}</ul>'
-            f'<button class="adjnf__arr adjnf__next" type="button" aria-label="Następne filmy">{CHEV_R}</button></div></div></section>')
+            f'<button class="adjnf__arr adjnf__next" type="button" aria-label="Następne filmy">{CHEV_R}</button></div></div></div></section>')
 
 def page(src, out, edit):
     s = prep((BASE / src).read_text(encoding='utf-8'))
