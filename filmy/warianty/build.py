@@ -629,5 +629,20 @@ body.spots-off [data-spot]{outline:0}body.spots-off .spotnav{position:fixed;left
     home_page('glowna-kolka.html', stories(), lambda r: r.find('</section>', at(r, '<section class="main-info container">')) + len('</section>'), 'stories',
               '.adjv6{margin-top:8px}')
     home_page('glowna-sekcja.html', cinema(), lambda r: at(r, '<section class="bestsellers-section">'), 'cinema',
-              '.adjv3{margin:0 calc(50% - 50vw)}')
+              '''.adjv3{margin:0 calc(50% - 50vw);padding:40px 16px 56px;background:transparent;color:#000}
+.adjv3 h2{color:#000!important;text-align:center!important;font:700 20px/1.5 "Work Sans",sans-serif!important;margin:0 0 12.8px!important}
+.adjv3 h2::after{content:"";display:block;width:30px;height:1px;margin:12.8px auto 0;background:#FEA900}
+.adjv3__in{max-width:1200px}
+.adjv3__player{box-shadow:0 0 14px 4px rgba(66,66,66,.2);border-radius:10px}
+.adjv3__item{background:#fff!important;box-shadow:0 0 14px 4px rgba(66,66,66,.12)!important;border-radius:10px!important;color:#000!important}
+.adjv3__item small{color:#555!important}
+.adjv3__item:hover{background:#fff!important;box-shadow:0 0 14px 4px rgba(66,66,66,.22)!important}
+.adjv3__item[aria-current="true"]{background:#fff!important;box-shadow:inset 0 0 0 2px #FEA900,0 0 14px 4px rgba(66,66,66,.12)!important}
+.adjv3__item[aria-current="true"] small{color:#b87800!important}
+.adjv3 .adjv-btn--primary{border-radius:6px!important;color:#fff!important}
+.adjv3__city h3{color:#000!important;text-align:center!important;font:700 18px/1.4 "Work Sans",sans-serif!important}
+.adjv3__city p{color:#555!important;text-align:center}
+.adjv3 .adjv-card{color:#000}
+.adjv3__more{display:flex!important;justify-content:center;color:#000!important}
+.adjv3__city{margin-top:40px}''')
     print('ok', len(VARS))
