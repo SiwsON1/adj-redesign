@@ -62,37 +62,33 @@ CSS = r'''
 @media (max-width:900px){.adjnr{padding:40px 16px 56px}.adjnr__card{grid-template-columns:1fr;gap:28px;padding:0 20px 32px}.adjnr__media{order:-1;width:min(220px,62vw);margin:-24px auto 0;align-self:auto}.adjnr h2{font-size:28px!important}}
 @media (max-width:900px){.adjnr{padding-top:64px}.adjnr__media{margin-top:-48px}}
 
-/* strona główna: filmy, bliźniak widżetu „Opinie klientów” (te same wymiary i style) */
-.adjnf{padding:16px 0}
-.adjnf__in{max-width:1320px;margin:0 auto;padding:0 30px}
+/* strona główna: filmy 9:16 (tokeny strony: nagłówek 20/700 + kreska 30x1, karta grid-card r10 cień 0 0 14px 4px) */
+.adjnf{padding:24px 0 40px}
+.adjnf__in{max-width:1200px;margin:0 auto;padding:0 30px}
 .adjnf h2{margin:0!important;font:700 20px/1.5 "Work Sans",sans-serif!important;color:#000!important;text-align:center!important}
-.adjnf__line{display:block;width:30px;height:1px;margin:12.8px auto 30px;background:#FEA900}
-.adjnf__box{display:grid;grid-template-columns:315px minmax(0,1fr);align-items:center}
-.adjnf__head{display:flex;gap:12px;align-items:flex-start;padding:16px}
-.adjnf__logo{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);display:grid;place-items:center;overflow:hidden}
-.adjnf__logo img{width:40px!important;height:auto!important}
-.adjnf__name{font:700 16px/1.3 "Work Sans",sans-serif;color:#333}
-.adjnf__meta{margin:6px 0 10px!important;padding:0!important;font:400 16px/1.4 "Work Sans",sans-serif;color:#777;text-align:left!important}
-.adjnf__pill{display:inline-flex!important;align-items:center;gap:6px;padding:5px 12px 6px!important;border-radius:27px!important;background:#FEA900!important;color:#1a1a1a!important;font:600 15px/1.2 "Work Sans",sans-serif!important;text-decoration:none!important;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);transition:transform .15s cubic-bezier(.23,1,.32,1)}
-.adjnf__pill:hover{background:#e59800!important}.adjnf__pill:active{transform:scale(.97)}
-.adjnf__wrap{position:relative;min-width:0}
-.adjnf__row{display:flex;gap:4px;overflow-x:auto;padding:4px 3px 8px!important;margin:0!important;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.adjnf__line{display:block;width:30px;height:1px;margin:12.8px auto 32px;background:#FEA900}
+.adjnf__wrap{position:relative}
+.adjnf__row{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 80px)/5);gap:20px;overflow-x:auto;padding:16px 16px 24px!important;margin:-16px -16px 0!important;scroll-snap-type:x mandatory;scroll-padding-inline:16px;scroll-behavior:smooth;scrollbar-width:none}
 .adjnf__row::-webkit-scrollbar{display:none}
-.adjnf .adjnf__row>li{flex:0 0 301px;padding:4px 3px!important;scroll-snap-align:start;display:flex!important}
-.adjnf__c{display:block!important;width:100%!important;padding:16px!important;border-radius:8px;background:#f4f4f4!important;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);text-align:left;transition:box-shadow .2s}
-.adjnf__m{position:relative;display:block;aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:#1a1a1a}
-.adjnf__m img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;object-position:50% 22%;transition:transform .5s cubic-bezier(.23,1,.32,1)}
-.adjnf__m .adjn-play{position:absolute;left:50%;top:50%;z-index:1;transform:translate(-50%,-50%);width:52px;height:52px}
-.adjnf__m .adjn-play svg{width:20px;height:20px}
-.adjnf__t{display:block;margin-top:12px;font:700 16px/1.35 "Work Sans",sans-serif;color:#154fc1}
-.adjnf__d{display:block;margin-top:4px;font:400 13px/1.3 "Work Sans",sans-serif;color:#555}
-@media (hover:hover) and (pointer:fine){.adjnf__c:hover{box-shadow:0 0 2px rgba(0,0,0,.12),0 6px 14px rgba(0,0,0,.22)}.adjnf__c:hover img{transform:scale(1.04)}.adjnf__c:hover .adjn-play{transform:translate(-50%,-50%) scale(1.07)}}
-.adjnf__c:active{transform:scale(.99)}
-.adjnf__arr{position:absolute;top:50%;z-index:2;width:34px!important;height:34px!important;margin-top:-17px;padding:8px!important;border-radius:50%!important;background:#f5f5f5!important;color:#555!important;display:grid!important;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:opacity .2s,transform .15s}
+.adjnf .adjnf__row>li{scroll-snap-align:start;display:block!important}
+.adjnf__c{position:relative;display:block!important;width:100%!important;aspect-ratio:9/16;border-radius:10px!important;overflow:hidden;background:#1a1a1a!important;box-shadow:0 0 14px 4px rgba(66,66,66,.2);text-align:left;transition:transform .3s cubic-bezier(.23,1,.32,1),box-shadow .3s cubic-bezier(.23,1,.32,1)}
+.adjnf__c img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;transition:transform .6s cubic-bezier(.23,1,.32,1)}
+.adjnf__c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.72) 100%)}
+.adjnf__c .adjn-play{position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-50%);width:52px;height:52px}
+.adjnf__c .adjn-play svg{width:20px;height:20px}
+.adjnf__t{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;font:700 15px/1.3 "Work Sans",sans-serif;color:#fff}
+@media (hover:hover) and (pointer:fine){.adjnf__c:hover{transform:translateY(-6px);box-shadow:0 0 14px 4px rgba(66,66,66,.2),0 24px 40px -24px rgba(0,0,0,.45)}.adjnf__c:hover img{transform:scale(1.04)}.adjnf__c:hover .adjn-play{transform:translate(-50%,-50%) scale(1.08)}}
+.adjnf__c:active{transform:scale(.98)}
+.adjnf__arr{position:absolute;top:50%;z-index:3;width:34px!important;height:34px!important;margin-top:-17px;border-radius:50%!important;background:#f5f5f5!important;color:#444!important;display:grid!important;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:opacity .2s,transform .15s}
 .adjnf__arr svg{width:16px;height:16px}.adjnf__arr:active{transform:scale(.92)}
 .adjnf__arr[disabled]{opacity:0;pointer-events:none}
 .adjnf__prev{left:-17px}.adjnf__next{right:-17px}
-@media (max-width:900px){.adjnf__in{padding:0 16px}.adjnf__box{grid-template-columns:1fr}.adjnf__head{padding:0 0 12px}.adjnf .adjnf__row>li{flex:0 0 min(301px,78%)}.adjnf__row{margin:0 -16px!important;padding:4px 13px 8px!important;scroll-padding-inline:16px}.adjnf__arr{display:none!important}}
+.adjnf__more{display:flex;justify-content:center;margin-top:28px}
+.adjnf__more a{display:inline-flex!important;align-items:center;min-height:44px;padding:0 20px!important;border-radius:6px!important;background:#FEA900!important;color:#fff!important;font:600 16px/1 "Work Sans",sans-serif!important;text-decoration:none!important;transition:background-color .2s,transform .15s}
+.adjnf__more a:hover{background:#e59800!important}.adjnf__more a:active{transform:scale(.97)}
+@media (max-width:1100px){.adjnf__row{grid-auto-columns:calc((100% - 60px)/4)}}
+@media (max-width:860px){.adjnf__row{grid-auto-columns:calc((100% - 40px)/3)}}
+@media (max-width:640px){.adjnf__in{padding:0 16px}.adjnf__row{grid-auto-columns:62%;gap:14px}.adjnf__arr{display:none!important}.adjnf__t{font-size:15px}}
 
 /* okno z filmem pionowym */
 .adjn-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:64px 16px 16px;background:rgba(17,17,17,.88);opacity:0;transition:opacity .2s cubic-bezier(.23,1,.32,1)}
@@ -155,7 +151,7 @@ def reklama():
 
 TT = 'https://www.tiktok.com/player/v1/{}?autoplay=1&loop=1&music_info=0&description=0&rel=0&native_context_menu=0'
 FILMS = [
-    ('mp4', 'media/16-lat.mp4', 'media/16-lat.jpg', 'Kurs od 16 lat i 9 miesięcy', '0:16 · Instruktorka ADJ', True),
+    ('mp4', 'media/16-lat.mp4', 'media/16-lat.jpg', 'Zacznij kurs przed 17. urodzinami', '0:16 · Instruktorka ADJ', True),
     ('tt', TT.format('7543984782145867030'), 'img/tt/7543984782145867030.jpg', 'Witamy w Akademii', 'TikTok ADJ', False),
     ('yt', 'https://www.youtube-nocookie.com/embed/MVWxbNE8Wwk?autoplay=1&rel=0&playsinline=1&cc_load_policy=1&cc_lang_pref=pl', 'https://i.ytimg.com/vi/MVWxbNE8Wwk/oardefault.jpg', 'Jak wygląda egzamin praktyczny', '0:51 · Instruktor ADJ', False),
     ('tt', TT.format('7556221278558883094'), 'img/tt/7556221278558883094.jpg', 'Jak nie robić łuku', 'TikTok ADJ', False),
@@ -169,17 +165,13 @@ CHEV_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fil
 def filmy():
     li = ''.join(
         f'<li><button class="adjnf__c" type="button" data-kind="{k}" data-src="{s}" data-title="{t}" aria-label="Odtwórz film: {t}">'
-        f'<span class="adjnf__m"><img src="{p}" alt="" loading="lazy">{PLAYB}</span>'
-        f'<span class="adjnf__t">{t}</span><span class="adjnf__d">{m}</span></button></li>'
+        f'<img src="{p}" alt="" loading="lazy">{PLAYB}<span class="adjnf__t">{t}</span></button></li>'
         for k, s, p, t, m, n in FILMS)
-    logo = 'https://www.naukajazdy.wroc.pl/wp-content/themes/akademia_custom/assets/img/logo_ADJ.png'
     return (f'<section class="adjn adjnf" aria-labelledby="adjnf-h"><div class="adjnf__in"><h2 id="adjnf-h">Filmy instruktorów</h2><span class="adjnf__line"></span>'
-            f'<div class="adjnf__box"><div class="adjnf__head"><span class="adjnf__logo"><img src="{logo}" alt=""></span><div>'
-            f'<div class="adjnf__name">Akademia Dobrej Jazdy Wrocław</div><p class="adjnf__meta">Krótkie filmy z placu, z trasy i z ośrodka</p>'
-            f'<a class="adjnf__pill" href="https://www.tiktok.com/@akademiadobrejjazdy" target="_blank" rel="noopener">Zobacz nasz TikTok</a></div></div>'
             f'<div class="adjnf__wrap"><button class="adjnf__arr adjnf__prev" type="button" aria-label="Poprzednie filmy" disabled>{CHEV_L}</button>'
             f'<ul class="adjnf__row" role="list">{li}</ul>'
-            f'<button class="adjnf__arr adjnf__next" type="button" aria-label="Następne filmy">{CHEV_R}</button></div></div></div></section>')
+            f'<button class="adjnf__arr adjnf__next" type="button" aria-label="Następne filmy">{CHEV_R}</button></div>'
+            f'<div class="adjnf__more"><a href="https://www.youtube.com/@akademia_szkolen" target="_blank" rel="noopener">Pokaż więcej filmów</a></div></div></section>')
 
 def page(src, out, edit):
     s = prep((BASE / src).read_text(encoding='utf-8'))
@@ -202,7 +194,7 @@ def edit_reklama(s):
     return ins(s, end, reklama())
 
 def edit_filmy(s):
-    return ins(s, at(s, '<section class="google-reviews"'), filmy())
+    return ins(s, at(s, '<section class="blog-excerpts container">'), filmy())
 
 if __name__ == '__main__':
     page('_base.html', 'kurs-obok-wymagan.html', edit_kurs)

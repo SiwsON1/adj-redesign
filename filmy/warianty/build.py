@@ -592,6 +592,31 @@ if __name__ == '__main__':
     r = do_hero(base, hero1()); r = do_steps(r); r = ins(r, faq_pos(r), qa()); r = drop_inline_promo(r)
     head = f'<meta name="robots" content="noindex, nofollow">\n<style>{COMMON_CSS + CARD_CSS + K["hero1"] + K["steps"] + K["qa"]}</style>\n'
     r = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + '\n' + head, r, count=1)
-    r = r.replace('</body>', f'<script>{COMMON_JS}</script>\n</body>', 1)
+    r = r.replace('<div class="kurs-img-wrapper" data-inline-box', '<div id="miejsce-1" data-spot="1 · Film na górze strony" class="kurs-img-wrapper" data-inline-box', 1)
+    k = r.find('<button class="adjv adjv4"'); pk = r.rfind('<p', 0, r.rfind('Krok 5:', 0, k))
+    r = r[:pk] + '<div id="miejsce-2" data-spot="2 · Filmy przy krokach kursu">' + r[pk:]
+    e = r.find('Krok 8:', pk); e = r.find('</p>', e) + 4
+    r = r[:e] + '</div>' + r[e:]
+    r = r.replace('<section class="adjv adjv10"', '<section id="miejsce-3" data-spot="3 · Filmy przed FAQ" class="adjv adjv10"', 1)
+    SPOT = """<style>
+[data-spot]{position:relative;outline:3px dashed #FEA900;outline-offset:10px;border-radius:12px;scroll-margin-top:240px}
+[data-spot]::before{content:attr(data-spot);position:absolute;z-index:20;left:14px;top:-34px;padding:7px 12px;border-radius:999px;background:#1a1a1a;color:#FEA900;font:700 13px/1 "Work Sans",sans-serif;white-space:nowrap;pointer-events:none}
+#miejsce-1::before{top:14px}
+body.spots-off [data-spot]{outline:0}body.spots-off [data-spot]::before{display:none}
+.spotnav{position:fixed;left:50%;bottom:16px;z-index:2147482000;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:#1a1a1a;box-shadow:0 18px 40px -16px rgba(0,0,0,.6);font:600 14px/1 "Work Sans",sans-serif;max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:none}
+.spotnav span{color:#fff;padding:0 8px 0 10px;white-space:nowrap}
+.spotnav a,.spotnav button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.1);color:#fff!important;text-decoration:none!important;white-space:nowrap;border:0;font:inherit;cursor:pointer;transition:background-color .2s,transform .15s}
+.spotnav a b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#FEA900;color:#1a1a1a;font-size:12px}
+.spotnav a:hover,.spotnav button:hover{background:rgba(255,255,255,.2)}.spotnav a:active,.spotnav button:active{transform:scale(.96)}
+.spotnav :focus-visible{outline:3px solid #FEA900;outline-offset:2px}
+@media (max-width:700px){.spotnav span,.spotnav a i{display:none}}
+</style>"""
+    NAV = ('<nav class="spotnav" aria-label="Miejsca na filmy"><span>Filmy na tej stronie:</span>'
+           '<a href="#miejsce-1"><b>1</b><i style="font-style:normal">Góra strony</i></a>'
+           '<a href="#miejsce-2"><b>2</b><i style="font-style:normal">Kroki kursu</i></a>'
+           '<a href="#miejsce-3"><b>3</b><i style="font-style:normal">Przed FAQ</i></a>'
+           '<button type="button" onclick="document.body.classList.toggle(\'spots-off\');this.textContent=document.body.classList.contains(\'spots-off\')?\'Pokaż oznaczenia\':\'Ukryj oznaczenia\'">Ukryj oznaczenia</button></nav>')
+    r = r.replace('</head>', SPOT + '</head>', 1)
+    r = r.replace('</body>', NAV + f'<script>{COMMON_JS}</script>\n</body>', 1)
     (BASE / 'razem.html').write_text(r, encoding='utf-8')
     print('ok', len(VARS))
