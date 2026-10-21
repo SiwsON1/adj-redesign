@@ -297,7 +297,7 @@ var('Zakładki przy opisie egzaminu',
     'Dodaje ok. 400 px w środku tekstu o egzaminie.',
     'Do rozważenia',
     r'''
-.adjv7{margin:24px 0 32px;padding:12px;border-radius:16px;background:var(--adj-navy);box-shadow:var(--adj-sh-2)}
+.adjv7{margin:0;padding:12px;border-radius:16px;background:var(--adj-navy);box-shadow:var(--adj-sh-2)}
 .adjv7__tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;margin-bottom:12px;border-radius:12px;background:rgba(255,255,255,.07)}
 .adjv7__tab{min-height:44px;padding:0 10px!important;border-radius:9px!important;color:rgba(255,255,255,.82)!important;font:600 14px/1.15 "Work Sans",sans-serif!important;text-align:center;transition:background-color .2s var(--adj-out),color .2s var(--adj-out)}
 .adjv7__tab[aria-selected="true"]{background:var(--adj-brand)!important;color:var(--adj-ink)!important}
@@ -513,8 +513,10 @@ def build(nr, v, base):
     elif k == 'stories':
         s = ins(s, at(s, '<div class="kurs-info-kursanta">'), stories())
     elif k == 'exam':
-        h = at(s, 'Jak wygląda egzamin na prawo jazdy kat. B'); u1 = s.find('</ul>', h); u2 = s.find('</ul>', u1 + 5) + 5
-        s = ins(s, u2, exam())
+        h = at(s, 'Jak wygląda egzamin na prawo jazdy kat. B'); a = s.rfind('<div class="wp-block-columns', 0, h)
+        f1 = s.find('<figure', a); f2 = s.find('</figure>', f1) + len('</figure>')
+        assert a < f1 < h
+        s = s[:f1] + exam() + s[f2:]
     elif k == 'faq': s = ins(s, faq_pos(s), faq_grid())
     elif k == 'banner': s = ins(s, steps_after(s), banner())
     elif k == 'qa': s = ins(s, faq_pos(s), qa())
@@ -616,4 +618,16 @@ body.spots-off [data-spot]{outline:0}body.spots-off .spotnav{position:fixed;left
     r = r.replace('</head>', SPOT + '</head>', 1)
     r = r.replace('</body>', NAV + f'<script>{COMMON_JS}</script>\n</body>', 1)
     (BASE / 'razem.html').write_text(r, encoding='utf-8')
+    home = prep((BASE / '_home_base.html').read_text(encoding='utf-8'))
+    K = {v['kind']: v for v in VARS}
+    def home_page(out, html, where, kind, extra_css=''):
+        r = ins(home, where(home), html)
+        head = f'<meta name="robots" content="noindex, nofollow">\n<style>{COMMON_CSS + CARD_CSS + K[kind]["css"] + extra_css}</style>\n'
+        r = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + '\n' + head, r, count=1)
+        r = r.replace('</body>', f'<script>{COMMON_JS + K[kind]["js"]}</script>\n</body>', 1)
+        (BASE / out).write_text(r, encoding='utf-8')
+    home_page('glowna-kolka.html', stories(), lambda r: r.find('</section>', at(r, '<section class="main-info container">')) + len('</section>'), 'stories',
+              '.adjv6{margin-top:8px}')
+    home_page('glowna-sekcja.html', cinema(), lambda r: at(r, '<section class="bestsellers-section">'), 'cinema',
+              '.adjv3{margin:0 calc(50% - 50vw)}')
     print('ok', len(VARS))
