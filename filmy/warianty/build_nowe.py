@@ -181,7 +181,7 @@ def edit_filmy(s):
     return ins(s, at(s, '<section class="google-reviews"'), filmy())
 
 if __name__ == '__main__':
-    page('_base.html', 'kurs-16-lat.html', edit_kurs)
-    page('_home_base.html', 'glowna-reklama.html', edit_reklama)
-    page('_home_base.html', 'glowna.html', edit_filmy)
+    page('_base.html', 'kurs-obok-wymagan.html', edit_kurs)
+    page('_home_base.html', 'glowna-pod-kartami.html', edit_reklama)
+    page('_home_base.html', 'glowna-przed-opiniami.html', edit_filmy)
     print('ok')
