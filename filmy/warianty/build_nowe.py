@@ -205,11 +205,8 @@ if __name__ == '__main__':
 
 # ---------- razem-nowe: nowe filmy z Dropboxa w trzech miejscach strony kursu, z oznaczeniami ----------
 SPOT_CSS = r'''
-[data-spot]{position:relative;outline:3px dashed #FEA900;outline-offset:10px;border-radius:12px;scroll-margin-top:240px}
-[data-spot]::before{content:attr(data-spot);position:absolute;z-index:20;left:14px;top:-34px;padding:7px 12px;border-radius:999px;background:#1a1a1a;color:#FEA900;font:700 13px/1 "Work Sans",sans-serif;white-space:nowrap;pointer-events:none}
-#miejsce-1::before{top:14px}
-body.spots-off [data-spot]{outline:0}body.spots-off [data-spot]::before{display:none}
-.spotnav{position:fixed;left:50%;bottom:16px;z-index:2147482000;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:#1a1a1a;box-shadow:0 18px 40px -16px rgba(0,0,0,.6);font:600 14px/1 "Work Sans",sans-serif;max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:none}
+[data-spot]{position:relative;scroll-margin-top:240px}
+body.spots-off [data-spot]{outline:0}body.spots-off .spotnav{position:fixed;left:50%;bottom:16px;z-index:2147482000;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:#1a1a1a;box-shadow:0 18px 40px -16px rgba(0,0,0,.6);font:600 14px/1 "Work Sans",sans-serif;max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:none}
 .spotnav span{color:#fff;padding:0 8px 0 10px;white-space:nowrap}
 .spotnav a,.spotnav button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.1);color:#fff!important;text-decoration:none!important;white-space:nowrap;border:0;font:inherit;cursor:pointer;transition:background-color .2s,transform .15s}
 .spotnav a b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#FEA900;color:#1a1a1a;font-size:12px}
@@ -228,7 +225,7 @@ body.spots-off [data-spot]{outline:0}body.spots-off [data-spot]::before{display:
 def nav(items):
     a = ''.join(f'<a href="#miejsce-{i}"><b>{i}</b><i style="font-style:normal">{t}</i></a>' for i, t in items)
     return ('<nav class="spotnav" aria-label="Miejsca na filmy"><span>Filmy na tej stronie:</span>' + a +
-            '<button type="button" onclick="document.body.classList.toggle(\'spots-off\');this.textContent=document.body.classList.contains(\'spots-off\')?\'Pokaż oznaczenia\':\'Ukryj oznaczenia\'">Ukryj oznaczenia</button></nav>')
+            '</nav>')
 
 def edit_razem_nowe(s):
     # 1. góra strony: reklama z drona zamiast zdjęcia, gra sama bez dźwięku
