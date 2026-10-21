@@ -88,7 +88,7 @@ def formularz(s):
     return ins(s, at(s, '<form id="formularz-zapisy"'), card)
 
 if __name__ == '__main__':
-    page('_home_base.html', 'nowe-baner.html', baner)
+    pass
     page('_home_base.html', 'nowe-karta.html', karta)
     page('_home_base.html', 'nowe-intro.html', intro)
     page('_form_base.html', 'nowe-formularz.html', formularz)
