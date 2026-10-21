@@ -201,3 +201,55 @@ if __name__ == '__main__':
     page('_home_base.html', 'glowna-pod-kartami.html', edit_reklama)
     page('_home_base.html', 'glowna-przed-opiniami.html', edit_filmy)
     print('ok')
+
+
+# ---------- razem-nowe: nowe filmy z Dropboxa w trzech miejscach strony kursu, z oznaczeniami ----------
+SPOT_CSS = r'''
+[data-spot]{position:relative;outline:3px dashed #FEA900;outline-offset:10px;border-radius:12px;scroll-margin-top:240px}
+[data-spot]::before{content:attr(data-spot);position:absolute;z-index:20;left:14px;top:-34px;padding:7px 12px;border-radius:999px;background:#1a1a1a;color:#FEA900;font:700 13px/1 "Work Sans",sans-serif;white-space:nowrap;pointer-events:none}
+#miejsce-1::before{top:14px}
+body.spots-off [data-spot]{outline:0}body.spots-off [data-spot]::before{display:none}
+.spotnav{position:fixed;left:50%;bottom:16px;z-index:2147482000;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:#1a1a1a;box-shadow:0 18px 40px -16px rgba(0,0,0,.6);font:600 14px/1 "Work Sans",sans-serif;max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:none}
+.spotnav span{color:#fff;padding:0 8px 0 10px;white-space:nowrap}
+.spotnav a,.spotnav button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.1);color:#fff!important;text-decoration:none!important;white-space:nowrap;border:0;font:inherit;cursor:pointer;transition:background-color .2s,transform .15s}
+.spotnav a b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#FEA900;color:#1a1a1a;font-size:12px}
+.spotnav a:hover,.spotnav button:hover{background:rgba(255,255,255,.2)}.spotnav a:active,.spotnav button:active{transform:scale(.96)}
+.spotnav :focus-visible{outline:3px solid #FEA900;outline-offset:2px}
+@media (max-width:700px){.spotnav span,.spotnav a i{display:none}}
+/* 1: film w miejscu zdjęcia na górze (pętla bez dźwięku) */
+.adjh-box{position:absolute;inset:0;z-index:1;border-radius:inherit;overflow:hidden;display:grid;place-items:center;background:#1a1a1a}
+.adjh-box::before{content:"";position:absolute;inset:-40px;background:var(--bg) center/cover;filter:blur(28px) brightness(.55);transform:scale(1.1)}
+.adjh-box video.adjh-loop{position:absolute!important;top:0;bottom:0;left:50%;transform:translateX(-50%);height:100%!important;width:auto!important;max-width:none!important;aspect-ratio:9/16;object-fit:cover;box-shadow:0 0 40px rgba(0,0,0,.45)}
+/* 3: film pionowy w miejscu filmu YouTube w „Dlaczego kursanci zdają” */
+.adjn-slot{display:grid;place-items:center;padding:24px 0}
+.adjn-slot .adjn-vid{width:min(300px,100%);box-shadow:0 0 14px 4px rgba(66,66,66,.2);border:0}
+'''
+
+def nav(items):
+    a = ''.join(f'<a href="#miejsce-{i}"><b>{i}</b><i style="font-style:normal">{t}</i></a>' for i, t in items)
+    return ('<nav class="spotnav" aria-label="Miejsca na filmy"><span>Filmy na tej stronie:</span>' + a +
+            '<button type="button" onclick="document.body.classList.toggle(\'spots-off\');this.textContent=document.body.classList.contains(\'spots-off\')?\'Pokaż oznaczenia\':\'Ukryj oznaczenia\'">Ukryj oznaczenia</button></nav>')
+
+def edit_razem_nowe(s):
+    # 1. góra strony: reklama z drona zamiast zdjęcia, gra sama bez dźwięku
+    i = at(s, '<div class="kurs-img-wrapper">')
+    m = re.compile(r'<img[^>]*>').search(s, i)
+    s = s[:m.end()] + '<div class="adjh-box" data-loop style="--bg:url(media/reklama-10a.jpg)"><video class="adjh-loop" src="media/reklama-10a.mp4" poster="media/reklama-10a.jpg" muted loop autoplay playsinline aria-hidden="true"></video></div>' + s[m.end():]
+    s = s.replace('<div class="kurs-img-wrapper">', '<div id="miejsce-1" data-spot="1 · Film na górze strony" class="kurs-img-wrapper" style="position:relative">', 1)
+    # 2. obok wymagań: instruktorka, z dźwiękiem po kliknięciu
+    w = at(s, 'Wymagania na kurs prawa jazdy kat. B'); a = s.rfind('<div class="wp-block-columns', 0, w)
+    f1 = s.find('<figure', a); f2 = s.find('</figure>', f1) + len('</figure>')
+    s = s[:f1] + '<div id="miejsce-2" data-spot="2 · Film przy wymaganiach">' + kurs16_media() + '</div>' + s[f2:]
+    # 3. „Dlaczego kursanci zdają”: druga wersja reklamy w miejscu obecnego filmu YouTube
+    d = at(s, 'Dlaczego kursanci zdają'); y = at(s, 'ZnJegLxixKQ', d)
+    a = s.rfind('<figure', 0, y); b = s.find('</figure>', a) + len('</figure>')
+    slot = ('<div id="miejsce-3" data-spot="3 · Film w sekcji o zdawalności" class="adjn adjn-slot">'
+            '<div class="adjn-vid" data-loop><video src="media/reklama-10b.mp4" poster="media/reklama-10b.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video></div></div>')
+    s = s[:a] + slot + s[b:]
+    s = s.replace('</head>', f'<style>{SPOT_CSS}</style></head>', 1)
+    s = s.replace('</body>', nav([(1, 'Góra strony'), (2, 'Przy wymaganiach'), (3, 'Sekcja o zdawalności')]) + '</body>', 1)
+    return s
+
+if __name__ == '__main__':
+    page('_base.html', 'razem-nowe.html', edit_razem_nowe)
+    print('ok razem-nowe')
