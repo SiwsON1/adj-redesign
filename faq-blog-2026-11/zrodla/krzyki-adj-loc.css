@@ -1,0 +1,123 @@
+<style>.adj-loc{
+  --g:#fea900; --g-dark:#e59800; --g2:#fb8e28; --ink:#373737; --muted:#6b7280;
+  --line:#ececec; --paper:#fafafa; --white:#fff; --radius:10px;
+  --shadow:0 1px 0 rgb(66 66 66 / .04), 0 15px 26px -12px rgb(66 66 66 / .28);
+  --ease:cubic-bezier(.23,1,.32,1);
+  font-family:inherit; color:var(--ink); line-height:1.6;
+}
+.adj-loc *{box-sizing:border-box}
+.adj-loc h2,.adj-loc h3{color:var(--ink);line-height:1.25}
+.adj-loc p{margin:.5em 0}
+.adj-loc a{color:inherit}
+.adj-loc img{max-width:100%;display:block}
+.adj-loc-section{padding:30px 0}
+.adj-loc-h2{font-size:23px;font-weight:700;margin:0 0 16px}
+.adj-loc-lead{font-size:16px;color:#4b5563;max-width:72ch;margin:0 0 20px}
+
+/* przyciski */
+.adj-loc-btn{display:inline-flex;align-items:center;gap:.5em;background:var(--g);color:#fff;border:1px solid var(--g);border-radius:var(--radius);padding:.85em 1.9em;font-size:17px;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease),background-color .18s var(--ease);box-shadow:0 8px 18px -10px rgb(254 169 0 / .8)}
+.adj-loc-btn:hover{background:var(--g-dark);transform:translateY(-2px);box-shadow:0 14px 24px -10px rgb(254 169 0 / .9)}
+.adj-loc-btn:active{transform:translateY(0) scale(.98)}
+.adj-loc-btn:focus-visible{outline:3px solid rgb(254 169 0 / .5);outline-offset:2px}
+.adj-loc-btn--ghost{background:transparent;color:var(--ink);border-color:var(--line);box-shadow:none}
+.adj-loc-btn--ghost:hover{background:var(--paper);border-color:var(--g);color:var(--g-dark)}
+
+/* HERO */
+.adj-loc-hero{display:grid;grid-template-columns:1fr;gap:24px;align-items:center;padding:12px 0 24px}
+.adj-loc-badge{display:inline-flex;align-items:center;gap:.45em;background:rgb(254 169 0 / .12);color:var(--g-dark);font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;padding:.4em .85em;border-radius:999px;margin-bottom:14px}
+.adj-loc-hero .htitle{font-size:29px;line-height:1.2;font-weight:700;margin:.1em 0 .3em}
+.adj-loc-hero .lead{font-size:17px;color:#4b5563;max-width:58ch}
+.adj-loc-hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+.adj-loc-hero-cta .tel{display:inline-flex;align-items:center;gap:.5em;font-weight:700;font-size:16px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:.78em 1.4em;transition:border-color .18s var(--ease),color .18s var(--ease),transform .18s var(--ease)}
+.adj-loc-hero-cta .tel svg{width:18px;height:18px;color:var(--g)}
+.adj-loc-hero-cta .tel:hover{border-color:var(--g);color:var(--g-dark);transform:translateY(-1px)}
+.adj-loc-hero-visual img{width:100%;height:100%;min-height:230px;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)}
+
+/* KARTA OSRODKA + MAPA */
+.adj-loc-card{display:grid;grid-template-columns:1fr;gap:0;background:var(--white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.adj-loc-card-body{padding:26px}
+.adj-loc-nap{list-style:none;margin:0;padding:0}
+.adj-loc-nap li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.adj-loc-nap li:last-child{border-bottom:0}
+.adj-loc-nap svg{width:20px;height:20px;color:var(--g);flex:0 0 20px;margin-top:2px}
+.adj-loc-nap .lbl{color:var(--muted);display:block;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.adj-loc-hours{margin:2px 0 0;font-variant-numeric:tabular-nums}
+.adj-loc-card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.adj-loc-map{min-height:260px;background:var(--paper)}
+.adj-loc-map iframe{display:block;width:100%;height:100%;min-height:260px;border:0}
+
+/* SPLIT foto + punkty */
+.adj-loc-split{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+.adj-loc-split img{width:100%;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)}
+.adj-loc-list{list-style:none;margin:0;padding:0}
+.adj-loc-list li{display:flex;gap:14px;padding:12px 0}
+.adj-loc-list .ic{flex:0 0 42px;width:42px;height:42px;border-radius:10px;background:rgb(254 169 0 / .12);display:flex;align-items:center;justify-content:center}
+.adj-loc-list .ic svg{width:22px;height:22px;color:var(--g-dark)}
+.adj-loc-list h3{font-size:16.5px;margin:0 0 3px}
+.adj-loc-list p{font-size:14.5px;color:#4b5563;margin:0}
+
+/* CO WCHODZI - feature grid */
+.adj-loc-features{display:grid;grid-template-columns:1fr;gap:14px}
+.adj-loc-feat{display:flex;gap:14px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.adj-loc-feat .ic{flex:0 0 38px;width:38px;height:38px;border-radius:9px;background:rgb(254 169 0 / .12);display:flex;align-items:center;justify-content:center}
+.adj-loc-feat .ic svg{width:20px;height:20px;color:var(--g-dark)}
+.adj-loc-feat h3{font-size:15.5px;margin:0 0 2px}
+.adj-loc-feat p{font-size:13.5px;color:#4b5563;margin:0}
+
+/* DOWOD */
+.adj-loc-proof{display:grid;grid-template-columns:1fr;gap:14px}
+.adj-loc-proof .stat{display:flex;gap:14px;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+.adj-loc-proof .pic{flex:0 0 42px;width:42px;height:42px;border-radius:10px;background:rgb(254 169 0 / .12);display:flex;align-items:center;justify-content:center}
+.adj-loc-proof .pic svg{width:22px;height:22px;color:var(--g-dark)}
+.adj-loc-proof .t{font-size:16px;font-weight:800;color:var(--ink);line-height:1.15}
+.adj-loc-proof .cap{font-size:13px;color:var(--muted);margin-top:3px;display:block}
+
+/* NOTKA tekstowa (karta) */
+.adj-loc-note{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--g);border-radius:14px;padding:20px 22px;font-size:15.5px;color:#4b5563;margin:0}
+.adj-loc-note a{color:var(--g-dark);font-weight:600;text-decoration:none}
+.adj-loc-note a:hover{text-decoration:underline}
+
+/* KAT B callout */
+.adj-loc-katb{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--g);border-radius:14px;padding:26px}
+.adj-loc-katb .eyebrow{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--g-dark);margin-bottom:8px}
+.adj-loc-katb h2{font-size:21px;margin:0 0 6px}
+.adj-loc-katb p{font-size:15px;color:#4b5563;margin:0;max-width:60ch}
+
+/* SASIEDNIE */
+.adj-loc-near{font-size:15.5px;color:#4b5563;max-width:74ch}
+.adj-loc-near a{color:var(--g-dark);font-weight:600;text-decoration:none}
+.adj-loc-near a:hover{text-decoration:underline}
+
+/* FAQ */
+.adj-loc-faq{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--white)}
+.adj-loc-faq details+details{border-top:1px solid var(--line)}
+.adj-loc-faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-size:16px;font-weight:600;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:14px}
+.adj-loc-faq summary::-webkit-details-marker{display:none}
+.adj-loc-faq summary:hover{color:var(--g-dark)}
+.adj-loc-faq summary .chev{flex:0 0 20px;width:20px;height:20px;color:var(--g);transition:transform .25s var(--ease)}
+.adj-loc-faq details[open] summary .chev{transform:rotate(180deg)}
+.adj-loc-faq .ans{padding:0 20px 18px;font-size:15px;color:#4b5563;margin:0}
+
+/* CTA */
+.adj-loc-cta{text-align:center;background:#fea900;border-radius:18px;padding:44px 24px;box-shadow:0 20px 42px -22px rgb(254 169 0 / .85)}
+.adj-loc-cta h2{font-size:24px;margin:0 0 8px;color:#fff}
+.adj-loc-cta p{color:rgba(255,255,255,.92);margin:0 auto 22px;max-width:52ch}
+.adj-loc-cta .adj-loc-hero-cta{justify-content:center}
+.adj-loc-cta .adj-loc-btn{background:#fff;color:var(--g-dark);border-color:#fff;box-shadow:0 10px 22px -12px rgb(0 0 0 / .35)}
+.adj-loc-cta .adj-loc-btn:hover{background:#fff;color:#111}
+.adj-loc-cta .tel{color:#fff;border-color:rgba(255,255,255,.55)}
+.adj-loc-cta .tel svg{color:#fff}
+.adj-loc-cta .tel:hover{color:#fff;border-color:#fff;transform:translateY(-1px)}
+
+@media (min-width:860px){
+  .adj-loc-hero{grid-template-columns:1.2fr .8fr;gap:40px;padding:20px 0 30px}
+  .adj-loc-hero .htitle{font-size:37px}
+  .adj-loc-section{padding:40px 0}
+  .adj-loc-h2{font-size:26px}
+  .adj-loc-card{grid-template-columns:1.05fr 1fr}
+  .adj-loc-split{grid-template-columns:1fr 1fr;gap:40px}
+  .adj-loc-features{grid-template-columns:repeat(3,1fr)}
+  .adj-loc-proof{grid-template-columns:repeat(2,1fr);gap:16px}
+  .adj-loc-katb{grid-template-columns:1fr auto;gap:30px}
+}
+@media (prefers-reduced-motion:reduce){.adj-loc *{transition:none !important}}</style>

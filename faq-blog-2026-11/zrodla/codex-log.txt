@@ -1,0 +1,262 @@
+Reading additional input from stdin...
+OpenAI Codex v0.145.0
+--------
+workdir: /Users/marcinsiwonia/projekty/adj/faq-blog-2026-11
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: high
+reasoning summaries: none
+session id: 01a1acf6-3b83-7aa3-907f-095260e08caa
+--------
+user
+# Prompt writera dla Codexa (faza 3)
+
+Zbudowany z promptow silnika n8n (leadWriter1, textWriter1), zasad Marcina i wzorca rytmu
+z jego zaakceptowanych dokumentow. Uzywasz go tak:
+
+```bash
+cd [KATALOG] && codex exec --model gpt-5.5 --skip-git-repo-check \
+"$(cat ~/.claude/skills/artykul/prompt-writer-codex.md) --- BRIEF: $(cat 02_brief.md)"
+```
+
+## GLOS TEKSTU
+
+Piszesz W IMIENIU klienta, na jego stronie. Pierwsza osoba mnoga: "przejmujemy", "uzywamy",
+"rozliczamy". Nigdy nie opisujesz klienta z zewnatrz ("firma deklaruje", "wedlug materialow X",
+"X podaje, ze"), bo tekst brzmi wtedy jak recenzja, a nie jak wypowiedz gospodarza strony.
+
+## JEZYK WYJSCIA
+
+Piszesz **poprawna polszczyzna z pelnymi znakami diakrytycznymi**: a z ogonkiem, c z kreska,
+e z ogonkiem, l z kreska, n z kreska, o z kreska, s z kreska, z z kropka, z z kreska.
+Ten prompt jest zapisany bez ogonkow ze wzgledow technicznych. **Nie nasladuj tego w tekscie.**
+Tekst bez diakrytykow jest bezuzyteczny i zostanie odrzucony.
+
+## ROLA
+
+Jestes doswiadczonym polskim redaktorem i copywriterem. Piszesz jak uwazny czlowiek,
+nie jak generator tresci. Styl masz rzeczowy, bezposredni i funkcjonalny: od razu zaspokajasz
+intencje czytelnika, bez rozgrzewki.
+
+## ZADANIE
+
+Napisz kompletny artykul po polsku wylacznie na podstawie zalaczonego briefu. Brief jest
+jedynym zrodlem faktow. Nie dodajesz wiedzy spoza niego i nie pomijasz niczego oznaczonego
+jako wymagane.
+
+## OTWARCIE (lead 40-100 slow)
+
+Rozpoznaj typ intencji i otworz zgodnie z nim:
+- definicyjna (co to jest, czym jest): definicja plus zakres
+- procesowa (jak, w jaki sposob): najpierw efekt, potem sygnal, ze beda kroki
+- ilosciowa (ile, kiedy, jak dlugo): od razu liczba albo przedzial
+- oceniajaca (czy warto, czy mozna): bezposrednie tak albo nie, plus warunek
+
+Konkretna dana (liczba, przedzial, rama czasowa) musi paść w pierwszych dwoch zdaniach,
+nie dalej. Konczysz praktyczna korzyscia dla czytelnika. Nigdy nie zapowiadasz zawartosci
+artykulu ("w tym artykule dowiesz sie").
+
+## LOGIKA AKAPITU (wazniejsze od rytmu, od tego zalezy czy tekst da sie zrozumiec)
+
+**Akapit ma jeden temat i ma gdzies prowadzic.** Pierwsze zdanie stawia temat, kolejne go
+rozwijaja: wyjasniaja pojecie, pokazuja mechanizm, dodaja zastrzezenie albo wyciagaja wniosek.
+Na koncu akapitu czytelnik wie wiecej niz na poczatku.
+
+Tak wyglada akapit, ktory dziala (z tekstu zaakceptowanego przez klienta i lekarza):
+
+> W literaturze medycznej spotyka sie tez nazwe "jalowa martwica guzowatosci piszczeli".
+> Okreslenie to opisuje proces zwiazany z dojrzewaniem ukladu ruchu, a nie zakazenie kosci.
+> Podczas wzrostu powtarzalne pociaganie wiezadla rzepki drazni niedojrzala plytke wzrostowa,
+> dlatego schorzenie zalicza sie do zespolow przeciazeniowych kolana.
+
+Zdanie pierwsze wprowadza nazwe, drugie wyjasnia co ona znaczy i czego nie znaczy, trzecie
+pokazuje mechanizm i konczy wnioskiem.
+
+**A tak wyglada katalog udajacy akapit, czyli blad do unikniecia:**
+
+> Najczesciej obejmuje pachwiny, wzgorek lonowy oraz wargi sromowe zewnetrzne. Bikini klasyczne
+> ogranicza sie zwykle do wlosow poza linia bielizny. Brazylijskie oznacza zakres najszerszy.
+
+Trzy zdania o trzech roznych rzeczach postawione obok siebie. Nic z tego nie wynika.
+Jesli musisz wymienic rownorzedne pozycje, zrob z tego liste albo tabele, a nie akapit.
+
+## TLUMACZENIE MECHANIZMU: podaj brakujaca przeslanke, nie skrot
+
+Kiedy tlumaczysz, dlaczego cos dziala tak a nie inaczej, najpierw ustal, **czego czytelnik
+jeszcze nie wie**. Zdanie, ktore pomija ta jedna informacje, brzmi absurdalnie, nawet gdy jest
+merytorycznie poprawne.
+
+Przyklad bledu, ktory realnie wyszedl:
+
+> "Zabieg powtarza sie co kilka tygodni, bo laser dziala tylko na te wlosy, ktore akurat rosna."
+
+Czytelniczka widzi swoje wlosy i dla niej wszystkie istnieja. Zdanie jest wiec bez sensu, bo
+brakuje przeslanki: **czesc wlosow siedzi jeszcze pod skora i ich nie widac.**
+
+Poprawnie:
+
+> "W skorze przez caly czas sa wlosy, ktore jeszcze nie wyrosly. Laser ich nie dosiegnie, bo
+> trafia w ciemny barwnik widocznego wlosa. Za kilka tygodni te ukryte wyrosna i wtedy przyjdzie
+> na nie kolej, dlatego zabieg powtarza sie w seriach."
+
+Schemat: **brakujaca informacja, potem skutek**. Nie odwrotnie i nigdy sam skutek.
+
+Konkurencja czesto pisze skrotem ("aby objac wszystkie fazy wzrostu wlosa"), wiec nie kopiuj
+jej sposobu tlumaczenia. Sprawdz, czy laik zrozumie zdanie bez wczesniejszej wiedzy.
+
+## ZDANIE MUSI NIESC MYSL
+
+Krotkie zdanie nie jest wartoscia samo w sobie. Ma powiedziec cos, czego czytelnik jeszcze nie wie.
+
+Zakazane sa zdania-przejscia i zapowiedzi:
+- "Ta wlasciwosc ma konkretne znaczenie praktyczne" (zapowiada, nic nie mowi)
+- "Caly mechanizm ma jednak warunek" (mechanizm nie ma warunku, to belkot)
+- "Tu zaczyna sie najwazniejsza czesc"
+- "Warto to rozlozyc na czynniki pierwsze"
+
+Zamiast zapowiadac, po prostu powiedz to, co masz do powiedzenia.
+
+**Kazde zdanie musi dac sie zrozumiec za pierwszym razem, bez cofania sie.** Jesli czytelnik
+musi przeczytac zdanie dwa razy, zdanie jest zle, nawet gdy gramatycznie jest poprawne.
+
+**Sprawdzian:** przeczytaj akapit i odpowiedz, o czym byl. Jesli odpowiedz brzmi "o kilku
+rzeczach", akapit jest do rozbicia albo do przerobienia na liste.
+
+## RYTM AKAPITOW (wazny, ale dopiero po logice)
+
+Teksty pisane przez ludzi maja **nieregularna** dlugosc akapitow. Zmierzone na piciu
+opublikowanych wpisach: srednio 2,0-2,5 zdania na akapit, ale odchylenie standardowe
+0,85-1,60, a rozpietosc od 5 do ponad 100 slow. Sekwencja liczby zdan wyglada w nich tak:
+`5 2 2 2 1 3 3 1 2 1 2 3 1 3`.
+
+Tekst AI wpada w pasmo 2-3 zdan i 25-55 slow w kazdym akapicie. Odchylenie spada do 0,6
+i wtedy czytelnik czuje maszyne, nawet jesli kazde zdanie z osobna jest poprawne.
+
+Konkretnie, na tekst okolo 1300 slow:
+- akapity jednozdaniowe sa dobre TYLKO wtedy, gdy to zdanie samo w sobie cos wnosi: konkret,
+  rozstrzygniecie, mocna teza. **Nigdy nie dopisuj krotkiego zdania po to, zeby miec krotki
+  akapit.** Tak powstaja zdania puste, a to gorszy blad niz rowny rytm.
+- **minimum jeden akapit na 4-5 zdan.** Tam, gdzie realnie rozwijasz mysl.
+- reszta miedzy dwoma a trzema zdaniami.
+- rozpietosc dlugosci co najmniej od okolo 10 do okolo 80 slow.
+- **nie ustawiaj tego naprzemiennie** (krotki, dlugi, krotki, dlugi), bo regularna zmiennosc
+  jest rownie mechaniczna jak jej brak. Dlugosc ma wynikac z tresci: krotki akapit tam, gdzie
+  mysl jest zamknieta, dluzszy tam, gdzie trzeba ja poprowadzic.
+
+## RYTM ZDAN (tu wiekszosc tekstow AI sie sypie)
+
+- Mieszaj zdania krotkie (10-12 slow) z dluzszymi (20-25). Zadne zdanie nie przekracza 25 slow.
+- Akapit ma srednio 25 slow, maksymalnie okolo 50. Dluzszy akapit rozbijasz.
+- Kazde zdanie wnosi nowa informacje. Kazdy akapit otwiera swiezy watek.
+- Nie tlumacz rzeczy oczywistych. Zaufaj inteligencji czytelnika.
+- Maksymalnie jedno pytanie retoryczne na sekcje.
+- Kazda sekcja zaczyna sie od bezposredniej odpowiedzi. Nigdy nie dodajesz miekkiego wstepu
+  przed konkretem.
+
+## POLSZCZYZNA
+
+- Naturalny szyk. Zdanie ma brzmiec tak, jak powiedzialby je Polak, nie jak tlumaczenie.
+- Czasowniki zamiast rzeczownikow odczasownikowych: "sprawdzasz" zamiast "dokonujesz sprawdzenia",
+  "wykrywa" zamiast "sluzy do wykrywania".
+- Strona czynna. Bez form na -no i -to ("przeprowadzono", "ustalono").
+- Bez imieslowow na -ac tam, gdzie da sie napisac dwoma zdaniami.
+- Krotsze slowa: "uzywa" zamiast "wykorzystuje", "teraz" zamiast "aktualnie".
+- Bez potocyzmow w tekscie eksperckim ("rzecz", "ruszylo", "najebane") i bez patosu.
+- Uwazaj na zaimki: czytelnik musi wiedziec, do czego odnosi sie "ja", "go", "to".
+
+## ZAKAZY BEZWZGLEDNE
+
+- Zero em dash i en dash. Myslnik tylko jako lacznik slow. Pauzy: przecinek, kropka, dwukropek.
+- Zero separatorow poziomych.
+- Zero sekcji podsumowujacej i zero rekapitulacji na koncu sekcji.
+- Zero frazesow mostowych: "warto pamietac", "nalezy podkreslic", "w dzisiejszych czasach",
+  "kluczowe znaczenie", "nie tylko... ale rowniez", "podsumowujac", "jak widac".
+- Zero marketingowego puchu: "nowoczesne rozwiazanie", "kompleksowa obsluga", "najwyzsza jakosc".
+- Zero pogrubien w tresci.
+- Maksymalnie trzy linki w calym tekscie i nigdy dwa w jednym akapicie.
+
+## INTEGRALNOSC FAKTOW (nadrzedne wobec stylu)
+
+- Nigdy nie usuwasz, nie zamieniasz i nie parafrazujesz konkretnej wartosci. Liczby, kwoty,
+  ramy czasowe i daty zostaja doslownie takie, jak w briefie.
+- Fakt oznaczony w briefie jako source_specific opisujesz jako praktyke konkretnego podmiotu,
+  nigdy jako regule calej branzy.
+- Nie podajesz kwot urzedowych ani cen. Jesli brief ich nie ma, piszesz opisowo.
+- Nie rozwijasz tematow z sekcji ZAKRES briefu. Dostaja najwyzej jedno zdanie i link.
+
+## WYJSCIE
+
+Zwracasz wylacznie gotowy artykul w markdownie: H1, sekcje H2, opcjonalnie H3 tam, gdzie sekcja
+ma realnie odrebne watki, oraz FAQ. Bez komentarzy, bez wyjasnien, bez metadanych.
+
+## LEKCJE Z POPRZEDNICH TEKSTOW
+
+Plik `lekcje.md` doklejany jest do tego promptu. Traktuj go rownie powaznie jak reszte:
+to sa bledy, ktore realnie wyszly w poprzednich zleceniach i zostaly wytkniete.
+
+## TWARDE WYMOGI, KTORE BYWAJA GUBIONE
+
+1. **Linki z briefu sa obowiazkowe.** Kazdy temat z sekcji ZAKRES, ktory ma przypisany adres,
+   musi dostac dokladnie jedno zdanie i link. Pominiecie linkow to blad, nie oszczednosc.
+2. **Zaden akapit nie przekracza 65 slow.** Po napisaniu policz i rozbij te, ktore przekraczaja.
+3. **Nie asekuruj sie.** Slowa "moze", "mozna", "bywa", "czasem" uzywaj tylko tam, gdzie realnie
+   opisujesz wariant. Tekst, w ktorym co drugie zdanie zawiera "moze", przestaje cokolwiek
+   twierdzic i brzmi jak unik. Limit: najwyzej 5 takich slow na 1000 slow.
+4. **Nie buduj sekcji na schemacie "pierwsze, drugie, trzecie, czwarte".** To najbardziej
+   maszynowy uklad, jaki istnieje. Kazdy element wprowadzaj inaczej: raz nazwa, raz sytuacja,
+   raz pytaniem czytelnika, raz kontrastem do poprzedniego.
+5. **Pisz obrazowo tam, gdzie to mozliwe.** "Plytki dudnia przy opukiwaniu" dziala lepiej niz
+   "wystepuje zjawisko odspojenia okladziny". Konkret zmyslowy zamiast opisu ogolnego.
+
+--- ZADANIE SPECJALNE: nie piszesz artykułu, tylko krótki blok FAQ. Brief poniżej ma pierwszeństwo przed ogólnymi zasadami o długości i strukturze artykułu. Zapisz wynik do pliku 02_faq-tresc.md w bieżącym katalogu.
+
+BRIEF:
+# BRIEF: blok FAQ pod wpisem (pilot ADJ-27)
+
+Klient: Akademia Dobrej Jazdy (ADJ), szkoła jazdy we Wrocławiu, www.naukajazdy.wroc.pl. Ośrodek i plac: Wiaduktowa 21, Wrocław. Egzaminy państwowe we Wrocławiu przeprowadza DORD (Dolnośląski Ośrodek Ruchu Drogowego), NIGDY nie pisz „WORD”.
+Wpis: https://www.naukajazdy.wroc.pl/blog/samochody-osobowe/czym-grozi-jazda-bez-prawa-jazdy-po-zdanym-egzaminie/
+Treść wpisu: zrodla/post-310-content.html (przeczytaj, nie powtarzaj go słowo w słowo).
+
+## Co oddajesz
+Plik `02_faq-tresc.md` z 5 parami pytanie/odpowiedź, format:
+
+### P: <pytanie>
+<odpowiedź>
+
+Pytania są ustalone (możesz poprawić szyk, nie zmieniaj sensu):
+1. Czy po zdaniu egzaminu na prawo jazdy można od razu jeździć?
+2. Czy mogę jeździć bez plastikowego prawa jazdy?
+3. Co, jeśli w ciągu 30 dni nie odbiorę prawa jazdy?
+4. Jak sprawdzić, czy prawo jazdy jest gotowe do odbioru?
+5. Czy przed egzaminem mogę ćwiczyć jazdę z rodzicem albo znajomym, który ma prawo jazdy?
+
+## Zasady
+- Odpowiedź 2-4 zdania, maks. ok. 60 słów. Pierwsze zdanie odpowiada wprost (tak/nie/kiedy).
+- Głos: szkoła jazdy mówi do kursanta, „Ty”. Pierwsza osoba mnoga tylko przy ADJ („u nas”, „na kursie w ADJ”).
+- Zero kwot (żadnych złotówek, opłat, mandatów w zł). Zero liczb, których nie ma w faktach poniżej.
+- Zero em-dash i półpauz (— –). Przecinek, kropka, dwukropek, nawias.
+- Polskie znaki diakrytyczne obowiązkowo.
+- Bez fraz-wytrychów („warto pamiętać”, „kluczowe”, „podsumowując”, „nie tylko... ale”). Bez „może”/„bywa” na wyrost.
+- Bez linków w odpowiedziach poza jednym: w odpowiedzi 4 możesz wymienić serwis info-car.pl nazwą (bez linku HTML). W odpowiedzi 5 możesz wspomnieć kurs kat. B w ADJ (link dodam sam).
+- Nie powołuj się na źródła w tekście („według gov.pl”). Pisz faktami.
+
+## Fakty (TYLKO te, sprawdzone 5.11.2026)
+F1. Ustawa o kierujących pojazdami (Dz.U. 2025 poz. 1226) art. 5b: tymczasowe elektroniczne prawo jazdy stwierdza posiadanie uprawnienia do kierowania pojazdami kategorii AM, A1, A2, A, B1, B, B+E lub T na terytorium Polski, do dnia odbioru prawa jazdy, ale nie dłużej niż 30 dni od dnia zdanego egzaminu państwowego. Jest generowane automatycznie w systemie centralnej ewidencji kierowców po pozytywnym wyniku egzaminu (egzaminator przekazuje wynik bezpośrednio po egzaminie, art. 10c). Datą uzyskania uprawnienia jest dzień zdanego egzaminu (art. 5b ust. 5).
+F2. info.mobywatel.gov.pl: tymczasowe prawo jazdy to dokument cyfrowy w aplikacji mObywatel, ważny 30 dni od dnia zdanego egzaminu, upoważnia do prowadzenia pojazdów zanim wyrobisz właściwy dokument, który wciąż jest obowiązkowy. Ważne tylko na terenie Polski. Zanim wsiądziesz za kierownicę, sprawdź, czy dokument jest w aplikacji (pojawia się powiadomienie). Warunkiem jest też wymagany wiek dla kategorii (nie podawaj liczby lat).
+F3. Ministerstwo Cyfryzacji (gov.pl): przy kontroli drogowej nie musisz okazywać cyfrowej wersji prawa jazdy, policja może sprawdzić dane kierowcy w systemie.
+F4. Art. 10d: tymczasowe prawo jazdy jest unieważniane automatycznie m.in. po wydaniu prawa jazdy, zatrzymaniu, zakazie prowadzenia pojazdów, odmowie wydania prawa jazdy.
+F5. gov.pl (Ministerstwo Infrastruktury, „Jak uzyskać prawo jazdy”): po zdanym egzaminie praktycznym ośrodek egzaminacyjny wysyła informację do urzędu. Prawo jazdy jest gotowe najpóźniej po 9 dniach roboczych od dnia, w którym urząd dostał potwierdzenie opłaty za prawo jazdy (kwoty NIE podawaj). Czasem trwa to dłużej, gdy urząd musi coś wyjaśnić. Etap sprawy i termin odbioru sprawdzisz w serwisie info-car.pl, podając PESEL, imię i nazwisko. Dokument odbierasz w urzędzie albo zamawiasz wysyłkę pocztą.
+F6. Po upływie 30 dni tymczasowe prawo jazdy przestaje być ważne. Jeśli do tego czasu nie odbierzesz plastikowego dokumentu, nie masz dokumentu potwierdzającego uprawnienia i nie możesz prowadzić (jazda wtedy = jazda bez wymaganego dokumentu; o karach wpis mówi wyżej, nie powtarzaj kwot).
+F7. Ustawa o kierujących pojazdami art. 23: nauka jazdy (część praktyczna szkolenia) odbywa się w ramach kursu w ośrodku szkolenia kierowców, z instruktorem, na placu manewrowym i w ruchu drogowym. Jazda samochodem po drogach publicznych bez uprawnień, z kimkolwiek obok (rodzic, znajomy), to prowadzenie pojazdu bez uprawnień (art. 94 Kodeksu wykroczeń, o czym wpis mówi wyżej).
+
+## Uwaga
+Wpis w obecnej wersji twierdzi, że bez odebranego dokumentu nie wolno jeździć. To nieaktualne (tymczasowe prawo jazdy od 2023). Twoje odpowiedzi mają być zgodne z faktami F1-F7, nie z wpisem.
+warning: Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest.
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 9:46 PM.
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 9:46 PM.
