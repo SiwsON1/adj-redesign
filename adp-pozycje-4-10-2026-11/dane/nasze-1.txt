@@ -1,0 +1,66 @@
+
+##### https://akademiadlaprzemyslu.pl/slowniczek-przemyslowy/lidary/ [200] ~334 slow, linki /kursy/: 30
+   H1: Lidary
+   H2: Lidary – definicja
+   H3: Najważniejsze cechy lidarów:
+   H2: Zastosowania lidarów
+   H3: Kluczowe zalety lidarów:
+   H2: Kursy które mogą Cię zainteresować
+   H3: Kurs Elektrotechnika – poziom 1
+   H3: Kurs Operator – programista robotów FANUC
+   H3: Kurs Operator – programista robotów przemysłowych – poziom 1
+   H3: Kurs CNC Wrocław – Operator-Programista Maszyn CNC (Poziom 1)
+   H2: Wpisy blogowe które mogą Cię zainteresować
+   KURSY: ['https://akademiadlaprzemyslu.pl/kursy/d1-dozoru-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/d2-dozoru-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/d3-dozoru-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-drganiowa/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-termograficzna/', 'https://akademiadlaprzemyslu.pl/kursy/e1-eksploatacji-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/e2-eksploatacja-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/e3-eksploatacji-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/lakiernik-samochodowy/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-frezarek-cnc/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-maszyn-cnc-poziom-1/']
+
+##### https://akademiadlaprzemyslu.pl/blog/przemysl/polaryzacja-co-to-jest-i-jakie-ma-znaczenie-w-technice-i-przemysle/ [200] ~949 slow, linki /kursy/: 31
+   H1: Polaryzacja – co to jest i jakie ma znaczenie w technice i przemyśle?
+   H2: Polaryzacja w fizyce – podstawowa idea
+   H2: Zastosowanie polaryzacji w elektronice i produkcji wyświetlaczy
+   H2: Polaryzacja w kontroli jakości i diagnostyce materiałów
+   H2: Polaryzacja w systemach wizji maszynowej
+   H2: Polaryzacja w energetyce i technologiach przyszłości
+   H2: Dlaczego polaryzacja jest tak ważna w nowoczesnej technologii?
+   KURSY: ['https://akademiadlaprzemyslu.pl/kursy/d1-dozoru-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/d2-dozoru-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/d3-dozoru-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-drganiowa/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-termograficzna/', 'https://akademiadlaprzemyslu.pl/kursy/e1-eksploatacji-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/e2-eksploatacja-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/e3-eksploatacji-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/lakiernik-samochodowy/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-frezarek-cnc/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-maszyn-cnc-poziom-1/']
+
+##### https://akademiadlaprzemyslu.pl/blog/przemysl/praca-jako-tokarz-konwencjonalny-obowiazki-wymagania-i-perspektywy/ [200] ~1535 slow, linki /kursy/: 31
+   H1: Praca jako tokarz konwencjonalny: obowiązki, wymagania i perspektywy
+   H2: Czym jest tokarz konwencjonalny i obrabiarka konwencjonalna?
+   H2: Zakres obowiązków tokarza konwencjonalnego w obróbce skrawaniem
+   H2: Zarobki tokarza konwencjonalnego
+   H3: Premie i bonusy dla tokarzy
+   H2: Wymagania i umiejętności tokarza konwencjonalnego
+   H2: Warunki zatrudnienia i lokalizacje pracy
+   H3: Praca za granicą dla tokarzy
+   H2: FAQ
+   H3: Czym jest tokarz konwencjonalny?
+   H3: Ile zarabia tokarz konwencjonalny?
+   H3: Czym jest obrabiarka konwencjonalna?
+   H3: Czy pracodawcy zatrudniają tokarzy po 50. roku życia?
+   H3: Jakie materiały obrabia tokarz konwencjonalny?
+   KURSY: ['https://akademiadlaprzemyslu.pl/kursy/d1-dozoru-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/d2-dozoru-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/d3-dozoru-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-drganiowa/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-termograficzna/', 'https://akademiadlaprzemyslu.pl/kursy/e1-eksploatacji-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/e2-eksploatacja-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/e3-eksploatacji-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/lakiernik-samochodowy/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-frezarek-cnc/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-maszyn-cnc-poziom-1/']
+
+##### https://akademiadlaprzemyslu.pl/blog/plc/czym-dokladnie-jest-plc/ [200] ~1160 slow, linki /kursy/: 30
+   H1: Czym dokładnie jest PLC?
+   H2: Historia i rozwój PLC
+   H2: Budowa sterowników PLC – najważniejsze informacje
+   H2: Jak działa sterownik PLC?
+   H2: Działanie sterowników PLC na przykładzie
+   H2: Zastosowanie PLC w przemyśle
+   H2: Programowalne sterowniki logiczne to wiele korzyści dla przemysłu
+   H2: Przyszłość PLC
+   H2: Zostań programistą PLC – wystarczy odpowiedni kurs
+   KURSY: ['https://akademiadlaprzemyslu.pl/kursy/d1-dozoru-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/d2-dozoru-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/d3-dozoru-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-drganiowa/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-termograficzna/', 'https://akademiadlaprzemyslu.pl/kursy/e1-eksploatacji-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/e2-eksploatacja-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/e3-eksploatacji-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/lakiernik-samochodowy/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-frezarek-cnc/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-maszyn-cnc-poziom-1/']
+
+##### https://akademiadlaprzemyslu.pl/blog/cnc/czym-jest-programowanie-sterownikow-plc/ [200] ~1558 slow, linki /kursy/: 30
+   H1: Czym jest programowanie sterowników PLC?
+   H2: PLC – cyfrowy mózg automatyki
+   H2: Na czym polega programowanie sterowników PLC?
+   H2: Jak sterownik PLC wykonuje program?
+   H2: Przykład: układ start i stop z podtrzymaniem
+   H2: Oprogramowanie i symulacja przy programowaniu PLC
+   H2: Nauka programowania PLC od podstaw
+   H2: Zastosowanie programowania PLC w przemyśle
+   H2: Czy warto uczyć się programowania PLC?
+   H2: Najczęściej zadawane pytania
+   KURSY: ['https://akademiadlaprzemyslu.pl/kursy/d1-dozoru-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/d2-dozoru-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/d3-dozoru-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-drganiowa/', 'https://akademiadlaprzemyslu.pl/kursy/diagnostyka-termograficzna/', 'https://akademiadlaprzemyslu.pl/kursy/e1-eksploatacji-w-zakresie-elektroenergetycznym/', 'https://akademiadlaprzemyslu.pl/kursy/e2-eksploatacja-w-zakresie-cieplnym/', 'https://akademiadlaprzemyslu.pl/kursy/e3-eksploatacji-w-zakresie-gazowym/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/elektrotechnika-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-1/', 'https://akademiadlaprzemyslu.pl/kursy/hydraulika-silowa-poziom-2/', 'https://akademiadlaprzemyslu.pl/kursy/lakiernik-samochodowy/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-frezarek-cnc/', 'https://akademiadlaprzemyslu.pl/kursy/operator-programista-maszyn-cnc-poziom-1/']

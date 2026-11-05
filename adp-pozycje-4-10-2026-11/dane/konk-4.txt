@@ -1,0 +1,159 @@
+
+##### https://pl.wikipedia.org/wiki/Robotyka [200] ~527 slow, linki /kursy/: 0
+   H2: Spis treści
+   H1: Robotyka
+   H2: Podział robotyki
+   H2: Powstanie terminu „robotyka”
+   H2: Zobacz też
+   H2: Przypisy
+   H2: Linki zewnętrzne
+
+##### https://forbot.pl/blog/leksykon/robotyka [200] ~694 slow, linki /kursy/: 0
+   H1: Robotyka - co warto wiedzieć?
+   H4: Robotyka - artykuły powiązane tematycznie
+   H4: Inne hasła w leksykonie
+   H4: Artykuł był ciekawy?
+
+##### https://www.siemens.com/pl-pl/products/tia-portal/ [200] ~590 slow, linki /kursy/: 0
+   H1: TIA Portal: Jedna platforma dla wydajnej inżynierii
+   H2: Więcej niż ramy inżynieryjne
+   H2: Poznaj produkty
+   H3: Eigen Engineering Agent
+   H3: PLC programming with SIMATIC STEP 7
+   H3: SIMATIC WinCC Unified Engineering
+   H3: SINAMICS Startdrive in TIA Portal
+   H3: SIMATIC Automation
+   H3: SITRAIN - Nauka przemysłowa tak, jak lubisz
+   H3: Zindywidualizuj swoje doświadczenie inżynierskie
+   H2: Często zadawane pytania
+   H3: Czy TIA Portal obejmuje integrację i zarządzanie robotami?
+   H3: Czy TIA Portal działa w chmurze?
+   H3: Jak zacząć?
+   H3: Siemens Automation Tour 2026
+
+##### https://sklep-plcspace.pl/blog/co-to-jest-tia-portal/ [200] ~1192 slow, linki /kursy/: 0
+   H1: Co to jest TIA Portal?
+   H2: Oprogramowanie STEP 7: Sercem TIA Portal
+   H2: Jak zainstalować i skonfigurować TIA Portal krok po kroku?
+   H2: Korzyści z używania TIA Portal w automatyce przemysłowej
+   H2: TIA Portal PLC w kontekście przemysłu 4.0
+   H2: Przykłady zastosowań TIA Portal w różnych branżach przemysłowych
+   H2: Podsumowanie
+   H2: FAQ
+   H3: 1. Jakie są główne funkcje TIA Portal?
+   H3: 2. Jakie wersje TIA Portal są dostępne i czym się różnią?
+   H3: 3. Jak TIA Portal pomaga w optymalizacji procesów inżynieryjnych?
+   H3: 4. Jakie sterowniki PLC są obsługiwane przez TIA Portal?
+   H3: 5. Jaką TIA Portal wybrać?
+   H3: 6. Skąd pobrać TIA Portal?
+   H3: 7. Jakie języki programowania są obsługiwane przez TIA Portal?
+   H2: Wyszukaj na stronie
+
+##### https://www.controlbyte.pl/blog/tia-portal-integracja-komunikacji-i-funkcji-automatyki/ [200] ~1871 slow, linki /kursy/: 10
+   H1: TIA Portal - Oprogramowanie Inżynieryjne Siemens do Programowania PLC
+   H2: TIA Portal - Kompleksowe Narzędzie Inżynieryjne dla Automatyki Przemysłowej
+   H2: Programowanie PLC i Narzędzia WinCC
+   H2: Struktura Programowania w PLC
+   H2: Bloki Organizacyjne i Ich Rola w Cyklach Wykonania Programu
+   H2: Przerwania i Czas Cyklu Programu
+   H2: Funkcje (FC) w TIA Portal
+   H2: Zastosowanie Funkcji FC
+   H2: Bloki Funkcyjne (FB) w TIA Portal
+   H2: Zalety Bloków Funkcyjnych
+   H2: Zrozumienie Typów Danych Użytkownika (UDT) w TIA Portal
+   H2: Wersje i licencje TIA Portal
+   H3: Jak pobrać TIA Portal i jaką wersję wybrać?
+   H2: Podsumowanie
+   H2: Czytaj też
+   H3: SIMATIC S7-1200 G2 - sterownik PLC Siemens: co nowego, CPU i złącza
+   H3: Poznaj sterownik Siemens LOGO! 8: tysiące aplikacji na małym module Siemens
+   H3: Programowanie PLC Siemens S7-1200 w godzinę - sterowanie pneumatyką
+   H2: Chcesz programować PLC w praktyce?
+   H2: Kursy automatyki i PLC
+   H2: Wiedza za darmo
+   H2: Oferta i firma
+   H3: Odbierz -10% na pierwszy kurs
+   H3: Twój kod rabatowy
+
+##### https://pl.wikipedia.org/wiki/Obrabiarka_sterowana_numerycznie [200] ~434 slow, linki /kursy/: 0
+   H2: Spis treści
+   H1: Obrabiarka sterowana numerycznie
+   H2: Cyfrowe systemy tnące CNC i wycinarki płaskie
+
+##### https://tbitech.pl/blog/jak-dziala-obrabiarka-cnc-kompletny-poradnik-o-funkcjonowaniu-obrabiarki-cnc/ [200] ~1548 slow, linki /kursy/: 0
+   H1: Jak działa obrabiarka CNC ? kompletny poradnik o funkcjonowaniu obrabiarki CNC
+   H2: Podstawowe zasady działania obrabiarek CNC
+   H3: Obrabiarka CNC — co to?
+   H3: Jakie są główne elementy składowe obrabiarek CNC?
+   H3: Jakie są różnice między obrabiarkami konwencjonalnymi a obrabiarkami CNC?
+   H3: Podstawowe zasady sterowania obrabiarkami CNC
+   H2: Proces obróbki przy użyciu obrabiarki CNC
+   H3: Jak przebiega proces programowania obrabiarek CNC?
+   H3: Jakie są główne etapy procesu obróbki?
+   H3: Jakie są typowe zastosowania obrabiarek CNC w różnych branżach?
+   H2: Zalety stosowania obrabiarek CNC
+   H3: Jakie są główne korzyści związane z wykorzystaniem urządzeń CNC?
+   H3: Jakie są najważniejsze zalety w porównaniu z tradycyjnymi metodami obróbki?
+   H3: Możliwości automatyzacji procesu obróbki przy użyciu obrabiarek CNC
+   H2: Technologie stosowane w obrabiarkach CNC
+   H2: Bezpieczeństwo i konserwacja obrabiarek CNC
+   H3: Jakie są podstawowe zasady bezpieczeństwa przy obsłudze obrabiarek CNC?
+   H2: Jakie są najnowsze trendy i innowacje w dziedzinie technologii obrabiarek CNC?
+   H3: Więcej o maszynach CNC:
+   H2: Bądź na bieżąco z informacjami z branży oraz nowościami TBI Technology
+   H2: Obrabiarki dostępne od ręki
+   H2: Wypełnij poniższy formularz, a my skontaktujemy się z Tobą!
+   H2: Formularz serwisowy
+   H2: Opis usterki
+   H2: Dane firmy
+   H2: TBI Technology Sp. z o.o.
+   H4: Frezarki CNC
+   H4: Tokarki CNC
+   H4: Wytaczarki CNC
+   H4: Wielkogabarytowe
+
+##### https://www.cormak.pl/406-maszyny-cnc [200] ~4696 slow, linki /kursy/: 0
+   H1: Maszyny CNC
+   H2: Tokarka CNC do rur CORMAK CKT800x1500 przelot wrzeciona 190 mm SIEMENS SINUMERIK
+   H2: Płytka z polikrystalicznym diamentem VCGW160412
+   H2: Zestaw narzędzi do gwintowania M6-M20
+   H2: Zestawy startowy BT40
+   H2: Zestaw startowy noży 20x20
+   H2: Tokarka CK7150LT6 Napędzane narzędzia + robot
+   H2: Sonda stykowa TS27R do ustawiania narzędzi
+   H2: Frezarka CNC MILL 1636
+   H2: Frezarka CNC CORMAK MILL 300 Ecoline
+   H2: Stół podziałowy obrotowy CNC
+   H2: Centrum obróbcze poziome H-MILL 630
+   H2: Centrum bramowe MILL 1525
+   H2: Centrum obróbcze CNC MILL 400 800x260
+   H2: Tokarka CNC do rur CORMAK CKT800 przelot wrzeciona 130 mm SIEMENS SINUMERIK
+   H2: Tokarka CNC CK7170X1000 LT12 Napędzane narzędzia SIEMENS SINUMERIK
+   H2: Tokarka CNC CORMAK 560x1500 SIEMENS SINUMERIK
+   H2: Oprawka na głowicę narzędziową OTW320 (20)
+   H2: Zestaw narzędzi do gwintowania M2-M12
+   H2: Zestawy startowy BT30
+   H2: Zestaw startowy noży 25x25
+   H2: Frezarka narzędziowa CNC CORMAK XL8140
+   H2: Centrum obróbcze MILL 500 + robot
+   H2: Sonda OMP60 z transmisją optyczną
+   H2: Frezarka CNC MILL 2050
+   H2: 4 oś podzielnica CNC
+   H2: Tokarka CNC CORMAK 400x700 Uchwyt manualny SIEMENS SINUMERIK
+   H2: Centrum obróbcze poziome H-MILL 800
+   H2: Centrum bramowe MILL 1630
+   H2: Frezarka CNC MILL 350
+   H2: Tokarka CNC 800x1500/2000/3000
+   H2: Tokarka CNC do renowacji felg aluminiowych 32 CALI - CORMAK
+   H2: Automatyczny magazyno-podajnik do tokarki CNC
+   H2: Tokarka CNC do rur CORMAK CKT1000 przelot wrzeciona 270 mm SIEMENS SINUMERIK
+   H2: Tokarka CNC CK7170X1500 LT12 Napędzane narzędzia SIEMENS SINUMERIK
+   H2: Oprawka na głowicę narzędziową OTW320 (20 K)
+   H2: Robot przemysłowy
+   H2: Skontaktuj się z naszymi konsultantami:
+   H2: Jak przebiega obróbka CNC – projektowanie, programowanie i produkcja
+   H2: CNC maszyny – dokładność, precyzja, i szybkość w produkcji
+   H2: Maszyny CNC jako fundament nowoczesnej produkcji
+   H2: Automatyzacja i robotyzacja w obróbce CNC
+   H2: Producent maszyn CNC Cormak – oferta i specyfikacja urządzeń
+   H2: Maszyny CNC do metalu – podsumowanie

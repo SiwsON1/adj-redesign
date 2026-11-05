@@ -1,0 +1,68 @@
+
+##### https://akademiadlaprzemyslu.pl/blog/przemysl/scada-co-to-jest-i-jak-dziala-w-praktyce/ [200] ~1176 slow, linki /kursy/: 30
+   H1: SCADA – co to jest i jak działa w praktyce
+   H2: Jak działa system SCADA
+   H2: Kluczowe funkcje systemu SCADA
+   H2: Elementy systemu SCADA
+   H2: SCADA a HMI – jaka jest różnica
+   H2: Zastosowanie systemów SCADA
+   H2: SCADA a PLC: kto steruje, a kto nadzoruje
+   H2: Przykład systemu SCADA w zakładzie produkcyjnym
+   H2: Dlaczego SCADA jest ważna w nowoczesnym przemyśle
+   H2: Jak nauczyć się systemów SCADA?
+   H2: Najczęściej zadawane pytania
+
+##### https://akademiadlaprzemyslu.pl/blog/przemysl/izolatory-elektryczne-kompleksowy-przewodnik-techniczny/ [200] ~961 slow, linki /kursy/: 30
+   H1: Izolatory elektryczne – kompleksowy przewodnik techniczny
+   H2: Czym są izolatory elektryczne i jakie pełnią funkcje
+   H2: Klasyfikacja materiałów izolacyjnych
+   H2: Kluczowe właściwości izolatorów elektrycznych
+   H2: Izolatory porcelanowe a polimerowe – różnice technologiczne
+   H2: Typy izolatorów stosowanych w energetyce
+   H2: Normy i wymagania techniczne
+   H2: Nowoczesne i zaawansowane materiały izolacyjne
+   H2: Zastosowania izolatorów elektrycznych
+   H2: Dobór i eksploatacja izolatorów
+
+##### https://akademiadlaprzemyslu.pl/blog/ile-zarabia-elektrotechnik/ [200] ~1001 slow, linki /kursy/: 30
+   H1: Ile zarabia elektrotechnik?
+   H2: Kim jest elektrotechnik i gdzie może pracować?
+   H2: Aktualne widełki płac w zależności od stanowiska
+   H2: Wynagrodzenie a poziom doświadczenia
+   H2: Czynniki podnoszące wynagrodzenie
+   H2: Zarobki elektrotechnika a lokalizacja
+   H3: Etaty kontra kontrakty
+   H2: Porównanie z pokrewnymi zawodami
+   H2: Jak zwiększyć swoje zarobki?
+   H2: Ile zarabia inżynier elektryk za granicą?
+   H2: Czy warto studiować elektrotechnikę?
+   H2: Podsumowanie
+
+##### https://akademiadlaprzemyslu.pl/blog/robotyka/czym-jest-robotyka/ [200] ~1150 slow, linki /kursy/: 30
+   H1: Czym jest robotyka?
+   H2: Robotyka – definicja
+   H2: Zastosowanie robotyki w przemyśle
+   H2: Robotyka odgrywa kluczowe znaczenie we współczesnym przemyśle
+   H2: Kariera w robotyce – od czego zacząć?
+   H2: Robotyk – zarobki
+   H2: FAQ – często zadawane pytania i odpowiedzi
+   H3: Czym się zajmuje robotyka?
+   H3: Do czego jest wykorzystywana robotyka?
+   H3: Ile zarabia robotyk?
+
+##### https://akademiadlaprzemyslu.pl/slowniczek-przemyslowy/tia-portal-co-to/ [200] ~583 slow, linki /kursy/: 30
+   H1: TIA Portal – co to?
+   H2: TIA Portal – do czego służy w automatyce i robotyce przemysłowej?
+   H2: Funkcjonalności i zalety TIA Portal
+   H2: Wersje TIA Portal: STEP 7 Basic i Professional
+   H2: Czy TIA Portal jest darmowy?
+   H2: Jak nauczyć się TIA Portal?
+   H2: Najczęściej zadawane pytania
+
+##### https://akademiadlaprzemyslu.pl/blog/przemysl/czym-jest-obrabiarka-cnc-i-jak-nauczyc-sie-jej-obslugi/ [200] ~1242 slow, linki /kursy/: 30
+   H1: Czym jest obrabiarka CNC i jak nauczyć się jej obsługi?
+   H2: Czym jest obrabiarka CNC i jak działa?
+   H2: Rodzaje obrabiarek CNC – tokarka, frezarka i centrum obróbcze
+   H2: Programowanie G-code – język sterowania obrabiarką CNC
+   H2: Jak nauczyć się programowania CNC? Od podstaw do certyfikatu
+   H2: FAQ

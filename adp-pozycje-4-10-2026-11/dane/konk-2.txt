@@ -1,0 +1,195 @@
+
+##### https://forbot.pl/forum/topic/24605-czym-sa-sterowniki-plc-i-jak-je-programowac-zupelne-podstawy/ [200] ~3372 slow, linki /kursy/: 0
+   H1: Robotyka Czym są sterowniki PLC i jak je programować? Zupełne podstawy
+   H2: Pomocna odpowiedź
+   H3: mcsw_02
+   H3: mcsw_02
+   H3: Treker (Damian Szymański)
+   H3: Treker
+   H3: Tradiatore
+   H3: Tradiatore
+   H3: BlackJack
+   H3: BlackJack
+   H3: Leoneq
+   H3: Leoneq
+   H3: Tradiatore
+   H3: Tradiatore
+   H3: jand
+   H3: jand
+   H3: BlackJack
+   H3: BlackJack
+   H3: BlackJack
+   H3: BlackJack
+   H2: Bądź aktywny - zaloguj się lub utwórz konto!
+   H2: Utwórz konto w ~20 sekund!
+   H2: Zaloguj się
+   H3: Quizy
+   H3: Najnowsze posty w innych tematach
+   H4: Pomoc przy programowaniu Atmega168PA-AU za pomoca ISP Arduino uno R3
+   H4: Pochwal się nad czym właśnie pracujesz! Wspólny mini-worklog 1 2 3 4 16
+   H4: Premiera: Bambu Lab H3C - dziewięć głowic i zmiana filamentu w 6 sekund. Oto...
+   H4: Ciekawe filmy (elektronika, mechanika, robotyka) 1 2 3 4 64
+   H4: Przykładowy program UART w VHDL
+   H4: Inne
+
+##### https://sklep-plcspace.pl/blog/co-to-sterownik-plc/ [200] ~949 slow, linki /kursy/: 0
+   H1: Co to sterownik PLC?
+   H2: Co to jest PLC? Definicja i znaczenie
+   H2: Jak działa PLC?
+   H2: Zastosowanie PLC w przemyśle
+   H2: Programowalny sterownik logiczny – kluczowe elementy
+   H2: Moduły PLC: Zasilania, wejść/wyjść, komunikacji, procesora
+   H2: Rodzaje sterowników PLC
+   H2: Automatyka przemysłowa a systemy sterowania
+   H2: Sterowanie procesami za pomocą PLC
+   H2: Systemy sterowania – jak PLC integruje się z innymi urządzeniami?
+   H2: Przyszłość PLC w automatyce przemysłowej
+   H2: Wyszukaj na stronie
+
+##### https://sterowniki-plc.net/ [200] ~2630 slow, linki /kursy/: 0
+   H1: SterownikiPLC
+   H2: Sterowniki PLC Delta Electronics
+   H2: Sterowniki PLC Eaton
+   H2: Sterowniki PLC Fatek
+   H2: Sterowniki PLC Finder
+   H2: Sterowniki PLC F&F
+   H2: Sterowniki PLC Hitachi
+   H2: Sterowniki PLC HollySys
+   H2: Sterowniki PLC IDEC
+   H2: Sterowniki PLC Inovance
+   H2: Sterowniki PLC KINCO
+   H2: Sterowniki PLC LG
+   H2: Sterowniki PLC LOVATO
+   H2: Sterowniki PLC Mitsubishi
+   H2: Sterowniki PLC Omron
+   H2: Sterowniki PLC Panasonic
+   H2: Sterowniki PLC Pilz
+   H2: Sterowniki PLC Relpol
+   H2: Sterowniki PLC Schneider Electric
+   H2: Sterowniki PLC Siemens
+   H2: Sterowniki PLC Unitronics
+   H2: Sterowniki PLC VIGOR
+   H2: Sterowniki PLC Wago
+   H2: Sterowniki PLC Yaskawa
+   H2: Sterowniki maszyn i urządzeń
+   H2: Akcesoria do sterowników PLC
+   H2: Sterowniki PLC — Zastosowanie
+   H2: Co to sterownik PLC?
+   H2: Rodzaje sterowników PLC.
+   H3: Gdzie spotkamy Sterownik PLC?
+   H3: Funkcje sterowników PLC:
+   H4: Delta Electronics PLC
+   H4: Systemy sterowania Fatek
+   H4: PLC Siemens
+   H4: Schneider Electric PLC
+   H4: Eaton Moeller PLC
+   H4: Relpol PLC
+   H4: Unitronics PLC
+   H4: Sterowniki PLC LG/LS
+   H4: Sterowniki PLC LOVATO
+   H4: 
+   H4: PLC Inovance
+   H4: Sterowniki PLC Vigor
+   H4: PLC IDEC
+   H4: PLC Hitachi
+   H4: Sterowniki PLC Mitsubishi Electric
+   H4: Sterowniki PLC F&F
+   H4: Sterowniki Panasonic
+   H4: Sterowniki Omron
+   H3: 
+   H4: Sterowniki PLC Finder
+   H4: Sterowniki PLC Hollysys
+   H4: Sterowniki maszyn i urządzeń
+   H4: Akcesoria sterowników PLC
+   H2: Najczęściej zadawane pytania
+   H3: Co to jest sterownik PLC i do czego służy?
+   H3: Na co zwrócić uwagę przy wyborze sterownika PLC?
+   H3: Jakie są różnice między wyjściami tranzystorowymi a przekaźnikowymi?
+   H3: Czy oprogramowanie do sterowników PLC jest darmowe?
+   H3: W jakich językach programuje się współczesne sterowniki PLC?
+
+##### https://pl.wikipedia.org/wiki/SCADA [200] ~1667 slow, linki /kursy/: 0
+   H2: Spis treści
+   H1: SCADA
+   H2: Struktura systemu
+   H3: Systemy HMI/SCADA
+   H2: Komponenty systemu SCADA
+   H2: Przykładowe systemy SCADA
+   H2: Zobacz też
+   H2: Przypisy
+
+##### https://www.astor.com.pl/poradnikautomatyka/co-to-jest-scada/ [200] ~1246 slow, linki /kursy/: 1
+   H1: Co to jest SCADA?
+   H3: Z tego artykułu dowiesz się:
+   H2: SCADA w kilku prostych słowach
+   H2: Gdzie SCADA ma swoje miejsce w procesie produkcyjnym, do czego służy?
+   H2: Czym różni się SCADA od HMI?
+   H2: SCADA jako rozwiązanie dla przemysłu 4.0
+   H2: Gdzie mogę wykorzystać system SCADA?
+   H3: Newsletter Poradnika Automatyka
+   H4: Dziękujemy za zapis do newslettera!
+   H2: Michał Zieliński
+   H2: Michał Zieliński
+   H3: Zadaj pytanie Anuluj odpowiedź
+   H3: 3 odpowiedzi do “Co to jest SCADA?”
+   H3: Dodaj komentarz Anuluj pisanie odpowiedzi
+   H2: Czytaj więcej
+   H4: Tradycyjny wózek widłowy czy autonomiczny robot mobilny?
+   H4: Zalety robotów AMR w porównaniu do wózków AGV
+   H4: AGILOX NFK – nowy wymiar automatyzacji procesów intralogistycznych
+   H4: Roboty autonomiczne AGILOX – przyszłość nowoczesnej intralogistyki
+
+##### https://explitia.com/pl/produkty/systemy-scada-w-produkcji/ [200] ~975 slow, linki /kursy/: 0
+   H3: Potrzebujesz innego rozwiązania?
+   H3: Potrzebujesz innego rozwiązania?
+   H3: Potrzebujesz innego rozwiązania?
+   H3: Potrzebujesz innego rozwiązania?
+   H1: Systemy SCADA
+   H2: Porozmawiajmy o Twojej produkcji
+   H2: Z dobrze wdrożonym systemem SCADA możesz zyskać:
+   H2: Co dają Ci SCADA systemy?
+   H2: Co możesz zyskać w codziennym użytkowaniu SCADA?
+   H2: Najważniejsze moduły systemu SCADA
+   H3: Wizualizacja procesu
+   H3: Zbieranie danych z maszyn
+   H3: Alarmy i powiadomienia
+   H3: Archiwizacja i historia danych
+   H3: Zdalny nadzór i sterowanie
+   H2: Sprawdź, gdzie SCADA pomoże Twojej produkcji
+   H2: Kiedy warto wdrożyć SCADA?
+   H2: Korzyści biznesowe z wdrożenia systemu SCADA
+   H2: Jak pracujemy?
+   H4: Analizujemy proces
+   H4: Dobieramy zakres systemu
+   H4: Wdrażamy rozwiązanie
+   H4: Łączymy SCADA z resztą środowiska
+   H2: Integracje z innymi systemami
+   H3: Systemy MES
+   H3: Zbieranie danych z maszyn i komunikacja z OPC
+   H3: Synchronizacja danych z ERP
+   H3: Raportowanie produkcji
+   H2: Dlaczego powinieneś zdać się na ekspertów explitia?
+   H2: Wybierzemy najlepsze oprogramowanie dla Twoich potrzeb
+   H2: Porozmawiajmy o tym, jak uporządkować nadzór nad Twoją produkcją!
+   H3: Produkty i usługi
+
+##### https://www.mecalux.pl/blog/system-scada [200] ~1272 slow, linki /kursy/: 0
+   H1: SCADA — system nadzorujący procesy przemysłowe i logistyczne
+   H2: SCADA — wyjaśnienie znaczenia
+   H2: Działanie systemu SCADA
+   H2: Zalety systemu SCADA
+   H2: SCADA w magazynie oraz integracja z systemem WMS
+   H2: Przykład zastosowania systemu SCADA w środowisku przemysłowym
+   H2: SCADA — klucz do wydajnego przemysłu
+   H2: System SCADA podsumowany w 5 pytaniach
+   H3: Czym jest system SCADA?
+   H3: Z czego składa się system SCADA?
+   H3: Jaka jest zależność między systemem SCADA a PLC?
+   H3: Jaką funkcję ma oprogramowanie HMI?
+   H3: Z jakimi systemami integruje się SCADA?
+   H3: Najnowsze wpisy
+   H3: Kategorie
+   H3: Rozwiązania magazynowe
+   H3: Wyróżnione produkty
+   H3: Nasze portale
+   H3: Obserwuj Mecalux
